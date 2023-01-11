@@ -1,4 +1,4 @@
-import React, { useState, useContext  } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 
@@ -16,34 +16,34 @@ export default function Login({
   };
 
   const {
-      setUserTokenCookie,
-      setUserFirstName,
-      setUserLastName,
-      setUserEmail,
-    } = useContext(AuthContext);
-
+    setUserTokenCookie,
+    setUserFirstName,
+    setUserLastName,
+    setUserEmail,
+  } = useContext(AuthContext);
 
   const [password, setPassword] = useState("");
   const [email, setemail] = useState("");
 
-    const handleSubmit = async (e) => {
-      try {
-        e.preventDefault();
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
 
-        const login = { email, password };
-        const { VITE_BACKEND_URL } = import.meta.env;
-        const response = await axios.post(`${VITE_BACKEND_URL}/login`, login);
+      const login = { email, password };
+      const { VITE_BACKEND_URL } = import.meta.env;
+      const response = await axios.post(`${VITE_BACKEND_URL}/login`, login);
 
-        if (response.data.token) {
-          setUserTokenCookie(response.data.token);
-          setUserFirstName(response.data.user.firstname);
-          setUserLastName(response.data.user.lastname);
-          setUserEmail(response.data.user.email);
-          setLoginModal(false);
-        }
-      } catch (error) {
+      if (response.data.token) {
+        setUserTokenCookie(response.data.token);
+        setUserFirstName(response.data.user.firstname);
+        setUserLastName(response.data.user.lastname);
+        setUserEmail(response.data.user.email);
+        setLoginModal(false);
       }
-    };
+    } catch (error) {
+      console.error("user not found");
+    }
+  };
 
   return (
     <div
