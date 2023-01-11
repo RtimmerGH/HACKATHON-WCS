@@ -19,7 +19,7 @@ const browse = (req, res) => {
 const read = (req, res) => {
   if (
     parseInt(req.params.id, 10) !== parseInt(req.payload.sub, 10) &&
-    req.body.admin !== 1
+    req.body.admin !== 3
   ) {
     res.sendStatus(403);
   } else {
@@ -43,7 +43,7 @@ const edit = (req, res) => {
   const user = req.body;
   // TODO validations (length, format...)
   user.id = parseInt(req.params.id, 10);
-  if (user.id !== parseInt(req.payload.sub, 10) && user.admin !== 1) {
+  if (user.id !== parseInt(req.payload.sub, 10) && user.admin !== 3) {
     res.sendStatus(403);
   } else {
     models.user
@@ -81,7 +81,7 @@ const add = (req, res) => {
 const destroy = (req, res) => {
   const user = req.body;
   user.id = parseInt(req.params.id, 10);
-  if (user.id !== parseInt(req.payload.sub, 10) && user.admin !== 1) {
+  if (user.id !== parseInt(req.payload.sub, 10) && user.admin !== 3) {
     res.sendStatus(403);
   } else {
     models.user
