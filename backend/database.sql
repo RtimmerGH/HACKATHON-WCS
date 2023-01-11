@@ -64,6 +64,24 @@ CREATE TABLE
         city varchar(255) NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
+INSERT INTO
+    agency (address, city)
+VALUES (
+        '81, impasse Joseph Pierre',
+        'Toulouse'
+    ), (
+        '3, chemin de Langlois',
+        'Toulouse'
+    ), (
+        '805, boulevard Gilles Bonneau',
+        'Paris'
+    ), (
+        'boulevard Renault',
+        'Bordeaux'
+    ), (
+        '406, boulevard Guillet',
+        'Lyon'
+    );
 DROP TABLE IF EXISTS brand;
 
 CREATE TABLE
@@ -71,6 +89,9 @@ CREATE TABLE
         id int primary key NOT NULL AUTO_INCREMENT,
         name varchar(255) NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+INSERT INTO brand (name)
+VALUES ('Peugeot'), ('Renault'), ('Volkswagen'), ('Ford'), ('Mercedes');
 
 DROP TABLE IF EXISTS model;
 
@@ -82,6 +103,10 @@ CREATE TABLE
         CONSTRAINT `fk_model_brand` Foreign Key (idBrand) REFERENCES brand(id) ON DELETE RESTRICT ON UPDATE CASCADE
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
+INSERT INTO
+    model (name, idBrand)
+VALUES ('e-208', 1), ('e-2008', 1), ('e-Rifter', 1), ('e-Traveller', 1), ('Megane E-Tech', 2), ('Zoe E-Tech', 2), ('Twingo E-Tech', 2), ('ID.3', 3), ('ID.4', 3), ('ID.4 GTX', 3), ('ID.5', 3), ('E-Transit', 4), ('Mercedes-EQ', 5);
+
 DROP TABLE IF EXISTS category;
 
 CREATE TABLE
@@ -90,6 +115,9 @@ CREATE TABLE
         name varchar(255) NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
+
+INSERT INTO category (name) VALUES ('Voiture'), ('Vélo');
+
 DROP TABLE IF EXISTS type;
 
 CREATE TABLE
@@ -97,6 +125,9 @@ CREATE TABLE
         id int primary key NOT NULL AUTO_INCREMENT,
         name varchar(255) NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+INSERT INTO type (name)
+VALUES ('Berline'), ('Minibus'), ('Break'), ('Utilitaire');
 
 DROP TABLE IF EXISTS vehicle;
 
@@ -122,6 +153,48 @@ CREATE TABLE
         CONSTRAINT `fk_vehicle_agency` Foreign Key (idAgency) REFERENCES agency(id) ON DELETE RESTRICT ON UPDATE CASCADE
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
+INSERT INTO
+    vehicle(
+        registration,
+        `idType`,
+        `idModel`,
+        `idAgency`,
+        `idCategory`,
+        km,
+        `numDoor`,
+        `numPassenger`,
+        color,
+        `commissioningDate`,
+        availability,
+        image
+    )
+VALUES (
+        'AA-123-AA',
+        1,
+        6,
+        1,
+        1,
+        23065,
+        3,
+        5,
+        'White',
+        '2022-08-01',
+        1,
+        'https://images.caradisiac.com/logos-ref/modele/modele--renault-zoe/S7-modele--renault-zoe.jpg'
+    ), (
+        'BB-456-BB',
+        1,
+        4,
+        4,
+        1,
+        70897,
+        5,
+        8,
+        'grey',
+        '2022-04-10',
+        1,
+        'https://www.largus.fr/images/images/peugeot-e-traveller-7.jpg'
+    );
 DROP TABLE IF EXISTS reservation;
 
 CREATE TABLE
