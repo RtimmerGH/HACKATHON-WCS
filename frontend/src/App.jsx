@@ -18,7 +18,6 @@ function App() {
 
   return (
     <Router>
-      <Header setLoginModal={setLoginModal} loginModal={loginModal} />
       <Login
         loginModal={loginModal}
         setLoginModal={setLoginModal}
@@ -29,6 +28,8 @@ function App() {
         registerModal={registerModal}
         setRegisterModal={setRegisterModal}
       />
+      <Header setLoginModal={setLoginModal} loginModal={loginModal} />
+
       <Routes>
         {/* ROUTE CLASSIQUE */}
         <Route path="/" element={<Navigate replace to="/home" />} />
