@@ -1,41 +1,38 @@
 import React, { useState } from "react";
-// import axios from "axios";
-// import {useNavigate } from "react-router-dom";
+import axios from "axios";
 
-export default function Register({ registerModal }) {
+export default function Register({ registerModal, setRegisterModal }) {
   if (!registerModal) return null;
-  // const navigate = useNavigate();
 
-  // const { VITE_BACKEND_URL } = import.meta.env;
+  const { VITE_BACKEND_URL } = import.meta.env;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
-  const handleSubmit = "blabla";
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   axios
-  //     .post(
-  //       `${VITE_BACKEND_URL}/users`,
-  //       {
-  //         email,
-  //         password,
-  //         firstname: firstName,
-  //         lastname,
-  //       },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     )
-  //     .then(function handleResponse() {
-  //       navigate("/login");
-  //     });
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        `${VITE_BACKEND_URL}/users`,
+        {
+          email,
+          password,
+          firstname: firstName,
+          lastname,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then(function handleResponse() {
+        setRegisterModal(false);
+      });
+  };
 
   const btn =
     email === "" ||
