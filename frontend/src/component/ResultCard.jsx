@@ -1,4 +1,13 @@
+import { useState } from "react";
+import ResultModal from "./ResultModal";
+
 export default function ResultCard({ car }) {
+  const [resultModal, setResultModal] = useState(false);
+
+  const handleClick = () => {
+    setResultModal(!resultModal);
+  };
+
   return (
     <div className="flex flex-col bg-zinc-300 text-gray-900 border rounded shadow-md md:flex-row md:max-w-xl m-6">
       <img
@@ -11,12 +20,16 @@ export default function ResultCard({ car }) {
           {car.model}
         </h5>
         <p className="mb-3 font-normal text-gray-900">{car.nbrPassenger}</p>
-        <a
-          href="/"
+        <button
+          type="button"
+          onClick={handleClick}
           className="inline-flex px-3 py-2 text-m font-medium text-center text-white bg-gradient-to-r from-lime-400 to-cyan-500 rounded-lg"
         >
           RESERVE
-        </a>
+        </button>
+        {resultModal && (
+          <ResultModal setResultModal={setResultModal} car={car} />
+        )}
       </div>
     </div>
   );
