@@ -16,6 +16,7 @@ const {
 // });
 const router = express.Router();
 const userControllers = require("./controllers/userControllers");
+const agencyControllers = require("./controllers/AgencyControllers");
 
 // public routes
 
@@ -25,6 +26,8 @@ router.post(
   userControllers.getUserByEmailWithPasswordAndPassToNext,
   verifyPassword
 );
+router.get("/agencies", agencyControllers.browse);
+router.get("/agencies/:id", agencyControllers.read);
 
 // Not public routes
 router.use(verifyToken, verifyAdmin); // authentication wall : verifyToken is activated for each route after this line
@@ -40,5 +43,6 @@ router.post(
   hashPassword,
   userControllers.changePassword
 );
+router.delete("/agencies/:id", agencyControllers.destroy);
 
 module.exports = router;
