@@ -57,7 +57,22 @@ export default function Register({ registerModal, setRegisterModal }) {
     );
 
   return (
-    <div className="mt-10 ml-8">
+    <div
+      className=" fixed
+    w-screen
+    h-screen
+    z-10
+    bg-neutral-300"
+    >
+      <button
+        type="button"
+        onClick={() => {
+          setRegisterModal(false);
+        }}
+        className="w-9 h-9 bg-red-600"
+      >
+        X
+      </button>
       <form onSubmit={handleSubmit}>
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="relative z-0 mb-6 w-full group">

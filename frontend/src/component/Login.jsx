@@ -48,6 +48,11 @@ export default function Login({
   return (
     <div
       className="
+        fixed
+        w-screen
+        h-screen
+        z-10
+        bg-neutral-300
         flex-grow
         flex
         flex-col
@@ -56,6 +61,15 @@ export default function Login({
         align-center
         "
     >
+      <button
+        type="button"
+        onClick={() => {
+          setLoginModal(false);
+        }}
+        className="w-9 h-9 bg-red-600"
+      >
+        X
+      </button>
       <form onSubmit={handleSubmit}>
         <div className="mb-6">
           <label
