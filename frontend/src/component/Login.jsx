@@ -1,7 +1,6 @@
-import React, { useState /* useContext */ } from "react";
-// import { Link /* useNavigate */ } from "react-router-dom";
-// import axios from "axios";
-// import { AuthContext } from "../context/AuthContext";
+import React, { useState, useContext } from "react";
+import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Login({
   loginModal,
@@ -16,36 +15,35 @@ export default function Login({
     setRegisterModal(!registerModal);
   };
 
-  // const {
-  //     setUserTokenCookie,
-  //     setUserFirstName,
-  //     setUserLastName,
-  //     setUserEmail,
-  //   } = useContext(AuthContext);
-  //   const navigate = useNavigate();
+  const {
+    setUserTokenCookie,
+    setUserFirstName,
+    setUserLastName,
+    setUserEmail,
+  } = useContext(AuthContext);
+
   const [password, setPassword] = useState("");
   const [email, setemail] = useState("");
-  const handleSubmit = "blabla";
 
-  //   const handleSubmit = async (e) => {
-  //     try {
-  //       e.preventDefault();
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
 
-  //       const login = { email, password };
-  //       const { VITE_BACKEND_URL } = import.meta.env;
-  //       const response = await axios.post(`${VITE_BACKEND_URL}/login`, login);
+      const login = { email, password };
+      const { VITE_BACKEND_URL } = import.meta.env;
+      const response = await axios.post(`${VITE_BACKEND_URL}/login`, login);
 
-  //       if (response.data.token) {
-  //         setUserTokenCookie(response.data.token);
-  //         setUserFirstName(response.data.user.firstname);
-  //         setUserLastName(response.data.user.lastname);
-  //         setUserEmail(response.data.user.email);
-  //         navigate("/");
-  //       }
-  //     } catch (error) {
-  //       error("une erreur s'est produite lors de la connexion");
-  //     }
-  //   };
+      if (response.data.token) {
+        setUserTokenCookie(response.data.token);
+        setUserFirstName(response.data.user.firstname);
+        setUserLastName(response.data.user.lastname);
+        setUserEmail(response.data.user.email);
+        setLoginModal(false);
+      }
+    } catch (error) {
+      console.error("user not found");
+    }
+  };
 
   return (
     <div
