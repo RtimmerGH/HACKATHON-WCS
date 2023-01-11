@@ -25,7 +25,7 @@ class AgencyManager extends AbstractManager {
   update(agency) {
     return this.connection.query(
       `update ${this.table} set address = ?, city = ? where id = ?`,
-      [agency.address, agency.city]
+      [agency.address, agency.city, agency.id]
     );
   }
 }

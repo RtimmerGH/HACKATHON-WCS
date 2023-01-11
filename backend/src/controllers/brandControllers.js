@@ -1,8 +1,8 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.agency
-    .findAllAgencies()
+  models.brand
+    .findAllBrands()
     .then(([rows]) => {
       res.send(rows);
     })
@@ -13,8 +13,8 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.agency
-    .findAgency(req.params.id)
+  models.brand
+    .findBrand(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
         res.sendStatus(404);
@@ -29,14 +29,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const agency = req.body;
+  const brand = req.body;
   // TODO validations (length, format...)
-  agency.id = parseInt(req.params.id, 10);
-  if (req.body.admin !== 3) {
+  brand.id = parseInt(req.params.id, 10);
+  if (req.body.admin < 2) {
     res.sendStatus(403);
   } else {
-    models.agency
-      .update(agency)
+    models.brand
+      .update(brand)
       .then(([result]) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);
@@ -53,13 +53,13 @@ const edit = (req, res) => {
 
 const add = (req, res) => {
   // TODO validations (length, format...)
-  if (req.body.admin !== 3) {
+  if (req.body.admin < 2) {
     res.sendStatus(403);
   } else {
-    models.agency
+    models.brand
       .insert(req.body)
       .then(([result]) => {
-        res.location(`/agencys/${result.insertId}`).sendStatus(201);
+        res.location(`/brands/${result.insertId}`).sendStatus(201);
       })
       .catch((err) => {
         console.error(err);
@@ -69,10 +69,10 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  if (req.body.admin !== 3) {
+  if (req.body.admin < 2) {
     res.sendStatus(403);
   } else {
-    models.agency
+    models.brand
       .delete(parseInt(req.params.id, 10))
       .then(([result]) => {
         if (result.affectedRows === 0) {

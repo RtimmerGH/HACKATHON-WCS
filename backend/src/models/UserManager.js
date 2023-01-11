@@ -7,7 +7,7 @@ class UserManager extends AbstractManager {
 
   findUser(id) {
     return this.connection.query(
-      `select ${this.table}.id, ${this.table}.firstname, ${this.table}.lastname, ${this.table}.email, ${this.table}.admin, admin.name as role from  ${this.table} join admin on admin.id=${this.table}.admin`,
+      `select ${this.table}.id, ${this.table}.firstname, ${this.table}.lastname, ${this.table}.email, ${this.table}.admin, admin.name as role from  ${this.table} join admin on admin.id=${this.table}.admin where ${this.table}.id = ?`,
       [id]
     );
   }
