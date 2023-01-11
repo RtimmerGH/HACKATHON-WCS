@@ -1,6 +1,5 @@
-import React from "react";
-import React, { useState /*useContext*/ } from "react";
-import { Link /*useNavigate*/ } from "react-router-dom";
+import React, { useState /* useContext */ } from "react";
+import { Link /* useNavigate */ } from "react-router-dom";
 // import axios from "axios";
 // import { AuthContext } from "../context/AuthContext";
 
@@ -14,6 +13,7 @@ export default function Login() {
   //   const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [email, setemail] = useState("");
+  const handleSubmit = "blabla";
 
   //   const handleSubmit = async (e) => {
   //     try {
