@@ -1,0 +1,33 @@
+const AbstractManager = require("./AbstractManager");
+
+class ModelManager extends AbstractManager {
+  constructor() {
+    super({ table: "model" });
+  }
+
+  findModel(id) {
+    return this.connection.query(`select * from  ${this.table} where id = ?`, [
+      id,
+    ]);
+  }
+
+  findAllModels() {
+    return this.connection.query(`select * from  ${this.table}`);
+  }
+
+  insert(model) {
+    return this.connection.query(
+      `insert into ${this.table} (name,idBrand) values (?,?)`,
+      [model.name, model.idBrand]
+    );
+  }
+
+  update(model) {
+    return this.connection.query(
+      `update ${this.table} set name = ?,idBrand = ? where id = ?`,
+      [model.name, model.idBrand, model.id]
+    );
+  }
+}
+
+module.exports = ModelManager;
