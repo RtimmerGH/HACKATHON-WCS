@@ -7,7 +7,7 @@ export default function Nav({ setLoginModal, loginModal }) {
     setLoginModal(!loginModal);
   };
   return (
-    <div>
+    <div className="sticky top-0">
       <nav className="bg-white border-gray-200 px-2 md:px-5 py-4 bg-gradient-to-r from-lime-400 to-cyan-500">
         <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto">
           <a href="/" className="flex items-center">
@@ -30,9 +30,6 @@ export default function Nav({ setLoginModal, loginModal }) {
           </div>
         </div>
       </nav>
-      <h1 className="text-3xl font-bold text-center my-7">
-        Electric vehicles renting
-      </h1>
     </div>
   );
 }
