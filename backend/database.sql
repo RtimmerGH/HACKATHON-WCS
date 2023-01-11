@@ -82,7 +82,6 @@ VALUES (
         '406, boulevard Guillet',
         'Lyon'
     );
-
 DROP TABLE IF EXISTS brand;
 
 CREATE TABLE
@@ -115,6 +114,7 @@ CREATE TABLE
         id int primary key NOT NULL AUTO_INCREMENT,
         name varchar(255) NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
 
 INSERT INTO category (name) VALUES ('Voiture'), ('Vélo');
 
@@ -195,7 +195,6 @@ VALUES (
         1,
         'https://www.largus.fr/images/images/peugeot-e-traveller-7.jpg'
     );
-
 DROP TABLE IF EXISTS reservation;
 
 CREATE TABLE
