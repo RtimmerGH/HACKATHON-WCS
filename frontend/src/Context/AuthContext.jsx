@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
 
-export function AuthContextProvider({ children }) {
+function AuthContextProvider({ children }) {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
   const [userFirstName, setUserFirstName] = useState("");
   const [userLastName, setUserLastName] = useState("");
@@ -32,17 +32,10 @@ export function AuthContextProvider({ children }) {
       userEmail,
       setUserEmail,
     }),
-    [
-      setUserTokenCookie,
-      userToken,
-      userFirstName,
-      setUserFirstName,
-      userLastName,
-      setUserLastName,
-      userEmail,
-      setUserEmail,
-    ]
+    [userToken, userFirstName, userLastName, userEmail]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
+
+export default AuthContextProvider;

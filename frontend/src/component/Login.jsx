@@ -1,9 +1,21 @@
 import React, { useState /* useContext */ } from "react";
-import { Link /* useNavigate */ } from "react-router-dom";
+// import { Link /* useNavigate */ } from "react-router-dom";
 // import axios from "axios";
 // import { AuthContext } from "../context/AuthContext";
 
-export default function Login() {
+export default function Login({
+  loginModal,
+  setLoginModal,
+  registerModal,
+  setRegisterModal,
+}) {
+  if (!loginModal) return null;
+
+  const handleChange = () => {
+    setLoginModal(false);
+    setRegisterModal(!registerModal);
+  };
+
   // const {
   //     setUserTokenCookie,
   //     setUserFirstName,
@@ -81,8 +93,13 @@ export default function Login() {
           />
         </div>
         <div className="flex items-start mb-6" />
-        <div>
-          <Link to="/Register">Vous n'avez pas de compte ?</Link>
+        <div
+          onClick={handleChange}
+          onKeyDown={handleChange}
+          role="button"
+          tabIndex={0}
+        >
+          Vous n'avez pas de compte ?
         </div>
 
         <button
