@@ -4,6 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import RentalList from "../component/RentalList";
 import "./Profile.css";
 import ChangePassword from "../component/ChangePassword";
+import Logo from "./img/profile-24.svg";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -74,28 +75,20 @@ export default function Profile() {
         setChangePasswordModal={setChangePasswordModal}
       />
       <div className="MyInfos">
-        <h1>{userFirstName}</h1>
-        <h1>{userLastName}</h1>
+        <img src={Logo} className="Logo" alt="Logo" />
+        <div className="Names">
+          <h1>{userFirstName}</h1>
+          <h1>{userLastName}</h1>
+        </div>
         <h2>{userEmail}</h2>
         <button type="button" onClick={() => setChangePasswordModal(true)}>
           change your password
         </button>
       </div>
-      <button
-        type="button"
-        className="flex justify-center m-auto  rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 w-5/6 text-2xl font-bold text-white p-2 mt-8 hover:bg-white"
-      >
-        Edit profile
-      </button>
-      <button
-        onClick={handleDisconnect}
-        type="button"
-        className="flex justify-center m-auto rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 w-5/6 text-2xl font-bold text-white py-2 mt-2"
-      >
-        Disconnect
-      </button>
       <div className="flex-justify-between text-center mt-2">
-        <h1 className="m-6 uppercase font-bold">Your current rent</h1>
+        <h1 className="m-6 uppercase font-bold border-b-3">
+          Your current rent
+        </h1>
         {currentLocation.map((e) => (
           <RentalList
             key={e.id}
@@ -116,6 +109,19 @@ export default function Profile() {
           />
         ))}
       </div>
+      <button
+        onClick={handleDisconnect}
+        type="button"
+        className="flex justify-center m-auto rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 w-5/6 text-2xl font-bold text-white py-2 mt-2"
+      >
+        Disconnect
+      </button>
+      <button
+        type="button"
+        className="flex justify-center m-auto  rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 w-5/6 text-2xl font-bold text-white p-2 mt-4 hover:bg-white"
+      >
+        Edit profile
+      </button>
     </div>
   ) : (
     useEffect(() => {
