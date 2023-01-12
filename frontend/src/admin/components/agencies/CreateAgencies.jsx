@@ -45,7 +45,7 @@ function CreateAgencies({
                   className="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl"
                 >
                   <div className="flex-1 h-0 overflow-y-auto">
-                    <div className="py-6 px-4 bg-indigo-700 sm:px-6">
+                    <div className="py-6 px-4 bg-emerald-700 sm:px-6">
                       <div className="flex items-center justify-between">
                         <Dialog.Title className="text-lg font-medium text-white">
                           Add an agency
@@ -53,7 +53,7 @@ function CreateAgencies({
                         <div className="ml-3 h-7 flex items-center">
                           <button
                             type="button"
-                            className="bg-indigo-700 rounded-md text-indigo-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+                            className="bg-emerald-700 rounded-md text-emerald-200 hover:text-white"
                             onClick={() =>
                               setDisplaySidebarCreateAgencies(false)
                             }
@@ -64,9 +64,9 @@ function CreateAgencies({
                         </div>
                       </div>
                       <div className="mt-1">
-                        <p className="text-sm text-indigo-300">
-                          Assure toi que l'agence que tu souhaites créer
-                          respecte le règlement de l'entreprise.
+                        <p className="text-sm text-emerald-300">
+                          Be sure that the agency you want to create complies
+                          with the company’s regulations
                         </p>
                       </div>
                     </div>
@@ -78,7 +78,7 @@ function CreateAgencies({
                               htmlFor="city"
                               className="block text-sm font-medium text-gray-900"
                             >
-                              Ville de l'agence
+                              Agency's city
                             </label>
                             <div className="mt-1">
                               <input
@@ -87,7 +87,7 @@ function CreateAgencies({
                                 type="text"
                                 name="city"
                                 id="city"
-                                className="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                                className="block w-full shadow-sm sm:text-sm  border-gray-300 rounded-md"
                                 required="required"
                               />
                             </div>
@@ -97,7 +97,7 @@ function CreateAgencies({
                               htmlFor="adress"
                               className="block text-sm font-medium text-gray-900"
                             >
-                              Adresse de l'agence
+                              Agency's adress
                             </label>
                             <div className="mt-1">
                               <input
@@ -108,7 +108,7 @@ function CreateAgencies({
                                 type="text"
                                 name="adress"
                                 id="adress"
-                                className="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                                className="block w-full shadow-sm sm:text-sm  border-gray-300 rounded-md"
                                 required="required"
                               />
                             </div>
@@ -120,14 +120,14 @@ function CreateAgencies({
                   <div className="flex-shrink-0 px-4 py-4 flex justify-end">
                     <button
                       type="button"
-                      className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50"
                       onClick={() => setDisplaySidebarCreateAgencies(false)}
                     >
-                      Retour
+                      Cancel
                     </button>
                     <button
                       type="submit"
-                      className="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700"
                     >
                       Ajouter l'agence
                     </button>

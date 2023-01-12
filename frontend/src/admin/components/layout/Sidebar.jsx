@@ -3,6 +3,7 @@ import { Dialog, Menu, Transition } from "@headlessui/react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
 import categoriesAdmin from "./categoriesAdmin";
+import logo from "../../../assets/logo.svg";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -55,7 +56,7 @@ function AdminComponent() {
                 <div className="absolute top-0 right-0 -mr-12 pt-2">
                   <button
                     type="button"
-                    className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                    className="ml-1 flex items-center justify-center h-10 w-10 rounded-full"
                     onClick={() => setSidebarOpen(false)}
                   >
                     <XMarkIcon className="w-6 h-6 text-white" />
@@ -102,12 +103,13 @@ function AdminComponent() {
       {/* Static sidebar for desktop */}
       <div className="hidden lg:flex lg:flex-col lg:w-64 lg:fixed lg:inset-y-0 lg:border-r lg:border-gray-200 lg:pt-5 lg:pb-4 lg:bg-white">
         <div className="flex items-center flex-shrink-0 px-6">
-          <Link to="/admin/home">
+          <Link to="/admin/home" className="flex items-center gap-2">
             <img
-              className="h-8 w-auto"
-              src="https://www.zupimages.net/up/22/51/0z21.png"
+              className="h-12 w-auto bg-emerald-500"
+              src={logo}
               alt="Workflow"
             />
+            <p className="text-lg font-medium">Easy Moove</p>
           </Link>
         </div>
         {/* Sidebar component, swap this element with another sidebar if you like */}
@@ -115,7 +117,7 @@ function AdminComponent() {
           {/* User account dropdown */}
           <Menu as="div" className="px-3 mt-3 relative inline-block text-left">
             <div>
-              <Menu.Button className="group w-full bg-gray-100 rounded-md px-3.5 py-2 text-sm text-left font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-purple-500">
+              <Menu.Button className="group w-full bg-gray-100 rounded-md px-3.5 py-2 text-sm text-left font-medium text-gray-700 hover:bg-gray-200">
                 <span className="flex w-full justify-between items-center">
                   <span className="flex min-w-0 items-center justify-between space-x-3">
                     <span className="flex-1 flex flex-col min-w-0">
@@ -139,7 +141,7 @@ function AdminComponent() {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="z-10 mx-3 origin-top absolute right-0 left-0 mt-1 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 focus:outline-none">
+              <Menu.Items className="z-10 mx-3 origin-top absolute right-0 left-0 mt-1 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 ">
                 <div className="py-1">
                   <Menu.Item>
                     {({ active }) => (
@@ -222,7 +224,7 @@ function AdminComponent() {
         <div className="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white border-b border-gray-200 lg:hidden">
           <button
             type="button"
-            className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500 lg:hidden"
+            className="px-4 border-r border-gray-200 text-gray-500     lg:hidden"
             onClick={() => setSidebarOpen(true)}
           >
             <Bars3Icon className="w-6 h-6" />
@@ -235,7 +237,7 @@ function AdminComponent() {
               {/* Profile dropdown */}
               <Menu as="div" className="ml-3 relative">
                 <div>
-                  <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 justify-center">
+                  <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full     justify-center">
                     <span className="sr-only">Open user menu</span>
                     <div className="h-8 w-8 rounded-full flex items-center justify-center">
                       <p className="font-bold text-xl text-gray-700">J</p>
@@ -251,7 +253,7 @@ function AdminComponent() {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 focus:outline-none">
+                  <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 ">
                     <div className="py-1">
                       <Menu.Item>
                         {({ active }) => (

@@ -16,7 +16,7 @@ function SearchBar({ label, searchbarFilter, setSearchbarFilter }) {
             type="text"
             name="search"
             id="search"
-            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md"
+            className="shadow-sm   block w-full pr-12 sm:text-sm border-gray-300 rounded-md"
             value={searchbarFilter}
             onChange={(e) => setSearchbarFilter(e.target.value)}
           />

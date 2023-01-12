@@ -69,7 +69,13 @@ function TableVehicles({ searchbarFilter }) {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    PASSENGERS
+                    MODEL
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    BRAND
                   </th>
                   <th
                     scope="col"
@@ -103,15 +109,18 @@ function TableVehicles({ searchbarFilter }) {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-900">
-                          {vehicle.numPassenger}
+                          {vehicle.model}
                         </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {vehicle.brand}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {vehicle.km}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm flex gap-4 font-medium">
                         <PencilSquareIcon
-                          className="text-indigo-600 hover:text-indigo-900  w-6 h-6  cursor-pointer"
+                          className="text-emerald-600 hover:text-emerald-900  w-6 h-6  cursor-pointer"
                           onClick={() =>
                             setOpenUpdateSidebar({
                               show: true,

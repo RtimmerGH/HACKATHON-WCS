@@ -58,7 +58,7 @@ function TableAgencies({ searchbarFilter }) {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    ADRESS
+                    ADDRESS
                   </th>
                   <th
                     scope="col"
@@ -93,7 +93,7 @@ function TableAgencies({ searchbarFilter }) {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm flex gap-4 font-medium">
                         <PencilSquareIcon
-                          className="text-indigo-600 hover:text-indigo-900  w-6 h-6  cursor-pointer"
+                          className="text-emerald-600 hover:text-emerald-900  w-6 h-6  cursor-pointer"
                           onClick={() =>
                             setOpenUpdateSidebar({
                               show: true,

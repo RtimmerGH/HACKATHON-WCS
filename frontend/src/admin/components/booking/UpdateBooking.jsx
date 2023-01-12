@@ -55,7 +55,7 @@ function UpdateBooking({ openUpdateSidebar, setOpenUpdateSidebar }) {
                   className="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl"
                 >
                   <div className="flex-1 h-0 overflow-y-auto">
-                    <div className="py-6 px-4 bg-indigo-700 sm:px-6">
+                    <div className="py-6 px-4 bg-emerald-700 sm:px-6">
                       <div className="flex items-center justify-between">
                         <Dialog.Title className="text-lg font-medium text-white">
                           Modification booking
@@ -63,7 +63,7 @@ function UpdateBooking({ openUpdateSidebar, setOpenUpdateSidebar }) {
                         <div className="ml-3 h-7 flex items-center">
                           <button
                             type="button"
-                            className="bg-indigo-700 rounded-md text-indigo-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+                            className="bg-emerald-700 rounded-md text-emerald-200 hover:text-white"
                             onClick={() =>
                               setOpenUpdateSidebar({ show: false })
                             }
@@ -74,10 +74,9 @@ function UpdateBooking({ openUpdateSidebar, setOpenUpdateSidebar }) {
                         </div>
                       </div>
                       <div className="mt-1">
-                        <p className="text-sm text-indigo-300">
-                          Assure toi que les modifications que tu souhaites
-                          apporter au à la reservation respectent le règlement
-                          de l'entreprise.
+                        <p className="text-sm text-emerald-300">
+                          Be sure that the agency's informations you want to
+                          update complies with the company’s regulations
                         </p>
                       </div>
                     </div>
@@ -95,7 +94,7 @@ function UpdateBooking({ openUpdateSidebar, setOpenUpdateSidebar }) {
                               <select
                                 id="vehicle"
                                 name="vehicle"
-                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 sm:text-sm rounded-md"
                               >
                                 {isLoading ? (
                                   <p>loading</p>
@@ -129,7 +128,7 @@ function UpdateBooking({ openUpdateSidebar, setOpenUpdateSidebar }) {
                                   type="date"
                                   name="startdate"
                                   id="startdate"
-                                  className="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                                  className="block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                   required="required"
                                 />
                               </div>
@@ -144,7 +143,7 @@ function UpdateBooking({ openUpdateSidebar, setOpenUpdateSidebar }) {
                               <select
                                 id="periodstart"
                                 name="periodstart"
-                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 sm:text-sm rounded-md"
                               >
                                 <option value="morning">Morning</option>
                                 <option value="afternoon">Afternoon</option>
@@ -169,7 +168,7 @@ function UpdateBooking({ openUpdateSidebar, setOpenUpdateSidebar }) {
                                   type="date"
                                   name="endate"
                                   id="endate"
-                                  className="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                                  className="block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                   required="required"
                                 />
                               </div>
@@ -184,7 +183,7 @@ function UpdateBooking({ openUpdateSidebar, setOpenUpdateSidebar }) {
                               <select
                                 id="periodend"
                                 name="periodend"
-                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 sm:text-sm rounded-md"
                               >
                                 <option value="morning">Morning</option>
                                 <option value="afternoon">Afternoon</option>
@@ -198,14 +197,14 @@ function UpdateBooking({ openUpdateSidebar, setOpenUpdateSidebar }) {
                   <div className="flex-shrink-0 px-4 py-4 flex justify-end">
                     <button
                       type="button"
-                      className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50    "
                       onClick={() => setOpenUpdateSidebar({ show: false })}
                     >
-                      Retour
+                      Cancel
                     </button>
                     <button
                       type="submit"
-                      className="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700    "
                     >
                       Confirmer la modification
                     </button>

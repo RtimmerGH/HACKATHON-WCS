@@ -22,10 +22,10 @@ function Brands() {
         <div>
           <button
             type="button"
-            className="inline-flex gap-2 items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="inline-flex gap-2 items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-emerald-500 hover:bg-emerald-600"
             onClick={() => setDisplaySidebarCreateBrands(true)}
           >
-            Ajouter un brand
+            Add brand
             <PlusCircleIcon className="h-6 w-6" />
           </button>
         </div>

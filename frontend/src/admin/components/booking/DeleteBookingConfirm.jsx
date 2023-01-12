@@ -65,7 +65,7 @@ function DeleteBookingConfirm({ confirmModal, setConfirmModal }) {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Are you sure to delete the booking ? You cannot come back.
+                      Are you sure to delete the booking ? You can't go back.
                     </p>
                   </div>
                 </div>
@@ -73,20 +73,20 @@ function DeleteBookingConfirm({ confirmModal, setConfirmModal }) {
               <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
                 <button
                   type="button"
-                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 sm:ml-3 sm:w-auto sm:text-sm"
                   onClick={confirmDeleteBooking}
                 >
-                  Supprimer
+                  Yes, delete
                 </button>
                 <button
                   type="button"
-                  className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm"
+                  className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50     sm:mt-0 sm:w-auto sm:text-sm"
                   onClick={() =>
                     setConfirmModal({ show: false, bookingId: "" })
                   }
                   ref={cancelButtonRef}
                 >
-                  Retour
+                  Cancel
                 </button>
               </div>
             </div>

@@ -85,15 +85,15 @@ function CreateVehicle({
                   className="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl"
                 >
                   <div className="flex-1 h-0 overflow-y-auto">
-                    <div className="py-6 px-4 bg-indigo-700 sm:px-6">
+                    <div className="py-6 px-4 bg-emerald-700 sm:px-6">
                       <div className="flex items-center justify-between">
                         <Dialog.Title className="text-lg font-medium text-white">
-                          Ajouter un vehicle
+                          Add vehicle
                         </Dialog.Title>
                         <div className="ml-3 h-7 flex items-center">
                           <button
                             type="button"
-                            className="bg-indigo-700 rounded-md text-indigo-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+                            className="bg-emerald-700 rounded-md text-emerald-200 hover:text-white   "
                             onClick={() =>
                               setDisplaySidebarCreateVehicle(false)
                             }
@@ -104,9 +104,9 @@ function CreateVehicle({
                         </div>
                       </div>
                       <div className="mt-1">
-                        <p className="text-sm text-indigo-300">
-                          Assure toi que le vehicule que tu souhaites créer
-                          respecte le règlement de l'entreprise.
+                        <p className="text-sm text-emerald-300">
+                          Be sure that the vehicle you want to create complies
+                          with the company’s regulations
                         </p>
                       </div>
                     </div>
@@ -133,7 +133,7 @@ function CreateVehicle({
                                   type="text"
                                   name="userLastname"
                                   id="userLastname"
-                                  className="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                                  className="block w-full shadow-sm sm:text-sm   border-gray-300 rounded-md"
                                   required="required"
                                 />
                               </div>
@@ -157,7 +157,7 @@ function CreateVehicle({
                                   type="text"
                                   name="userLastname"
                                   id="userLastname"
-                                  className="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                                  className="block w-full shadow-sm sm:text-sm   border-gray-300 rounded-md"
                                   required="required"
                                 />
                               </div>
@@ -175,7 +175,7 @@ function CreateVehicle({
                               <select
                                 id="category"
                                 name="category"
-                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300    sm:text-sm rounded-md"
                                 value={vehicleInfo.idCategory}
                                 onChange={(e) =>
                                   setVehicleInfo((previousValue) => ({
@@ -206,7 +206,7 @@ function CreateVehicle({
                                 <select
                                   id="type"
                                   name="type"
-                                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300    sm:text-sm rounded-md"
                                   value={vehicleInfo.idType}
                                   onChange={(e) =>
                                     setVehicleInfo((previousValue) => ({
@@ -237,7 +237,7 @@ function CreateVehicle({
                                 <select
                                   id="model"
                                   name="model"
-                                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300    sm:text-sm rounded-md"
                                   value={vehicleInfo.idModel}
                                   onChange={(e) =>
                                     setVehicleInfo((previousValue) => ({
@@ -266,7 +266,7 @@ function CreateVehicle({
                               <select
                                 id="agency"
                                 name="agency"
-                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300    sm:text-sm rounded-md"
                                 value={vehicleInfo.idAgency}
                                 onChange={(e) =>
                                   setVehicleInfo((previousValue) => ({
@@ -284,8 +284,8 @@ function CreateVehicle({
                               </select>
                             </div>
                           </div>
-                          <div className="flex justify-between">
-                            <div>
+                          <div className="flex justify-between gap-8">
+                            <div className="w-full">
                               <label
                                 htmlFor="fuel"
                                 className="block text-sm font-medium text-gray-900"
@@ -304,61 +304,66 @@ function CreateVehicle({
                                   type="text"
                                   name="fuel"
                                   id="fuel"
-                                  className="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                                  className="block w-full shadow-sm sm:text-sm   border-gray-300 rounded-md"
                                   required="required"
                                 />
                               </div>
                             </div>
-                            <div>
-                              <label
-                                htmlFor="numdoors"
-                                className="block text-sm font-medium text-gray-900"
-                              >
-                                Numbers of doors *
-                              </label>
-                              <div className="mt-1">
-                                <input
-                                  value={vehicleInfo.numDoor}
-                                  onChange={(e) =>
-                                    setVehicleInfo((existingValues) => ({
-                                      ...existingValues,
-                                      numDoor: e.target.value,
-                                    }))
-                                  }
-                                  type="text"
-                                  name="numdoors"
-                                  id="numdoors"
-                                  className="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                                  required="required"
-                                />
+                            {parseInt(vehicleInfo.idCategory, 10) === 1 && (
+                              <div className="w-full">
+                                <label
+                                  htmlFor="numdoors"
+                                  className="block text-sm font-medium text-gray-900"
+                                >
+                                  Number of doors *
+                                </label>
+                                <div className="mt-1">
+                                  <input
+                                    value={vehicleInfo.numDoor}
+                                    onChange={(e) =>
+                                      setVehicleInfo((existingValues) => ({
+                                        ...existingValues,
+                                        numDoor: e.target.value,
+                                      }))
+                                    }
+                                    type="text"
+                                    name="numdoors"
+                                    id="numdoors"
+                                    className="block w-full shadow-sm sm:text-sm   border-gray-300 rounded-md"
+                                    required="required"
+                                  />
+                                </div>
                               </div>
-                            </div>
+                            )}
                           </div>
                           <div className="flex gap-8">
-                            <div className="w-full">
-                              <label
-                                htmlFor="numpassengers"
-                                className="block text-sm font-medium text-gray-900"
-                              >
-                                Numbers of passengers *
-                              </label>
-                              <div className="mt-1">
-                                <input
-                                  value={vehicleInfo.numPassenger}
-                                  onChange={(e) =>
-                                    setVehicleInfo((existingValues) => ({
-                                      ...existingValues,
-                                      numPassenger: e.target.value,
-                                    }))
-                                  }
-                                  type="text"
-                                  name="numpassengers"
-                                  id="numpassengers"
-                                  className="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                                  required="required"
-                                />
+                            {parseInt(vehicleInfo.idCategory, 10) === 1 && (
+                              <div className="w-full">
+                                <label
+                                  htmlFor="numpassengers"
+                                  className="block text-sm font-medium text-gray-900"
+                                >
+                                  Number of passengers *
+                                </label>
+                                <div className="mt-1">
+                                  <input
+                                    value={vehicleInfo.numPassenger}
+                                    onChange={(e) =>
+                                      setVehicleInfo((existingValues) => ({
+                                        ...existingValues,
+                                        numPassenger: e.target.value,
+                                      }))
+                                    }
+                                    type="text"
+                                    name="numpassengers"
+                                    id="numpassengers"
+                                    className="block w-full shadow-sm sm:text-sm   border-gray-300 rounded-md"
+                                    required="required"
+                                  />
+                                </div>
                               </div>
-                            </div>
+                            )}
+
                             <div className="w-full">
                               <label
                                 htmlFor="color"
@@ -378,7 +383,7 @@ function CreateVehicle({
                                   type="text"
                                   name="color"
                                   id="color"
-                                  className="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                                  className="block w-full shadow-sm sm:text-sm   border-gray-300 rounded-md"
                                   required="required"
                                 />
                               </div>
@@ -404,19 +409,21 @@ function CreateVehicle({
                                   type="date"
                                   name="commissioningdate"
                                   id="commissioningdate"
-                                  className="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                                  className="block w-full shadow-sm sm:text-sm   border-gray-300 rounded-md"
                                   required="required"
                                 />
                               </div>
                             </div>
                             <div className="flex flex-col gap-2 w-full">
-                              <p>Disponible</p>
+                              <p className="font-medium text-sm text-gray-900">
+                                Availability
+                              </p>
                               <Switch
                                 checked={enabled}
                                 onChange={setEnabled}
                                 className={classNames(
-                                  enabled ? "bg-indigo-600" : "bg-gray-200",
-                                  "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                  enabled ? "bg-emerald-600" : "bg-gray-200",
+                                  "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200    "
                                 )}
                               >
                                 <span className="sr-only">Use setting</span>
@@ -429,29 +436,29 @@ function CreateVehicle({
                                 />
                               </Switch>
                             </div>
-                            <div className="w-full">
-                              <label
-                                htmlFor="image"
-                                className="block text-sm font-medium text-gray-900"
-                              >
-                                Url image *
-                              </label>
-                              <div className="mt-1">
-                                <input
-                                  value={vehicleInfo.image}
-                                  onChange={(e) =>
-                                    setVehicleInfo((existingValues) => ({
-                                      ...existingValues,
-                                      image: e.target.value,
-                                    }))
-                                  }
-                                  type="text"
-                                  name="image"
-                                  id="image"
-                                  className="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                                  required="required"
-                                />
-                              </div>
+                          </div>
+                          <div className="w-full">
+                            <label
+                              htmlFor="image"
+                              className="block text-sm font-medium text-gray-900"
+                            >
+                              Url image *
+                            </label>
+                            <div className="mt-1">
+                              <input
+                                value={vehicleInfo.image}
+                                onChange={(e) =>
+                                  setVehicleInfo((existingValues) => ({
+                                    ...existingValues,
+                                    image: e.target.value,
+                                  }))
+                                }
+                                type="text"
+                                name="image"
+                                id="image"
+                                className="block w-full shadow-sm sm:text-sm   border-gray-300 rounded-md"
+                                required="required"
+                              />
                             </div>
                           </div>
                         </div>
@@ -461,16 +468,16 @@ function CreateVehicle({
                   <div className="flex-shrink-0 px-4 py-4 flex justify-end">
                     <button
                       type="button"
-                      className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50    "
                       onClick={() => setDisplaySidebarCreateVehicle(false)}
                     >
-                      Retour
+                      Cancel
                     </button>
                     <button
                       type="submit"
-                      className="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700    "
                     >
-                      Ajouter le vehicule
+                      Add vehicle
                     </button>
                   </div>
                 </form>

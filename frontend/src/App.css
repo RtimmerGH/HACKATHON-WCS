@@ -5,12 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #cadedf;
+  background-color: rgb(249 250 251);
 }
 
 @media screen and (min-width: 768px) {
   body {
-    background-image: url("./assets/bg-img.jpg");
+    background-color: rgb();
   }
 }
 
