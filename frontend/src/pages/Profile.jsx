@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import RentalList from "../component/RentalList";
 
 export default function Profile() {
+  const navigate = useNavigate();
+
   const currentLocation = [
     {
       id: 1,
@@ -44,7 +47,13 @@ export default function Profile() {
     },
   ];
 
-  const { userFirstName, userLastName, userEmail } = useContext(AuthContext);
+  const { userFirstName, userLastName, userEmail, setUserTokenCookie } =
+    useContext(AuthContext);
+
+  const handleDisconnect = () => {
+    setUserTokenCookie(null);
+    navigate("/home");
+  };
 
   return (
     <div>
@@ -59,6 +68,7 @@ export default function Profile() {
           Edit profile
         </button>
         <button
+          onClick={handleDisconnect}
           type="button"
           className="rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 w-5/6 text-2xl font-bold text-white py-2 mt-2"
         >
