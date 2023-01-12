@@ -1,45 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
 
-export default function Register({ registerModal, setRegisterModal }) {
-  if (!registerModal) return null;
+export default function ChangePassword({
+  changepasswordModal,
+  setChangePasswordModal,
+}) {
+  if (!changepasswordModal) return null;
 
   const { VITE_BACKEND_URL } = import.meta.env;
+  const handleModale = () => {
+    setChangePasswordModal(!changepasswordModal);
+  };
 
   const [email, setEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastname, setLastName] = useState("");
+  const { userToken } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // console.log(newPassword + password + confirmPassword + email)
     axios
       .post(
-        `${VITE_BACKEND_URL}/users`,
+        `${VITE_BACKEND_URL}/changepassword`,
         {
-          email,
           password,
-          firstname: firstName,
-          lastname,
+          email,
+          newPassword,
         },
         {
           headers: {
-            "Content-Type": "application/json",
+            Authorization: `Bearer ${userToken}`,
           },
         }
       )
       .then(function handleResponse() {
-        setRegisterModal(false);
+        setChangePasswordModal(false);
       });
   };
 
   const btn =
-    email === "" ||
-    password === "" ||
-    password !== confirmPassword ||
-    firstName === "" ||
-    lastname === "" ? (
+    email === "" || password === "" || newPassword !== confirmPassword ? (
       <button
         type="submit"
         disabled
@@ -59,73 +62,64 @@ export default function Register({ registerModal, setRegisterModal }) {
   return (
     <div
       className="
-        fixed
-        w-screen
-        h-screen
-        z-10
-        bg-[#CADEDF]
-        flex-grow
-        flex
-        flex-col
-        px-10
-        justify-center
-        align-between"
+          fixed
+          w-screen
+          h-screen
+          z-10
+          bg-[#CADEDF]
+          flex-grow
+          flex
+          flex-col
+          px-10
+          justify-center
+          align-between"
     >
+      <button
+        type="button"
+        tabIndex={0}
+        onClick={handleModale}
+        onKeyDown={handleModale}
+      >
+        X
+      </button>
+
       <h5 className="text-xl font-medium text-gray-900 dark:text-white mb-6">
-        Create an account
+        Change password
       </h5>
+      <label
+        htmlFor="floating_email"
+        className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
+      >
+        Your mail
+      </label>
+      <input
+        type="email"
+        name="floating_email"
+        id="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder=" "
+        required
+      />
       <form onSubmit={handleSubmit}>
         <div className="grid md:grid-cols-2 md:gap-6">
-          <div className="relative z-0 mb-6 w-full group">
-            <label
-              htmlFor="floating_last_name"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
-            >
-              Nom
-            </label>
-            <input
-              type="text"
-              name="floating_last_name"
-              id="name"
-              defaultValue={lastname}
-              onChange={(e) => setLastName(e.target.value)}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder=" "
-              required
-            />
-          </div>
-          <div className="relative z-0 mb-6 w-full group">
-            <label
-              htmlFor="floating_first_name"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
-            >
-              Prénom
-            </label>
-            <input
-              type="text"
-              name="floating_first_name"
-              id="first_name"
-              defaultValue={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder=" "
-              required
-            />
-          </div>
+          <div className="relative z-0 mb-6 w-full group" />
+          <div className="relative z-0 mb-6 w-full group" />
         </div>
         <div className="relative z-0 mb-6 w-full group">
           <label
-            htmlFor="floating_email"
+            htmlFor="floating_password"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
           >
-            Adresse e-mail
+            Current password
           </label>
           <input
-            type="email"
-            name="floating_email"
-            id="email"
-            defaultValue={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="password"
+            name="floating_current_password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=" "
             required
@@ -136,14 +130,14 @@ export default function Register({ registerModal, setRegisterModal }) {
             htmlFor="floating_password"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
           >
-            Mot de passe
+            New password
           </label>
           <input
             type="password"
             name="floating_password"
             id="password"
-            defaultValue={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=" "
             required
@@ -154,13 +148,13 @@ export default function Register({ registerModal, setRegisterModal }) {
             htmlFor="floating_repeat_password"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
           >
-            Confirmer le mot de passe
+            Confirm New password
           </label>
           <input
             type="password"
             name="repeat_password"
             id="floating_repeat_password"
-            defaultValue={confirmPassword}
+            value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=" "
@@ -172,9 +166,6 @@ export default function Register({ registerModal, setRegisterModal }) {
       </form>
       <button
         type="button"
-        onClick={() => {
-          setRegisterModal(false);
-        }}
         className="text-sm mt-10 font-medium text-cyan-500 dark:text-gray-300 text-center"
       >
         Back Home

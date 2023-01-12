@@ -109,6 +109,7 @@ const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
       if (users[0] != null) {
         // eslint-disable-next-line prefer-destructuring
         req.user = users[0];
+
         next();
       } else {
         res.status(401).send("Not Found");

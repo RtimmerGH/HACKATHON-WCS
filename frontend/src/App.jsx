@@ -19,10 +19,14 @@ import "./App.css";
 import SearchResults from "./pages/SearchResults";
 import Profile from "./pages/Profile";
 import { AuthContext } from "./context/AuthContext";
+import ChangePassword from "./component/ChangePassword";
 
 function App() {
   const [loginModal, setLoginModal] = useState(false);
   const [registerModal, setRegisterModal] = useState(false);
+  const [vehicles, setVehicles] = useState([]);
+  const [reservation, setReservation] = useState();
+
   const { VITE_BACKEND_URL } = import.meta.env;
   const { setUserFirstName, setUserLastName, setUserEmail, setUserRole } =
     useContext(AuthContext);
@@ -67,13 +71,45 @@ function App() {
             <Nav setLoginModal={setLoginModal} loginModal={loginModal} />
           }
         >
-          <Route path="" element={<Home />} />
+          <Route
+            path=""
+            element={
+              <Home
+                vehicles={vehicles}
+                setVehicles={setVehicles}
+                reservation={reservation}
+                setReservation={setReservation}
+              />
+            }
+          />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/results" element={<SearchResults />} />
+          <Route
+            path="/results"
+            element={
+              <SearchResults
+                vehicles={vehicles}
+                reservation={reservation}
+                setReservation
+              />
+            }
+          />
+          <Route path="/userinfos" element={<ChangePassword />} />
         </Route>
-
+        =======
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/results"
+          element={
+            <SearchResults
+              vehicles={vehicles}
+              reservation={reservation}
+              setReservation
+            />
+          }
+        />
         {/* ROUTE ADMIN */}
         <Route path="/admin" element={<Sidebar />}>
           <Route path="" element={<HomeAdmin />} />
