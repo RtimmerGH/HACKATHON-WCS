@@ -22,6 +22,9 @@ import ChangePassword from "./component/ChangePassword";
 function App() {
   const [loginModal, setLoginModal] = useState(false);
   const [registerModal, setRegisterModal] = useState(false);
+  const [vehicles, setVehicles] = useState([]);
+  const [reservation, setReservation] = useState();
+
   const { VITE_BACKEND_URL } = import.meta.env;
   const {
     setUserFirstName,
@@ -68,11 +71,31 @@ function App() {
       <Routes>
         {/* ROUTE CLASSIQUE */}
         <Route path="/" element={<Navigate replace to="/home" />} />
-        <Route path="/home" element={<Home />} />
+        <Route
+          path="/home"
+          element={
+            <Home
+              vehicles={vehicles}
+              setVehicles={setVehicles}
+              reservation={reservation}
+              setReservation={setReservation}
+            />
+          }
+        />
         <Route path="/userinfos" element={<ChangePassword />} />
+
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/results" element={<SearchResults />} />
+        <Route
+          path="/results"
+          element={
+            <SearchResults
+              vehicles={vehicles}
+              reservation={reservation}
+              setReservation
+            />
+          }
+        />
         {/* ROUTE ADMIN */}
         <Route path="/admin" element={<Sidebar />}>
           <Route index path="home" element={<HomeAdmin />} />

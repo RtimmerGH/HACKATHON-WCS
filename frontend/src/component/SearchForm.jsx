@@ -1,6 +1,76 @@
 import "../App.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-export default function SearchForm() {
+export default function SearchForm({ setVehicles, setReservation }) {
+  const navigate = useNavigate();
+
+  const today = new Date();
+  const todayFormat = today.toISOString().substring(0, 16);
+
+  const [agencies, setAgencies] = useState([]);
+  const [types, setTypes] = useState([]);
+  const [agency, setAgency] = useState(1);
+  const [startDate, setStartDate] = useState(todayFormat);
+  const [endDate, setEndDate] = useState(startDate);
+  const [type, setType] = useState(1);
+  const [addBikes, setAddBikes] = useState(null);
+  const searchRequest = { agency, startDate, endDate, type, addBikes };
+
+  useEffect(() => {
+    // get agencies
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/agencies`)
+      .then((response) => {
+        setAgencies(response.data);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.warn(error.response.data); // => the response payload
+        }
+      });
+    // get categories
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/types`)
+      .then((response) => {
+        setTypes(response.data);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.warn(error.response.data); // => the response payload
+        }
+      });
+    // get vehicles
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/vehicles`)
+      .then((response) => {
+        setVehicles(response.data);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.warn(error.response.data); // => the response payload
+        }
+      });
+  }, []);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    // get vehicles
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/vehicles`)
+      .then((response) => {
+        setVehicles(response.data);
+        setReservation(searchRequest);
+        navigate("/results");
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.warn(error.response.data); // => the response payload
+        }
+      });
+  }
+
   return (
     <div className="lg:w-1/2 lg:border lg:pb-5 bg-[#CADEDF] md:rounded-lg mx-auto my-3 lg:shadow-2xl">
       <div className="divcenter">
@@ -10,59 +80,80 @@ export default function SearchForm() {
         <h4 className="text-lg text-gray-500 text-center mb-8">
           Same return station
         </h4>
-        <form className="formCenter">
-          <div className="mb-6 text-center bg-stone-200 border border-gray-300 rounded-lg md:w-full">
+
+        <form className="formCenter" onSubmit={handleSubmit} method="GET">
+          <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full">
+
             <select
               type="select"
               name="location"
               id="location"
-              className="bg-stone-200 text-gray-900 text-xl rounded-lg p-3"
+              className="bg-white text-gray-900 text-xl rounded-lg p-3 w-full"
+              onChange={(e) => setAgency(e.target.selectedIndex)}
             >
-              <option value="">--Please choose an option--</option>
-              <option value="dog">Dog</option>
-              <option value="cat">Cat</option>
-              <option value="hamster">Hamster</option>
-              <option value="parrot">Parrot</option>
-              <option value="spider">Spider</option>
-              <option value="goldfish">Goldfish</option>
+              <option defaultValue="" disabled>
+                --Please choose an agency--
+              </option>
+              {agencies.map((theagency) => {
+                return (
+                  <option
+                    id={theagency.id}
+                    defaultValue={theagency.id}
+                    key={theagency.id}
+                  >
+                    {theagency.city} - {theagency.address}
+                  </option>
+                );
+              })}
             </select>
           </div>
-          <div className="mb-6 text-center bg-stone-200 border border-gray-300 rounded-lg md:w-full">
+          <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full">
             <input
-              type="date"
-              id="start"
-              name="start"
-              value="2022-07-06"
-              min="2018-01-01"
-              max="2018-12-31"
-              className="bg-stone-200 text-gray-900 text-xl p-3"
+              type="datetime-local"
+              id="startDate"
+              name="startDate"
+              defaultValue={todayFormat}
+              onChange={(e) => setStartDate(e.target.value)}
+              min={todayFormat}
+              className="bg-white text-gray-900 text-xl p-3 md:mx-10"
             />
           </div>
-          <div className="mb-6 text-center bg-stone-200 border border-gray-300 rounded-lg md:w-full">
+          <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full flex-row justify-around">
             <input
-              type="date"
-              id="end"
-              name="end"
-              value="2022-07-06"
-              min="2018-01-01"
-              max="2018-12-31"
-              className="bg-stone-200 text-gray-900 text-xl p-3"
+              type="datetime-local"
+              id="endDate"
+              name="endDate"
+              defaultValue={startDate}
+              min={startDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              className="bg-white text-gray-900 text-xl p-3 md:mx-10"
             />
           </div>
-          <div className="mb-6 text-center bg-stone-200 border border-gray-300 rounded-lg md:w-full">
+          <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full flex-row justify-around">
             <select
               type="select"
-              name="location"
-              id="location"
-              className="bg-stone-200 text-gray-900 text-xl p-3"
+              name="type"
+              id="type"
+              className="bg-white text-gray-900 text-xl p-3 w-full"
+              onChange={(e) => setType(e.target.selectedIndex)}
             >
-              <option value="car">Car</option>
-              <option value="bike">Bike</option>
+              {types.map((thetype) => {
+                return (
+                  <option defaultValue={thetype.id} key={thetype.id}>
+                    {thetype.name}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <div className="mb-6 text-center flex p-3">
-            <input type="checkbox" id="lessThan50km" name="lessThan50km" />
-            <p className="text-xl">I do less than 50 km</p>
+            <input
+              type="checkbox"
+              id="lessThan30km"
+              name="lessThan30km"
+              onChange={(e) => setAddBikes(e.target.value)}
+            />
+            <p className="text-xl">I do less than 30 km</p>
           </div>
           <button
             type="submit"
