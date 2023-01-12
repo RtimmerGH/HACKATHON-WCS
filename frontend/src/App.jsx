@@ -8,8 +8,6 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import Home from "@pages/Home";
-
 import Sidebar from "./admin/components/layout/Sidebar";
 import HomeAdmin from "./admin/pages/HomeAdmin";
 import Login from "./component/Login";
