@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
-import user from "../assets/user.svg";
+import user from "../pages/img/compteWhite.png";
 import { AuthContext } from "../context/AuthContext";
 
 export default function Nav({ setLoginModal, loginModal }) {
@@ -22,8 +22,12 @@ export default function Nav({ setLoginModal, loginModal }) {
       <nav className="bg-white border-gray-200 px-2 md:px-5 py-4 bg-gradient-to-r from-lime-400 to-cyan-500">
         <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto">
           <a href="/" className="flex items-center">
-            <img src={logo} className="h-1à mr-3 sm:h-9" alt="Easymove Logo" />
-            <span className="self-center text-4xl font-semibold whitespace-nowrap dark:text-white">
+            <img
+              src={logo}
+              className="h-1à mr-3 sm:h-9 hover:opacity-50"
+              alt="Easymove Logo"
+            />
+            <span className="self-center text-4xl font-semibold whitespace-nowrap dark:text-white hover:text-cyan-200 active:text-cyan-200">
               Easy Move
             </span>
           </a>

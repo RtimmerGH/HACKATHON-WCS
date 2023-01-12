@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
+import closebutton from "../pages/img/cancel.png";
 
 export default function ChangePassword({
   changepasswordModal,
@@ -79,11 +80,12 @@ export default function ChangePassword({
         tabIndex={0}
         onClick={handleModale}
         onKeyDown={handleModale}
+        className="text-cyan-500"
       >
-        X
+        <img src={closebutton} alt="closebutton" className="w-7 mx-auto" />
       </button>
 
-      <h5 className="text-xl font-medium text-gray-900 dark:text-white mb-6">
+      <h5 className="text-xl font-bold dark:text-white mx-auto my-8 ">
         Change password
       </h5>
       <label
