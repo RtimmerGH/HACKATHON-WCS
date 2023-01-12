@@ -17,6 +17,7 @@ import "./App.css";
 import SearchResults from "./pages/SearchResults";
 import Profile from "./pages/Profile";
 import { AuthContext } from "./context/AuthContext";
+import ChangePassword from "./component/ChangePassword";
 
 function App() {
   const [loginModal, setLoginModal] = useState(false);
@@ -75,6 +76,8 @@ function App() {
             />
           }
         />
+        <Route path="/userinfos" element={<ChangePassword />} />
+
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route
