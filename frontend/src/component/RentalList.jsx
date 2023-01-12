@@ -1,4 +1,5 @@
 import React from "react";
+import "./RentalList.css";
 
 export default function RentalList({
   véhicule,
@@ -7,7 +8,7 @@ export default function RentalList({
   retourDate,
 }) {
   return (
-    <div className="flex justify-around">
+    <div className="rent-Content">
       <h1>{véhicule}</h1>
       <h1>{delivery}</h1>
       <h1>{deliveryDate}</h1>

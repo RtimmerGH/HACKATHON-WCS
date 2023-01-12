@@ -8,6 +8,7 @@ function AuthContextProvider({ children }) {
   const [userFirstName, setUserFirstName] = useState("");
   const [userLastName, setUserLastName] = useState("");
   const [userEmail, setUserEmail] = useState("");
+  const [userRole, setUserRole] = useState("");
 
   const setUserTokenCookie = useCallback((token) => {
     if (token) {
@@ -31,8 +32,10 @@ function AuthContextProvider({ children }) {
       userToken,
       userEmail,
       setUserEmail,
+      userRole,
+      setUserRole,
     }),
-    [userToken, userFirstName, userLastName, userEmail]
+    [userToken, userFirstName, userLastName, userEmail, userRole]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -10,6 +10,7 @@ const {
   verifyAdmin,
   replaceReqParamIdByPayloadSub,
   verifyPasswordBeforeChangingIt,
+  checkIdUserInReservationBeforeDelete,
 } = require("./middleware/auth");
 
 // const upload = multer({
@@ -24,6 +25,7 @@ const categoryControllers = require("./controllers/categoryControllers");
 const typeControllers = require("./controllers/typeControllers");
 const vehicleControllers = require("./controllers/vehicleControllers");
 const adminControllers = require("./controllers/adminControllers");
+const reservationControllers = require("./controllers/reservationControllers");
 
 // public routes
 
@@ -89,5 +91,14 @@ router.get("/admins/:id", adminControllers.read);
 router.post("/admins", adminControllers.add);
 router.put("/admins/:id", adminControllers.edit);
 router.delete("/admins/:id", adminControllers.destroy);
+
+router.get("/reservations", reservationControllers.browse);
+router.get("/reservations/:id", reservationControllers.read);
+router.post("/reservations", reservationControllers.add);
+router.delete(
+  "/reservations/:id",
+  checkIdUserInReservationBeforeDelete,
+  reservationControllers.destroy
+);
 
 module.exports = router;
