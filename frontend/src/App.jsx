@@ -50,13 +50,7 @@ function App() {
   }, []);
 
   const protectedLevel3 = () => {
-    if (userRole === 3) {
-      return true;
-    }
-    if (userRole === 2) {
-      return true;
-    }
-    if (userRole === 1) {
+    if (userRole) {
       return true;
     }
     return false;
@@ -91,13 +85,13 @@ function App() {
         <Route
           path="/profile"
           element={
-            protectedLevel3() ? <Profile /> : <Navigate replace to="/home" />
+            protectedLevel3 ? <Profile /> : <Navigate replace to="/home" />
           }
         />
         <Route
           path="/results"
           element={
-            protectedLevel3() ? (
+            protectedLevel3 ? (
               <SearchResults />
             ) : (
               <Navigate replace to="/home" />
@@ -108,7 +102,7 @@ function App() {
         <Route
           path="/admin"
           element={
-            protectedLevel1() ? <Sidebar /> : <Navigate replace to="/home" />
+            protectedLevel1 ? <Sidebar /> : <Navigate replace to="/home" />
           }
         >
           <Route index path="home" element={<HomeAdmin />} />

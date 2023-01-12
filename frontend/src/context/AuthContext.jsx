@@ -24,8 +24,6 @@ function AuthContextProvider({ children }) {
 
   const value = useMemo(
     () => ({
-      userRole,
-      setUserRole,
       userFirstName,
       setUserFirstName,
       userLastName,
@@ -34,6 +32,8 @@ function AuthContextProvider({ children }) {
       userToken,
       userEmail,
       setUserEmail,
+      userRole,
+      setUserRole,
     }),
     [userToken, userFirstName, userLastName, userEmail, userRole]
   );
