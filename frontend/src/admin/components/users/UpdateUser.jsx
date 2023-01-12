@@ -177,6 +177,7 @@ function UpdateUser({ openUpdateSidebar, setOpenUpdateSidebar }) {
                                 id="location"
                                 name="location"
                                 className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300    sm:text-sm rounded-md"
+                                value={userInfo.admin}
                                 onChange={(e) =>
                                   setUserInfo((existingValues) => ({
                                     ...existingValues,
@@ -185,7 +186,9 @@ function UpdateUser({ openUpdateSidebar, setOpenUpdateSidebar }) {
                                 }
                               >
                                 {data.map((rank) => (
-                                  <option value={rank.id}>{rank.name}</option>
+                                  <option key={rank.id} value={rank.id}>
+                                    {rank.name}
+                                  </option>
                                 ))}
                               </select>
                             </div>

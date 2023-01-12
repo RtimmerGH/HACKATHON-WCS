@@ -23,8 +23,8 @@ function CreateVehicle({
   const [vehicleInfo, setVehicleInfo] = useState({
     registration: "",
     idCategory: 1,
-    idType: 1,
-    idModel: 1,
+    idType: null,
+    idModel: null,
     idAgency: 1,
     km: "",
     fuel: "",
@@ -46,8 +46,8 @@ function CreateVehicle({
     postVehicles({
       registration: vehicleInfo.registration,
       idCategory: parseInt(vehicleInfo.idCategory, 10),
-      idType: parseInt(vehicleInfo.idType, 10) || "",
-      idModel: parseInt(vehicleInfo.idModel, 10),
+      idType: parseInt(vehicleInfo.idType, 10) || null,
+      idModel: parseInt(vehicleInfo.idModel, 10) || null,
       idAgency: parseInt(vehicleInfo.idAgency, 10),
       km: parseInt(vehicleInfo.km, 10),
       fuel: vehicleInfo.fuel,
@@ -119,7 +119,7 @@ function CreateVehicle({
                                 htmlFor="userLastname"
                                 className="block text-sm font-medium text-gray-900"
                               >
-                                Registration *
+                                Registration
                               </label>
                               <div className="mt-1">
                                 <input
@@ -143,7 +143,7 @@ function CreateVehicle({
                                 htmlFor="userLastname"
                                 className="block text-sm font-medium text-gray-900"
                               >
-                                Km *
+                                Km
                               </label>
                               <div className="mt-1">
                                 <input
@@ -290,7 +290,7 @@ function CreateVehicle({
                                 htmlFor="fuel"
                                 className="block text-sm font-medium text-gray-900"
                               >
-                                Fuel *
+                                Fuel
                               </label>
                               <div className="mt-1">
                                 <input
@@ -315,7 +315,7 @@ function CreateVehicle({
                                   htmlFor="numdoors"
                                   className="block text-sm font-medium text-gray-900"
                                 >
-                                  Number of doors *
+                                  Number of doors
                                 </label>
                                 <div className="mt-1">
                                   <input
@@ -343,7 +343,7 @@ function CreateVehicle({
                                   htmlFor="numpassengers"
                                   className="block text-sm font-medium text-gray-900"
                                 >
-                                  Number of passengers *
+                                  Number of passengers
                                 </label>
                                 <div className="mt-1">
                                   <input
@@ -369,7 +369,7 @@ function CreateVehicle({
                                 htmlFor="color"
                                 className="block text-sm font-medium text-gray-900"
                               >
-                                Color *
+                                Color
                               </label>
                               <div className="mt-1">
                                 <input
@@ -395,7 +395,7 @@ function CreateVehicle({
                                 htmlFor="commissioningdate"
                                 className="block text-sm font-medium text-gray-900"
                               >
-                                Commissioning date *
+                                Commissioning date
                               </label>
                               <div className="mt-1">
                                 <input
@@ -442,7 +442,7 @@ function CreateVehicle({
                               htmlFor="image"
                               className="block text-sm font-medium text-gray-900"
                             >
-                              Url image *
+                              Url image
                             </label>
                             <div className="mt-1">
                               <input

@@ -163,26 +163,6 @@ function AdminComponent() {
                     )}
                   </Menu.Item>
                 </div>
-                <div className="py-1">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        type="button"
-                        // eslint-disable-next-line no-undef
-                        onClick={() => setOpenModalDisconnect(true)}
-                        className={classNames(
-                          "text-red-700",
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "flex w-full px-4 py-2 text-sm"
-                        )}
-                      >
-                        Logout
-                      </button>
-                    )}
-                  </Menu.Item>
-                </div>
               </Menu.Items>
             </Transition>
           </Menu>
@@ -272,24 +252,6 @@ function AdminComponent() {
                               Back to website
                             </button>
                           </Link>
-                        )}
-                      </Menu.Item>
-                    </div>
-                    <div className="py-1">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <button
-                            type="button"
-                            className={classNames(
-                              "text-red-700",
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "flex w-full px-4 py-2 text-sm"
-                            )}
-                          >
-                            Logout
-                          </button>
                         )}
                       </Menu.Item>
                     </div>
