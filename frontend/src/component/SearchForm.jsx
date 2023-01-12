@@ -1,6 +1,48 @@
 import "../App.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function SearchForm() {
+  const [agencies, setAgencies] = useState([]);
+  const [types, setTypes] = useState([]);
+  // const [agency, setAgency] = useState([]);
+  // const [startDate, setStartDate] = useState([]);
+  // const [endDate, setEndDate] = useState([]);
+  // const [startPeriod, setStartPeriod] = useState([]);
+  // const [endPeriod, setEndPeriod] = useState([]);
+  const today = new Date();
+  const todayFormat = today.toISOString().split("T")[0];
+
+  useEffect(() => {
+    // get agencies
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/agencies`)
+      .then((response) => {
+        setAgencies(response.data);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.warn(error.response.data); // => the response payload
+        }
+      });
+    // get categories
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/types`)
+      .then((response) => {
+        setTypes(response.data);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.warn(error.response.data); // => the response payload
+        }
+      });
+  }, []);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.warn("soumis !");
+  }
+
   return (
     <div className="lg:w-1/2 lg:border lg:pb-5 bg-[#CADEDF] md:rounded-lg md:m-5 lg:shadow-2xl">
       <div className="divcenter">
@@ -10,54 +52,66 @@ export default function SearchForm() {
         <h4 className="text-lg text-gray-500 text-center mb-8">
           Same return station
         </h4>
-        <form className="formCenter">
-          <div className="mb-6 text-center bg-stone-400 border border-gray-300 rounded-lg md:w-full">
+        <form className="formCenter" onSubmit={handleSubmit}>
+          <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full">
             <select
               type="select"
               name="location"
               id="location"
-              className="bg-stone-400 text-gray-900 text-xl rounded-lg p-3"
+              className="bg-white text-gray-900 text-xl rounded-lg p-3 w-full"
             >
-              <option value="">--Please choose an option--</option>
-              <option value="dog">Dog</option>
-              <option value="cat">Cat</option>
-              <option value="hamster">Hamster</option>
-              <option value="parrot">Parrot</option>
-              <option value="spider">Spider</option>
-              <option value="goldfish">Goldfish</option>
+              <option defaultValue="">--Please choose an agency--</option>
+              {agencies.map((agency) => {
+                return (
+                  <option defaultValue={agency.id} key={agency.id}>
+                    {agency.address} - {agency.city}
+                  </option>
+                );
+              })}
             </select>
           </div>
-          <div className="mb-6 text-center bg-stone-400 border border-gray-300 rounded-lg md:w-full">
+          <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full">
+            <select className="md:mx-10">
+              <option>Morning</option>
+              <option>Afternoon</option>
+            </select>
             <input
               type="date"
               id="start"
               name="start"
-              value="2022-07-06"
-              min="2018-01-01"
-              max="2018-12-31"
-              className="bg-stone-400 text-gray-900 text-xl p-3"
+              defaultValue={todayFormat}
+              min={todayFormat}
+              className="bg-white text-gray-900 text-xl p-3 md:mx-10"
             />
           </div>
-          <div className="mb-6 text-center bg-stone-400 border border-gray-300 rounded-lg md:w-full">
+          <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full flex-row justify-around">
+            <select className="md:mx-10">
+              <option>Morning</option>
+              <option>Afternoon</option>
+            </select>
             <input
               type="date"
               id="end"
               name="end"
-              value="2022-07-06"
-              min="2018-01-01"
-              max="2018-12-31"
-              className="bg-stone-400 text-gray-900 text-xl p-3"
+              defaultValue={todayFormat}
+              min={todayFormat}
+              className="bg-white text-gray-900 text-xl p-3 md:mx-10"
             />
           </div>
-          <div className="mb-6 text-center bg-stone-400 border border-gray-300 rounded-lg md:w-full">
+          <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full flex-row justify-around">
             <select
               type="select"
-              name="location"
-              id="location"
-              className="bg-stone-400 text-gray-900 text-xl p-3"
+              name="type"
+              id="type"
+              className="bg-white text-gray-900 text-xl p-3 w-full"
             >
-              <option value="car">Car</option>
-              <option value="bike">Bike</option>
+              {types.map((type) => {
+                return (
+                  <option defaultValue={type.id} key={type.id}>
+                    {type.name}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <div className="mb-6 text-center flex p-3">
