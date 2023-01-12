@@ -20,6 +20,7 @@ export default function Login({
     setUserFirstName,
     setUserLastName,
     setUserEmail,
+    setUserRole,
   } = useContext(AuthContext);
 
   const [password, setPassword] = useState("");
@@ -35,6 +36,7 @@ export default function Login({
 
       if (response.data.token) {
         setUserTokenCookie(response.data.token);
+        setUserRole(response.data.user.admin);
         setUserFirstName(response.data.user.firstname);
         setUserLastName(response.data.user.lastname);
         setUserEmail(response.data.user.email);
