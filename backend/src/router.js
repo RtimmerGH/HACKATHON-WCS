@@ -91,6 +91,7 @@ router.post("/admins", adminControllers.add);
 router.put("/admins/:id", adminControllers.edit);
 router.delete("/admins/:id", adminControllers.destroy);
 
+router.get("/reservations", reservationControllers.browse);
 router.get("/reservations/:id", reservationControllers.read);
 router.post("/reservations", reservationControllers.add);
 router.delete(
