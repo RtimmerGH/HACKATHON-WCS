@@ -1,6 +1,9 @@
 export default function SearchForm() {
   return (
     <>
+      <h1 className="text-3xl font-bold text-center my-7">
+        Electric vehicles renting
+      </h1>
       <h4 className="text-lg text-gray-500 text-center mb-8">
         Same return station
       </h4>
