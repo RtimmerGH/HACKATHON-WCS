@@ -65,7 +65,7 @@ export default function Login({
         align-between"
     >
       <form onSubmit={handleSubmit} className="space-y-6">
-        <h5 className="text-xl font-medium text-gray-900 dark:text-white">
+        <h5 className="flex justify-center text-xl font-medium text-gray-900 dark:text-white mx-auto">
           Sign in to our platform
         </h5>
         <div className="mb-6">
@@ -114,7 +114,8 @@ export default function Login({
         </div>
         <button
           type="submit"
-          className="text-white bg-gradient-to-r from-lime-400 to-cyan-500 font-medium rounded-lg text-m w-full sm:w-auto px-5 py-2.5 text-center"
+          className="flex text-white bg-gradient-to-r from-lime-400 to-cyan-500 font-medium rounded-lg text-m sm:w-auto px-5 py-2.5
+          mx-auto"
         >
           Login to your account
         </button>
