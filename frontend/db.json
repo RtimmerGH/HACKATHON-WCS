@@ -1,0 +1,143 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "jorisgrilleres@gmail.com",
+      "firstname": "Joris",
+      "lastname": "Grilleres",
+      "grade": "Admin"
+    },
+    {
+      "lastname": "Doe",
+      "firstname": "John",
+      "email": "jorisgrilleres@gmail.com",
+      "admin": "",
+      "id": 2
+    }
+  ],
+  "vehicles": [
+    {
+      "id": 1,
+      "registration": "AA-123-AA",
+      "idCategory": 1,
+      "idType": 1,
+      "idModel": 1,
+      "idAgency": 1,
+      "km": 100543,
+      "fuel": "100",
+      "numDoor": 5,
+      "numPassenger": 4,
+      "color": "red",
+      "commissioningDate": "",
+      "availability": true,
+      "image": ""
+    },
+    {
+      "id": 2,
+      "registration": "AA-900-AA",
+      "idCategory": 1,
+      "idType": 1,
+      "idModel": 1,
+      "idAgency": 1,
+      "km": 100987,
+      "fuel": "100",
+      "numDoor": 5,
+      "numPassenger": 4,
+      "color": "red",
+      "commissioningDate": "",
+      "availability": true,
+      "image": ""
+    }
+  ],
+  "ranks": [
+    {
+      "id": 1,
+      "name": "User"
+    },
+    {
+      "id": 2,
+      "name": "Admin"
+    }
+  ],
+  "agencies": [
+    {
+      "city": "Paris",
+      "adress": "45 rue des fleurs",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "city": "Toulouse",
+      "adress": "45 rue des roses"
+    }
+  ],
+  "brands": [
+    {
+      "name": "Daciaaaa",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Renault"
+    }
+  ],
+  "models": [
+    {
+      "name": "208",
+      "idBrand": "1",
+      "id": 1
+    },
+    {
+      "name": "Clio",
+      "idBrand": "1",
+      "id": 2
+    },
+    {
+      "name": "model1",
+      "idBrand": "2",
+      "id": 3
+    }
+  ],
+  "categories": [
+    {
+      "name": "Voiture",
+      "id": 1
+    },
+    {
+      "name": "Velo",
+      "id": 2
+    }
+  ],
+  "type": [
+    {
+      "name": "Berline",
+      "id": 1
+    },
+    {
+      "name": "Minibus",
+      "id": 2
+    }
+  ],
+  "reservation": [
+    {
+      "id": 1,
+      "idVehicle": 1,
+      "idUser": 1,
+      "startDate": "2022-12-10",
+      "startPeriod": "morning",
+      "endDate": "2022-12-12",
+      "endPeriod": "morning",
+      "km":"200"
+    },
+    {
+      "id": 2,
+      "idVehicle": 1,
+      "idUser": 2,
+      "startDate": "2022-11-10",
+      "startPeriod": "morning",
+      "endDate": "2022-11-12",
+      "endPeriod": "morning",
+      "km":"500"
+    }
+  ]
+}

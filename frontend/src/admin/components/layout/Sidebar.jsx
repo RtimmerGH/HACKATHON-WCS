@@ -118,17 +118,12 @@ function AdminComponent() {
               <Menu.Button className="group w-full bg-gray-100 rounded-md px-3.5 py-2 text-sm text-left font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-purple-500">
                 <span className="flex w-full justify-between items-center">
                   <span className="flex min-w-0 items-center justify-between space-x-3">
-                    <img
-                      className="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0"
-                      src="" //modifier ici
-                      alt=""
-                    />
                     <span className="flex-1 flex flex-col min-w-0">
                       <span className="text-gray-900 text-sm font-medium truncate">
                         Joris Grilleres
                       </span>
                       <span className="text-gray-500 text-sm truncate">
-                        Developer
+                        Admin
                       </span>
                     </span>
                   </span>
@@ -239,9 +234,11 @@ function AdminComponent() {
               {/* Profile dropdown */}
               <Menu as="div" className="ml-3 relative">
                 <div>
-                  <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                  <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 justify-center">
                     <span className="sr-only">Open user menu</span>
-                    <img className="h-8 w-8 rounded-full" src="" alt="" />
+                    <div className="h-8 w-8 rounded-full flex items-center justify-center">
+                      <p className="font-bold text-xl text-gray-700">J</p>
+                    </div>
                   </Menu.Button>
                 </div>
                 <Transition

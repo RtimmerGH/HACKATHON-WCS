@@ -1,9 +1,10 @@
 import React from "react";
+import TitlePageAdmin from "../components/layout/TitlePageAdmin";
 
 function HomeAdmin() {
   return (
     <div>
-      <p>coucou</p>
+      <TitlePageAdmin>Dashboard</TitlePageAdmin>
     </div>
   );
 }
