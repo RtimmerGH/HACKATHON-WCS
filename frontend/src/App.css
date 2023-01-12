@@ -8,6 +8,13 @@ body {
   background-color: #cadedf;
 }
 
+@media screen and (min-width: 480px) {
+  body {
+    background-image: url('./assets/bg-img.jpg');
+  }
+}
+
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -55,4 +62,9 @@ code {
 
 button {
   font-size: calc(10px + 2vmin);
+}
+
+.divcenter {
+  margin: auto;
+  width: 500px;
 }
