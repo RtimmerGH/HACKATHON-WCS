@@ -155,7 +155,7 @@ function AdminComponent() {
                             "flex w-full px-4 py-2 text-sm"
                           )}
                         >
-                          Retour au site
+                          Back to website
                         </button>
                       </Link>
                     )}
@@ -176,7 +176,7 @@ function AdminComponent() {
                           "flex w-full px-4 py-2 text-sm"
                         )}
                       >
-                        Déconnexion
+                        Logout
                       </button>
                     )}
                   </Menu.Item>
@@ -267,7 +267,7 @@ function AdminComponent() {
                                 "flex w-full px-4 py-2 text-sm"
                               )}
                             >
-                              Retour au site
+                              Back to website
                             </button>
                           </Link>
                         )}
@@ -286,7 +286,7 @@ function AdminComponent() {
                               "flex w-full px-4 py-2 text-sm"
                             )}
                           >
-                            Déconnexion
+                            Logout
                           </button>
                         )}
                       </Menu.Item>

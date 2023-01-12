@@ -4,7 +4,12 @@ import queryKeys from "../../constants/queryKeys";
 
 const fetchCategories = () =>
   axios
-    .get(`${import.meta.env.VITE_BACKEND_URL}/categories`)
+    .get(`${import.meta.env.VITE_BACKEND_URL}/categories`, {
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjczNTE1NjIyLCJleHAiOjE2NzM2MDIwMjJ9.YfkaXmqk7myHCw9q-kOYfcOLZGtZ7_8aCshtM6Yg9m8",
+      },
+    })
     .then((response) => response.data);
 
 const useGetCategories = (options) =>
