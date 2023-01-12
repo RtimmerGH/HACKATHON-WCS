@@ -61,7 +61,7 @@ function App() {
 
       <Routes>
         {/* ROUTE CLASSIQUE */}
-        <Route path="/" element={<Navigate replace to="/userinfos" />} />
+        <Route path="/" element={<Navigate replace to="/home" />} />
         <Route path="/home" element={<Home />} />
         <Route path="/userinfos" element={<ChangePassword />} />
         <Route path="/profile" element={<Profile />} />
