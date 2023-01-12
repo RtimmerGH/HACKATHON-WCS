@@ -1,21 +1,22 @@
 import "../App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
-export default function SearchForm() {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.warn(data);
+export default function SearchForm({ setVehicles, setReservation }) {
+  const navigate = useNavigate();
+
+  const today = new Date();
+  const todayFormat = today.toISOString().substring(0, 16);
 
   const [agencies, setAgencies] = useState([]);
   const [types, setTypes] = useState([]);
-  // const [agency, setAgency] = useState([]);
-  // const [startDate, setStartDate] = useState([]);
-  // const [endDate, setEndDate] = useState([]);
-  // const [startPeriod, setStartPeriod] = useState([]);
-  // const [endPeriod, setEndPeriod] = useState([]);
-  const today = new Date();
-  const todayFormat = today.toISOString().split("T")[0];
+  const [agency, setAgency] = useState(1);
+  const [startDate, setStartDate] = useState(todayFormat);
+  const [endDate, setEndDate] = useState(startDate);
+  const [type, setType] = useState(1);
+  const [addBikes, setAddBikes] = useState(null);
+  const searchRequest = { agency, startDate, endDate, type, addBikes };
 
   useEffect(() => {
     // get agencies
@@ -40,12 +41,35 @@ export default function SearchForm() {
           console.warn(error.response.data); // => the response payload
         }
       });
+    // get vehicles
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/vehicles`)
+      .then((response) => {
+        setVehicles(response.data);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.warn(error.response.data); // => the response payload
+        }
+      });
   }, []);
 
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   console.warn("soumis !");
-  // }
+  function handleSubmit(e) {
+    e.preventDefault();
+    // get vehicles
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/vehicles`)
+      .then((response) => {
+        setVehicles(response.data);
+        setReservation(searchRequest);
+        navigate("/results");
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.warn(error.response.data); // => the response payload
+        }
+      });
+  }
 
   return (
     <div className="lg:w-1/2 lg:border lg:pb-5 bg-[#CADEDF] md:rounded-lg md:m-5 lg:shadow-2xl">
@@ -56,64 +80,51 @@ export default function SearchForm() {
         <h4 className="text-lg text-gray-500 text-center mb-8">
           Same return station
         </h4>
-        <form className="formCenter" onSubmit={handleSubmit(onSubmit)}>
+        <form className="formCenter" onSubmit={handleSubmit} method="GET">
           <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full">
             <select
               type="select"
               name="location"
               id="location"
               className="bg-white text-gray-900 text-xl rounded-lg p-3 w-full"
-              // eslint-disable-next-line react/jsx-props-no-spreading
-              {...register("agency")}
+              onChange={(e) => setAgency(e.target.selectedIndex)}
             >
-              <option defaultValue="">--Please choose an agency--</option>
-              {agencies.map((agency) => {
+              <option defaultValue="" disabled>
+                --Please choose an agency--
+              </option>
+              {agencies.map((theagency) => {
                 return (
-                  <option defaultValue={agency.id} key={agency.id}>
-                    {agency.city} - {agency.address}
+                  <option
+                    id={theagency.id}
+                    defaultValue={theagency.id}
+                    key={theagency.id}
+                  >
+                    {theagency.city} - {theagency.address}
                   </option>
                 );
               })}
             </select>
           </div>
           <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full">
-            <select
-              className="md:mx-10"
-              // eslint-disable-next-line react/jsx-props-no-spreading
-              {...register("startPeriod")}
-            >
-              <option>Morning</option>
-              <option>Afternoon</option>
-            </select>
             <input
-              type="date"
-              id="start"
-              name="start"
+              type="datetime-local"
+              id="startDate"
+              name="startDate"
               defaultValue={todayFormat}
+              onChange={(e) => setStartDate(e.target.value)}
               min={todayFormat}
               className="bg-white text-gray-900 text-xl p-3 md:mx-10"
-              // eslint-disable-next-line react/jsx-props-no-spreading
-              {...register("startDate")}
             />
           </div>
           <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full flex-row justify-around">
-            <select
-              className="md:mx-10"
-              // eslint-disable-next-line react/jsx-props-no-spreading
-              {...register("endPeriod")}
-            >
-              <option>Morning</option>
-              <option>Afternoon</option>
-            </select>
             <input
-              type="date"
-              id="end"
-              name="end"
-              defaultValue={todayFormat}
-              min={todayFormat}
+              type="datetime-local"
+              id="endDate"
+              name="endDate"
+              defaultValue={startDate}
+              min={startDate}
+              onChange={(e) => setEndDate(e.target.value)}
               className="bg-white text-gray-900 text-xl p-3 md:mx-10"
-              // eslint-disable-next-line react/jsx-props-no-spreading
-              {...register("endDate")}
             />
           </div>
           <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full flex-row justify-around">
@@ -122,13 +133,12 @@ export default function SearchForm() {
               name="type"
               id="type"
               className="bg-white text-gray-900 text-xl p-3 w-full"
-              // eslint-disable-next-line react/jsx-props-no-spreading
-              {...register("type")}
+              onChange={(e) => setType(e.target.selectedIndex)}
             >
-              {types.map((type) => {
+              {types.map((thetype) => {
                 return (
-                  <option defaultValue={type.id} key={type.id}>
-                    {type.name}
+                  <option defaultValue={thetype.id} key={thetype.id}>
+                    {thetype.name}
                   </option>
                 );
               })}
@@ -137,12 +147,11 @@ export default function SearchForm() {
           <div className="mb-6 text-center flex p-3">
             <input
               type="checkbox"
-              id="lessThan50km"
-              name="lessThan50km"
-              // eslint-disable-next-line react/jsx-props-no-spreading
-              {...register("displayBikes")}
+              id="lessThan30km"
+              name="lessThan30km"
+              onChange={(e) => setAddBikes(e.target.value)}
             />
-            <p className="text-xl">I do less than 50 km</p>
+            <p className="text-xl">I do less than 30 km</p>
           </div>
           <button
             type="submit"

@@ -82,6 +82,7 @@ VALUES (
         '406, boulevard Guillet',
         'Lyon'
     );
+
 DROP TABLE IF EXISTS brand;
 
 CREATE TABLE
@@ -114,7 +115,6 @@ CREATE TABLE
         id int primary key NOT NULL AUTO_INCREMENT,
         name varchar(255) NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
-
 
 INSERT INTO category (name) VALUES ('Voiture'), ('Vélo');
 
@@ -194,7 +194,21 @@ VALUES (
         '2022-04-10',
         1,
         'https://www.largus.fr/images/images/peugeot-e-traveller-7.jpg'
+    ), (
+        'CC-789-CC',
+        1,
+        4,
+        4,
+        1,
+        70897,
+        5,
+        8,
+        'grey',
+        '2022-04-10',
+        1,
+        'https://www.largus.fr/images/images/peugeot-e-traveller-7.jpg'
     );
+
 DROP TABLE IF EXISTS reservation;
 
 CREATE TABLE
@@ -203,9 +217,7 @@ CREATE TABLE
         idVehicle int NOT NULL,
         idUser int NOT NULL,
         startDate DATE NOT NULL,
-        startPeriod VARCHAR(255) NOT NULL,
         endDate DATE NOT NULL,
-        endPeriod VARCHAR(255) NOT NULL,
         CONSTRAINT `fk_reservation_vehicule` Foreign Key (idVehicle) REFERENCES vehicle(id) ON DELETE CASCADE ON UPDATE CASCADE,
         CONSTRAINT `fk_reservation_user` Foreign Key (idUser) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
     );
