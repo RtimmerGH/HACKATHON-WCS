@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import user from "../assets/user.svg";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Nav({ setLoginModal, loginModal }) {
+  const navigate = useNavigate();
+
+  const { userToken } = useContext(AuthContext);
+
   const handleChange = () => {
-    setLoginModal(!loginModal);
+    if (userToken) {
+      navigate("/profile");
+    } else {
+      setLoginModal(!loginModal);
+    }
   };
+
   return (
     <div className="sticky top-0">
       <nav className="bg-white border-gray-200 px-2 md:px-5 py-4 bg-gradient-to-r from-lime-400 to-cyan-500">
