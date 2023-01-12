@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import RentalList from "../component/RentalList";
+import "./Profile.css";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -47,8 +48,7 @@ export default function Profile() {
     },
   ];
 
-  const { setUserTokenCookie } =
-    // userFirstName, userLastName, userEmail
+  const { userFirstName, userLastName, userEmail, setUserTokenCookie } =
     useContext(AuthContext);
 
   const handleDisconnect = () => {
@@ -58,9 +58,14 @@ export default function Profile() {
 
   return (
     <div>
+      <div className="MyInfos">
+        <h1>{userFirstName}</h1>
+        <h1>{userLastName}</h1>
+        <h2>{userEmail}</h2>
+      </div>
       <button
         type="button"
-        className="flex justify-center m-auto  rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 w-5/6 text-2xl font-bold text-white p-2 mt-8"
+        className="flex justify-center m-auto  rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 w-5/6 text-2xl font-bold text-white p-2 mt-8 hover:bg-white"
       >
         Edit profile
       </button>
