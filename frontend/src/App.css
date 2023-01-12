@@ -8,7 +8,7 @@ body {
   background-color: #cadedf;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 768px) {
   body {
     background-image: url('./assets/bg-img.jpg');
   }
@@ -64,7 +64,19 @@ button {
   font-size: calc(10px + 2vmin);
 }
 
-.divcenter {
+.formCenter {
+  width: 80vw;
   margin: auto;
-  width: 500px;
+}
+
+@media screen and (min-width: 768px) {
+  .divcenter {
+    margin: auto;
+    width: 500px;
+  }
+
+  .formCenter {
+    width: 100%;
+    margin: auto;
+  }
 }

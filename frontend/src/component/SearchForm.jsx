@@ -2,7 +2,7 @@ import "../App.css"
 
 export default function SearchForm() {
   return (
-    <div className="lg:w-1/2 lg:border lg:pb-5 lg:pl-5 bg-[#CADEDF] md:rounded-lg md:m-10">
+    <div className="lg:w-1/2 lg:border lg:pb-5 bg-[#CADEDF] md:rounded-lg md:m-10 lg:shadow-2xl">
       <div className="divcenter">
         <h1 className="text-3xl font-bold text-center my-7">
           Electric vehicles renting
@@ -10,8 +10,8 @@ export default function SearchForm() {
         <h4 className="text-lg text-gray-500 text-center mb-8">
           Same return station
         </h4>
-        <form className="">
-          <div className="mb-6 text-center bg-stone-400 border border-gray-300 rounded-lg w-5/6">
+        <form className="formCenter">
+          <div className="mb-6 text-center bg-stone-400 border border-gray-300 rounded-lg md:w-full">
             <select
               type="select"
               name="location"
@@ -27,7 +27,7 @@ export default function SearchForm() {
               <option value="goldfish">Goldfish</option>
             </select>
           </div>
-          <div className="mb-6 text-center bg-stone-400 border border-gray-300 rounded-lg w-5/6">
+          <div className="mb-6 text-center bg-stone-400 border border-gray-300 rounded-lg md:w-full">
             <input
               type="date"
               id="start"
@@ -38,7 +38,7 @@ export default function SearchForm() {
               className="bg-stone-400 text-gray-900 text-xl p-3"
             />
           </div>
-          <div className="mb-6 text-center bg-stone-400 border border-gray-300 rounded-lg w-5/6">
+          <div className="mb-6 text-center bg-stone-400 border border-gray-300 rounded-lg md:w-full">
             <input
               type="date"
               id="end"
@@ -49,7 +49,7 @@ export default function SearchForm() {
               className="bg-stone-400 text-gray-900 text-xl p-3"
             />
           </div>
-          <div className="mb-6 text-center bg-stone-400 border border-gray-300 rounded-lg w-5/6">
+          <div className="mb-6 text-center bg-stone-400 border border-gray-300 rounded-lg md:w-full">
             <select
               type="select"
               name="location"
@@ -60,13 +60,13 @@ export default function SearchForm() {
               <option value="bike">Bike</option>
             </select>
           </div>
-          <div className="mb-6 text-center flex p-3 w-5/6">
+          <div className="mb-6 text-center flex p-3">
             <input type="checkbox" id="lessThan50km" name="lessThan50km" />
             <p className="text-xl">I do less than 50 km</p>
           </div>
           <button
             type="submit"
-            className="rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 w-5/6 text-2xl font-bold text-white py-2"
+            className="rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 text-2xl font-bold text-white py-2 md:w-full w-1/2"
           >
             Search
           </button>
