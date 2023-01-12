@@ -12,9 +12,15 @@
   font-weight: bold;
 }
 
+.MyInfos:hover {
+  opacity: 90%;
+}
+
 .Logo {
-  width: 40%;
-  margin: auto;
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
 }
 
 .Names {

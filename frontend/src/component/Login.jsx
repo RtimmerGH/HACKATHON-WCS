@@ -21,6 +21,7 @@ export default function Login({
     setUserLastName,
     setUserEmail,
     setUserRole,
+    setUserId,
   } = useContext(AuthContext);
 
   const [password, setPassword] = useState("");
@@ -40,6 +41,7 @@ export default function Login({
         setUserFirstName(response.data.user.firstname);
         setUserLastName(response.data.user.lastname);
         setUserEmail(response.data.user.email);
+        setUserId(response.data.user.id);
         setLoginModal(false);
       }
     } catch (error) {

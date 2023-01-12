@@ -9,3 +9,8 @@
 * {
   font-family: "TOMMY-Regular";
 }
+
+button:hover {
+  opacity: 85%;
+  color: rgb(177, 250, 250);
+}
