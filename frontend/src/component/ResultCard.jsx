@@ -40,7 +40,7 @@ export default function ResultCard({ car, reservation }) {
       />
       <div className="flex flex-col justify-end p-4 leading-normal">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-cyan-500 ">
-          {model.name}
+          {car.brand} {model.name}
         </h5>
         <div className="flex flex-row justify-around m-5 text-2xl">
           <div className="flex align-end">
