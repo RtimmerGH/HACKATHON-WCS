@@ -1,6 +1,9 @@
 export default function SearchForm() {
   return (
     <>
+      <h1 className="text-3xl font-bold text-center my-7">
+        Electric vehicles renting
+      </h1>
       <h4 className="text-lg text-gray-500 text-center mb-8">
         Same return station
       </h4>
@@ -35,8 +38,8 @@ export default function SearchForm() {
         <div className="mb-6 text-center bg-stone-400 border border-gray-300 rounded-lg w-5/6">
           <input
             type="date"
-            id="start"
-            name="start"
+            id="end"
+            name="end"
             value="2022-07-06"
             min="2018-01-01"
             max="2018-12-31"
