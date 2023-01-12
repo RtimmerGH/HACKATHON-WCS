@@ -1,8 +1,12 @@
 const models = require("../models");
 
 const browse = (req, res) => {
+  let where = "";
+  if (req.query.startDate != null) {
+    where = ` where vehicle.id not in (select vehicle.id from vehicle inner join reservation on vehicle.id = reservation.idVehicle where '${req.query.startDate}' between reservation.startDate and reservation.endDate or '${req.query.endDate}' between reservation.startDate and reservation.endDate or reservation.startDate > '${req.query.startDate}' and reservation.endDate < '${req.query.endDate}') and agency.id = ${req.query.agencyId} and type.id = ${req.query.typeId};`;
+  }
   models.vehicle
-    .findAllVehicles()
+    .findAllVehicles(where)
     .then(([rows]) => {
       res.send(rows);
     })
