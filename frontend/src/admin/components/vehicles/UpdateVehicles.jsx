@@ -194,66 +194,62 @@ function UpdateVehicles({ openUpdateSidebar, setOpenUpdateSidebar }) {
                                   ))}
                               </select>
                             </div>
-                            {parseInt(vehicleInfo.idCategory, 10) === 1 && (
-                              <div className="w-full">
-                                <label
-                                  htmlFor="type"
-                                  className="block text-sm font-medium text-gray-700"
-                                >
-                                  Type
-                                </label>
-                                <select
-                                  id="type"
-                                  name="type"
-                                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300    sm:text-sm rounded-md"
-                                  value={vehicleInfo.idType}
-                                  onChange={(e) =>
-                                    setVehicleInfo((previousValue) => ({
-                                      ...previousValue,
-                                      idType: e.target.value,
-                                    }))
-                                  }
-                                >
-                                  {dataType &&
-                                    dataType.map((type) => (
-                                      <option value={type.id} key={type.name}>
-                                        {type.name}
-                                      </option>
-                                    ))}
-                                </select>
-                              </div>
-                            )}
+                            <div className="w-full">
+                              <label
+                                htmlFor="type"
+                                className="block text-sm font-medium text-gray-700"
+                              >
+                                Type
+                              </label>
+                              <select
+                                id="type"
+                                name="type"
+                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300    sm:text-sm rounded-md"
+                                value={vehicleInfo.idType}
+                                onChange={(e) =>
+                                  setVehicleInfo((previousValue) => ({
+                                    ...previousValue,
+                                    idType: e.target.value,
+                                  }))
+                                }
+                              >
+                                {dataType &&
+                                  dataType.map((type) => (
+                                    <option value={type.id} key={type.name}>
+                                      {type.name}
+                                    </option>
+                                  ))}
+                              </select>
+                            </div>
                           </div>
                           <div className="flex gap-8">
-                            {parseInt(vehicleInfo.idCategory, 10) === 1 && (
-                              <div className="w-full">
-                                <label
-                                  htmlFor="model"
-                                  className="block text-sm font-medium text-gray-700"
-                                >
-                                  Model
-                                </label>
-                                <select
-                                  id="model"
-                                  name="model"
-                                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300    sm:text-sm rounded-md"
-                                  value={vehicleInfo.idModel}
-                                  onChange={(e) =>
-                                    setVehicleInfo((previousValue) => ({
-                                      ...previousValue,
-                                      idModel: e.target.value,
-                                    }))
-                                  }
-                                >
-                                  {dataModel &&
-                                    dataModel.map((model) => (
-                                      <option value={model.id} key={model.name}>
-                                        {model.name}
-                                      </option>
-                                    ))}
-                                </select>
-                              </div>
-                            )}
+                            <div className="w-full">
+                              <label
+                                htmlFor="model"
+                                className="block text-sm font-medium text-gray-700"
+                              >
+                                Model
+                              </label>
+                              <select
+                                id="model"
+                                name="model"
+                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300    sm:text-sm rounded-md"
+                                value={vehicleInfo.idModel}
+                                onChange={(e) =>
+                                  setVehicleInfo((previousValue) => ({
+                                    ...previousValue,
+                                    idModel: e.target.value,
+                                  }))
+                                }
+                              >
+                                {dataModel &&
+                                  dataModel.map((model) => (
+                                    <option value={model.id} key={model.name}>
+                                      {model.name}
+                                    </option>
+                                  ))}
+                              </select>
+                            </div>
 
                             <div className="w-full">
                               <label
@@ -308,60 +304,56 @@ function UpdateVehicles({ openUpdateSidebar, setOpenUpdateSidebar }) {
                                 />
                               </div>
                             </div>
-                            {parseInt(vehicleInfo.idCategory, 10) === 1 && (
-                              <div className="w-full">
-                                <label
-                                  htmlFor="numdoors"
-                                  className="block text-sm font-medium text-gray-900"
-                                >
-                                  Number of doors *
-                                </label>
-                                <div className="mt-1">
-                                  <input
-                                    value={vehicleInfo.numDoor}
-                                    onChange={(e) =>
-                                      setVehicleInfo((existingValues) => ({
-                                        ...existingValues,
-                                        numDoor: e.target.value,
-                                      }))
-                                    }
-                                    type="text"
-                                    name="numdoors"
-                                    id="numdoors"
-                                    className="block w-full shadow-sm sm:text-sm   border-gray-300 rounded-md"
-                                    required="required"
-                                  />
-                                </div>
+                            <div className="w-full">
+                              <label
+                                htmlFor="numdoors"
+                                className="block text-sm font-medium text-gray-900"
+                              >
+                                Number of doors *
+                              </label>
+                              <div className="mt-1">
+                                <input
+                                  value={vehicleInfo.numDoor}
+                                  onChange={(e) =>
+                                    setVehicleInfo((existingValues) => ({
+                                      ...existingValues,
+                                      numDoor: e.target.value,
+                                    }))
+                                  }
+                                  type="text"
+                                  name="numdoors"
+                                  id="numdoors"
+                                  className="block w-full shadow-sm sm:text-sm   border-gray-300 rounded-md"
+                                  required="required"
+                                />
                               </div>
-                            )}
+                            </div>
                           </div>
                           <div className="flex gap-8">
-                            {parseInt(vehicleInfo.idCategory, 10) === 1 && (
-                              <div className="w-full">
-                                <label
-                                  htmlFor="numpassengers"
-                                  className="block text-sm font-medium text-gray-900"
-                                >
-                                  Number of passengers *
-                                </label>
-                                <div className="mt-1">
-                                  <input
-                                    value={vehicleInfo.numPassenger}
-                                    onChange={(e) =>
-                                      setVehicleInfo((existingValues) => ({
-                                        ...existingValues,
-                                        numPassenger: e.target.value,
-                                      }))
-                                    }
-                                    type="text"
-                                    name="numpassengers"
-                                    id="numpassengers"
-                                    className="block w-full shadow-sm sm:text-sm   border-gray-300 rounded-md"
-                                    required="required"
-                                  />
-                                </div>
+                            <div className="w-full">
+                              <label
+                                htmlFor="numpassengers"
+                                className="block text-sm font-medium text-gray-900"
+                              >
+                                Number of passengers *
+                              </label>
+                              <div className="mt-1">
+                                <input
+                                  value={vehicleInfo.numPassenger}
+                                  onChange={(e) =>
+                                    setVehicleInfo((existingValues) => ({
+                                      ...existingValues,
+                                      numPassenger: e.target.value,
+                                    }))
+                                  }
+                                  type="text"
+                                  name="numpassengers"
+                                  id="numpassengers"
+                                  className="block w-full shadow-sm sm:text-sm   border-gray-300 rounded-md"
+                                  required="required"
+                                />
                               </div>
-                            )}
+                            </div>
 
                             <div className="w-full">
                               <label
