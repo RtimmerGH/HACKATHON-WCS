@@ -5,6 +5,7 @@ import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
 import categoriesAdmin from "./categoriesAdmin";
 import logo from "../../../assets/logo.svg";
 import { AuthContext } from "../../../context/AuthContext";
+import getInitials from "../utils/getInitials";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -223,7 +224,9 @@ function AdminComponent() {
                   <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full     justify-center">
                     <span className="sr-only">Open user menu</span>
                     <div className="h-8 w-8 rounded-full flex items-center justify-center">
-                      <p className="font-bold text-xl text-gray-700">J</p>
+                      <p className="font-bold text-xl text-gray-700">
+                        {getInitials(userFirstName, userLastName)}
+                      </p>
                     </div>
                   </Menu.Button>
                 </div>

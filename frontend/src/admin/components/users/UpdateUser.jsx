@@ -24,7 +24,7 @@ function UpdateUser({ openUpdateSidebar, setOpenUpdateSidebar }) {
       lastname: userInfo.lastname,
       firstname: userInfo.firstname,
       email: userInfo.email,
-      admin: parseInt(userInfo.admin, 10),
+      admin2: parseInt(userInfo.admin, 10),
     });
     setOpenUpdateSidebar({ ...openUpdateSidebar, show: false });
   };
