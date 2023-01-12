@@ -67,7 +67,7 @@ function App() {
             <Nav setLoginModal={setLoginModal} loginModal={loginModal} />
           }
         >
-          <Route path="/home" element={<Home />} />
+          <Route path="" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
@@ -76,13 +76,13 @@ function App() {
 
         {/* ROUTE ADMIN */}
         <Route path="/admin" element={<Sidebar />}>
-          <Route index path="home" element={<HomeAdmin />} />
-          <Route index path="users" element={<Users />} />
-          <Route index path="booking" element={<Booking />} />
-          <Route index path="agencies" element={<Agencies />} />
-          <Route index path="vehicles" element={<Vehicles />} />
-          <Route index path="brands" element={<Brands />} />
-          <Route index path="models" element={<Models />} />
+          <Route path="" element={<HomeAdmin />} />
+          <Route path="users" element={<Users />} />
+          <Route path="booking" element={<Booking />} />
+          <Route path="agencies" element={<Agencies />} />
+          <Route path="vehicles" element={<Vehicles />} />
+          <Route path="brands" element={<Brands />} />
+          <Route path="models" element={<Models />} />
         </Route>
       </Routes>
     </Router>

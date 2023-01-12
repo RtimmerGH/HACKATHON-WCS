@@ -10,6 +10,8 @@ function UpdateBooking({ openUpdateSidebar, setOpenUpdateSidebar }) {
   const [bookingInfo, setBookingInfo] = useState({
     id: openUpdateSidebar.id || "",
     idVehicle: openUpdateSidebar.idVehicle || "",
+    idUser: openUpdateSidebar.idUser,
+    registration: openUpdateSidebar.registration,
     startDate: openUpdateSidebar.startDate || "",
     startPeriod: openUpdateSidebar.startPeriod,
     endDate: openUpdateSidebar.endDate,
@@ -22,6 +24,8 @@ function UpdateBooking({ openUpdateSidebar, setOpenUpdateSidebar }) {
     updateBooking({
       id: bookingInfo.id,
       idVehicle: bookingInfo.idVehicle,
+      idUser: bookingInfo.idUser,
+      registration: bookingInfo.registration,
       startDate: bookingInfo.startDate,
       startPeriod: bookingInfo.startPeriod,
       endDate: bookingInfo.endDate,
@@ -125,29 +129,13 @@ function UpdateBooking({ openUpdateSidebar, setOpenUpdateSidebar }) {
                                       startDate: e.target.value,
                                     }))
                                   }
-                                  type="date"
+                                  type="datetime-local"
                                   name="startdate"
                                   id="startdate"
                                   className="block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                   required="required"
                                 />
                               </div>
-                            </div>
-                            <div>
-                              <label
-                                htmlFor="periodstart"
-                                className="block text-sm font-medium text-gray-700"
-                              >
-                                Vehicle
-                              </label>
-                              <select
-                                id="periodstart"
-                                name="periodstart"
-                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 sm:text-sm rounded-md"
-                              >
-                                <option value="morning">Morning</option>
-                                <option value="afternoon">Afternoon</option>
-                              </select>
                             </div>
                             <div>
                               <label
@@ -165,29 +153,13 @@ function UpdateBooking({ openUpdateSidebar, setOpenUpdateSidebar }) {
                                       endDate: e.target.value,
                                     }))
                                   }
-                                  type="date"
+                                  type="datetime-local"
                                   name="endate"
                                   id="endate"
                                   className="block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                   required="required"
                                 />
                               </div>
-                            </div>
-                            <div>
-                              <label
-                                htmlFor="periodstart"
-                                className="block text-sm font-medium text-gray-700"
-                              >
-                                end period
-                              </label>
-                              <select
-                                id="periodend"
-                                name="periodend"
-                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 sm:text-sm rounded-md"
-                              >
-                                <option value="morning">Morning</option>
-                                <option value="afternoon">Afternoon</option>
-                              </select>
                             </div>
                           </div>
                         </div>

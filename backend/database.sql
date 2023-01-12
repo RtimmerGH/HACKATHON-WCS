@@ -202,10 +202,11 @@ CREATE TABLE
         id int primary key NOT NULL AUTO_INCREMENT,
         idVehicle int NOT NULL,
         idUser int NOT NULL,
-        startDate DATE NOT NULL,
+        startDate DATETIME NOT NULL,
         startPeriod VARCHAR(255) NOT NULL,
-        endDate DATE NOT NULL,
+        endDate DATETIME NOT NULL,
         endPeriod VARCHAR(255) NOT NULL,
         CONSTRAINT `fk_reservation_vehicule` Foreign Key (idVehicle) REFERENCES vehicle(id) ON DELETE CASCADE ON UPDATE CASCADE,
         CONSTRAINT `fk_reservation_user` Foreign Key (idUser) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
     );
+

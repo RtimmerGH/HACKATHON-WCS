@@ -2,14 +2,13 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import {
-  PencilSquareIcon,
   TrashIcon,
   ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import DeleteBookingConfirm from "./DeleteBookingConfirm";
 import useGetBooking from "../../hooks/booking/useGetBooking";
 import UpdateKmBooking from "./UpdateKmBooking";
-import UpdateBooking from "./UpdateBooking";
+import dateToBackend from "../utils/dateToBackend";
 
 function TableBooking({ searchbarFilter }) {
   const [confirmModal, setConfirmModal] = useState({
@@ -23,14 +22,6 @@ function TableBooking({ searchbarFilter }) {
     show: false,
     id: "",
     km: "",
-  });
-  const [openUpdateBookingSidebar, setOpenUpdateBookingSidebar] = useState({
-    id: "",
-    idVehicle: "",
-    startDate: "",
-    startPeriod: "",
-    endDate: "",
-    endPeriod: "",
   });
   const { isLoading, isError, data } = useGetBooking();
   if (isLoading) {
@@ -54,12 +45,6 @@ function TableBooking({ searchbarFilter }) {
           setOpenUpdateSidebar={setOpenUpdateSidebar}
         />
       )}
-      {openUpdateBookingSidebar.show && (
-        <UpdateBooking
-          openUpdateSidebar={openUpdateBookingSidebar}
-          setOpenUpdateSidebar={setOpenUpdateBookingSidebar}
-        />
-      )}
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -70,13 +55,13 @@ function TableBooking({ searchbarFilter }) {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    VEHICULE
+                    BOOKING NUMBER
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    USER
+                    VEHICULE
                   </th>
                   <th
                     scope="col"
@@ -102,11 +87,11 @@ function TableBooking({ searchbarFilter }) {
                 {data
                   .filter(
                     (booking) =>
-                      booking.idUser
+                      booking.id
                         .toString()
                         .toLowerCase()
                         .includes(searchbarFilter.toLowerCase()) ||
-                      booking.idUser
+                      booking.id
                         .toString()
                         .toLowerCase()
                         .includes(searchbarFilter.toLowerCase())
@@ -116,34 +101,25 @@ function TableBooking({ searchbarFilter }) {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="text-sm font-medium text-gray-900">
-                            {booking.idVehicle}
+                            {booking.id}
                           </div>
                         </div>
                       </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="text-sm font-medium text-gray-900">
+                            {booking.registration}
+                          </div>
+                        </div>
+                      </td>
+
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {booking.idUser}
+                        {dateToBackend(booking.startDate)}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {booking.startDate}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {booking.endDate}
+                        {dateToBackend(booking.endDate)}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm flex gap-4 font-medium">
-                        <PencilSquareIcon
-                          className="text-emerald-600 hover:text-emerald-900  w-6 h-6  cursor-pointer"
-                          onClick={() =>
-                            setOpenUpdateBookingSidebar({
-                              show: true,
-                              id: booking.id,
-                              idVehicle: booking.idVehicle,
-                              startDate: booking.startDate,
-                              startPeriod: booking.startPeriod,
-                              endDate: booking.endDate,
-                              endPeriod: booking.endPeriod,
-                            })
-                          }
-                        />
                         <TrashIcon
                           className="text-red-600 w-6 h-6 hover:text-red-900 cursor-pointer"
                           onClick={() => openModalConfirm(booking.id)}
@@ -153,8 +129,7 @@ function TableBooking({ searchbarFilter }) {
                           onClick={() =>
                             setOpenUpdateSidebar({
                               show: true,
-                              id: booking.id,
-                              km: booking.km,
+                              idVehicle: booking.idVehicle,
                             })
                           }
                         />

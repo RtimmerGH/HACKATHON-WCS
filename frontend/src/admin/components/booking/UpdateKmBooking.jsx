@@ -1,21 +1,42 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
-import useUpdateBooking from "../../hooks/booking/useUpdateBooking";
+import { useQueryClient } from "react-query";
+import useGetVehicleById from "../../hooks/vehicles/useGetVehicleById";
+import useUpdateVehicles from "../../hooks/vehicles/useUpdateVehicles";
+import convertDataInGoodFormat from "../utils/convertDataInGoodFormat";
+import queryKeys from "../../constants/queryKeys";
 
 function UpdateKmBooking({ openUpdateSidebar, setOpenUpdateSidebar }) {
-  const [bookingInfo, setBookingInfo] = useState({
-    id: openUpdateSidebar.id || "",
-    km: openUpdateSidebar.km || "",
+  // const [bookingInfo, setBookingInfo] = useState({
+  //   idVehicle: openUpdateSidebar.idVehicle || "",
+  // });
+  const [kmVehicle, setKmVehicle] = useState("");
+  const queryClient = useQueryClient();
+
+  const { isLoading, data: vehicle } = useGetVehicleById(
+    openUpdateSidebar.idVehicle,
+    {
+      onSuccess: (vehicle) => setKmVehicle(vehicle.km),
+    }
+  );
+  useEffect(() => setKmVehicle(vehicle?.km || ""), [vehicle]);
+  const { mutate: updateVehicle } = useUpdateVehicles({
+    onSuccess: () =>
+      queryClient.setQueryData(queryKeys.VEHICLE(vehicle.id), {
+        ...vehicle,
+        km: kmVehicle,
+      }),
   });
 
-  const { mutate: updateBooking } = useUpdateBooking();
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateBooking({
-      id: bookingInfo.id,
-      km: bookingInfo.km,
+    updateVehicle({
+      ...vehicle,
+      commissioningDate: convertDataInGoodFormat(vehicle.commissioningDate),
+      km: kmVehicle,
     });
     setOpenUpdateSidebar({ ...openUpdateSidebar, show: false });
   };
@@ -74,30 +95,29 @@ function UpdateKmBooking({ openUpdateSidebar, setOpenUpdateSidebar }) {
                       <div className="px-4 divide-y divide-gray-200 sm:px-6">
                         <div className="pt-6 pb-5 flex flex-col gap-4">
                           <div className="flex flex-col gap-6">
-                            <div>
-                              <label
-                                htmlFor="km"
-                                className="block text-sm font-medium text-gray-900"
-                              >
-                                Km *
-                              </label>
-                              <div className="mt-1">
-                                <input
-                                  value={bookingInfo.km}
-                                  onChange={(e) =>
-                                    setBookingInfo((existingValues) => ({
-                                      ...existingValues,
-                                      km: e.target.value,
-                                    }))
-                                  }
-                                  type="text"
-                                  name="km"
-                                  id="km"
-                                  className="block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                  required="required"
-                                />
+                            {!isLoading && (
+                              <div>
+                                <label
+                                  htmlFor="km"
+                                  className="block text-sm font-medium text-gray-900"
+                                >
+                                  Km *
+                                </label>
+                                <div className="mt-1">
+                                  <input
+                                    value={kmVehicle}
+                                    onChange={(e) =>
+                                      setKmVehicle(e.target.value)
+                                    }
+                                    type="text"
+                                    name="km"
+                                    id="km"
+                                    className="block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                    required="required"
+                                  />
+                                </div>
                               </div>
-                            </div>
+                            )}
                           </div>
                         </div>
                       </div>

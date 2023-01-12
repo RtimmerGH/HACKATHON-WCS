@@ -8,4 +8,5 @@ export default {
   MODELS: "models",
   TYPES: "types",
   CATEGORIES: "categories",
+  VEHICLE: (id) => `vehicle_${id}`,
 };

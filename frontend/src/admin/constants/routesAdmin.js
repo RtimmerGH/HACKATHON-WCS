@@ -1,5 +1,5 @@
 const routesAdmin = {
-  HOME: "/admin/home",
+  HOME: "/admin/",
   AGENCIES: "/admin/agencies",
   BOOKING: "/admin/booking",
   USERS: "/admin/users",

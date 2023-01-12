@@ -89,7 +89,7 @@ function TableModels({ searchbarFilter }) {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {model.idBrand}
+                        {model.brand}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm flex gap-4 font-medium">
                         <PencilSquareIcon

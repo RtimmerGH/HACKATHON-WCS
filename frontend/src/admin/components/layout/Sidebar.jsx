@@ -1,15 +1,17 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useContext } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
 import categoriesAdmin from "./categoriesAdmin";
 import logo from "../../../assets/logo.svg";
+import { AuthContext } from "../../../context/AuthContext";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 function AdminComponent() {
+  const { userFirstName, userLastName, userEmail } = useContext(AuthContext);
   const activeStyle =
     "flex gap-3 bg-gray-200 text-gray-900 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md";
   const inactiveStyle =
@@ -66,7 +68,7 @@ function AdminComponent() {
                 </div>
               </Transition.Child>
               <div className="flex-shrink-0 flex items-center px-4">
-                <Link to="/admin/home">
+                <Link to="/admin">
                   <img
                     className="h-8 w-auto"
                     src="https://www.zupimages.net/up/22/51/0z21.png"
@@ -103,7 +105,7 @@ function AdminComponent() {
       {/* Static sidebar for desktop */}
       <div className="hidden lg:flex lg:flex-col lg:w-64 lg:fixed lg:inset-y-0 lg:border-r lg:border-gray-200 lg:pt-5 lg:pb-4 lg:bg-white">
         <div className="flex items-center flex-shrink-0 px-6">
-          <Link to="/admin/home" className="flex items-center gap-2">
+          <Link to="/admin" className="flex items-center gap-2">
             <img
               className="h-12 w-auto bg-emerald-500"
               src={logo}
@@ -122,10 +124,10 @@ function AdminComponent() {
                   <span className="flex min-w-0 items-center justify-between space-x-3">
                     <span className="flex-1 flex flex-col min-w-0">
                       <span className="text-gray-900 text-sm font-medium truncate">
-                        Joris Grilleres
+                        {userFirstName} {userLastName}
                       </span>
                       <span className="text-gray-500 text-sm truncate">
-                        Admin
+                        {userEmail}
                       </span>
                     </span>
                   </span>
