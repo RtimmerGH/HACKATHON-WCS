@@ -1,11 +1,8 @@
 import React from "react";
+import SearchForm from "../component/SearchForm";
 
 function Home() {
-  return (
-    <div>
-      <p>coucou c'est la page d'accueil</p>
-    </div>
-  );
+  return <SearchForm />;
 }
 
 export default Home;
