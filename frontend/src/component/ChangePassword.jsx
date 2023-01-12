@@ -47,7 +47,7 @@ export default function ChangePassword({
       <button
         type="submit"
         disabled
-        className="text-white bg-gradient-to-r from-lime-400 to-cyan-500 font-medium rounded-lg text-m w-full sm:w-auto px-5 py-2.5 text-center"
+        className="flex mx-auto text-white bg-gradient-to-r from-lime-400 to-cyan-500 font-medium rounded-lg text-m sm:w-auto px-5 py-2.5 text-center"
       >
         Send
       </button>
@@ -85,7 +85,7 @@ export default function ChangePassword({
         <img src={closebutton} alt="closebutton" className="w-7 mx-auto" />
       </button>
 
-      <h5 className="text-xl font-bold dark:text-white mx-auto my-8 ">
+      <h5 className="text-xl font-bold dark:text-white mx-auto m-6 ">
         Change password
       </h5>
       <label
@@ -100,12 +100,12 @@ export default function ChangePassword({
         id="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         placeholder=" "
         required
       />
       <form onSubmit={handleSubmit}>
-        <div className="grid md:grid-cols-2 md:gap-6">
+        <div className="md:grid-cols-2 md:gap-6">
           <div className="relative z-0 mb-6 w-full group" />
           <div className="relative z-0 mb-6 w-full group" />
         </div>
