@@ -3,12 +3,7 @@
 /* eslint-disable import/no-named-as-default-member */
 import Home from "@pages/Home";
 import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./admin/components/layout/Sidebar";
 import HomeAdmin from "./admin/pages/HomeAdmin";
 import Login from "./component/Login";
@@ -39,14 +34,20 @@ function App() {
         registerModal={registerModal}
         setRegisterModal={setRegisterModal}
       />
-      <Nav setLoginModal={setLoginModal} loginModal={loginModal} />
 
       <Routes>
         {/* ROUTE CLASSIQUE */}
-        <Route path="/" element={<Navigate replace to="/home" />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/results" element={<SearchResults />} />
+        <Route
+          path="/"
+          element={
+            <Nav setLoginModal={setLoginModal} loginModal={loginModal} />
+          }
+        >
+          <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/results" element={<SearchResults />} />
+        </Route>
+
         {/* ROUTE ADMIN */}
         <Route path="/admin" element={<Sidebar />}>
           <Route index path="home" element={<HomeAdmin />} />
