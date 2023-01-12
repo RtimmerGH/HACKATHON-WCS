@@ -124,7 +124,8 @@ function AdminComponent() {
                   <span className="flex min-w-0 items-center justify-between space-x-3">
                     <span className="flex-1 flex flex-col min-w-0">
                       <span className="text-gray-900 text-sm font-medium truncate">
-                        {userFirstName} {userLastName}
+                        {userFirstName.toUpperCase()}{" "}
+                        {userLastName.toUpperCase()}
                       </span>
                       <span className="text-gray-500 text-sm truncate">
                         {userEmail}
