@@ -13,9 +13,7 @@ function UpdateBooking({ openUpdateSidebar, setOpenUpdateSidebar }) {
     idUser: openUpdateSidebar.idUser,
     registration: openUpdateSidebar.registration,
     startDate: openUpdateSidebar.startDate || "",
-    startPeriod: openUpdateSidebar.startPeriod,
     endDate: openUpdateSidebar.endDate,
-    endPeriod: openUpdateSidebar.endPeriod,
   });
   const { isLoading, isError, data } = useGetVehicles();
   const { mutate: updateBooking } = useUpdateBooking();
@@ -27,9 +25,7 @@ function UpdateBooking({ openUpdateSidebar, setOpenUpdateSidebar }) {
       idUser: bookingInfo.idUser,
       registration: bookingInfo.registration,
       startDate: bookingInfo.startDate,
-      startPeriod: bookingInfo.startPeriod,
       endDate: bookingInfo.endDate,
-      endPeriod: bookingInfo.endPeriod,
     });
     setOpenUpdateSidebar({ ...openUpdateSidebar, show: false });
   };
