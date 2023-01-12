@@ -15,7 +15,7 @@ export default function Profile() {
       retourDate: "16/03/2023",
     },
     {
-      id: 1,
+      id: 2,
       véhicule: "bike",
       delivery: "toulouse",
       deliveryDate: "16/03/2023",
@@ -32,14 +32,14 @@ export default function Profile() {
       retourDate: "16/12/2021",
     },
     {
-      id: 1,
+      id: 2,
       véhicule: "car",
       delivery: "toulouse",
       deliveryDate: "03/10/2022",
       retourDate: "10/10/2022",
     },
     {
-      id: 1,
+      id: 3,
       véhicule: "bike",
       delivery: "toulouse",
       deliveryDate: "06/09/2022",
@@ -79,7 +79,7 @@ export default function Profile() {
         <h1 className="mt-6">Your current rent</h1>
         {currentLocation.map((e) => (
           <RentalList
-            key={e.key}
+            key={e.id}
             véhicule={e.véhicule}
             delivery={e.delivery}
             deliveryDate={e.deliveryDate}
@@ -89,7 +89,7 @@ export default function Profile() {
         <h1 className="mt-6">Rental ended</h1>
         {rentalEnded.map((e) => (
           <RentalList
-            key={e.key}
+            key={e.id}
             véhicule={e.véhicule}
             delivery={e.delivery}
             deliveryDate={e.deliveryDate}
