@@ -52,31 +52,24 @@ export default function Login({
         w-screen
         h-screen
         z-10
-        bg-neutral-300
+        bg-[#CADEDF]
         flex-grow
         flex
         flex-col
-        px-20
+        px-10
         justify-center
-        align-center
-        "
+        align-between"
     >
-      <button
-        type="button"
-        onClick={() => {
-          setLoginModal(false);
-        }}
-        className="w-9 h-9 bg-red-600"
-      >
-        X
-      </button>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <h5 className="text-xl font-medium text-gray-900 dark:text-white">
+          Sign in to our platform
+        </h5>
         <div className="mb-6">
           <label
             htmlFor="email"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
           >
-            Veuillez insérer votre adresse email
+            Your email
           </label>
           <input
             type="email"
@@ -84,7 +77,6 @@ export default function Login({
             value={email}
             onChange={(e) => setemail(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="name@flowbite.com"
             required
           />
         </div>
@@ -93,7 +85,7 @@ export default function Login({
             htmlFor="password"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
           >
-            Veuillez rentrer votre mot de passe
+            Your password
           </label>
           <input
             type="password"
@@ -104,23 +96,34 @@ export default function Login({
             required
           />
         </div>
-        <div className="flex items-start mb-6" />
-        <div
-          onClick={handleChange}
-          onKeyDown={handleChange}
-          role="button"
-          tabIndex={0}
-        >
-          Vous n'avez pas de compte ?
+        <div className="text-sm font-medium text-gray-500 dark:text-gray-300 text-center">
+          Not registered?{" "}
+          <div
+            onClick={handleChange}
+            onKeyDown={handleChange}
+            role="button"
+            tabIndex={0}
+            className="text-cyan-500 hover:underline dark:text-blue-500"
+          >
+            Create account
+          </div>
         </div>
-
         <button
           type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="text-white bg-gradient-to-r from-lime-400 to-cyan-500 font-medium rounded-lg text-m w-full sm:w-auto px-5 py-2.5 text-center"
         >
-          Se connecter
+          Login to your account
         </button>
       </form>
+      <button
+        type="button"
+        onClick={() => {
+          setLoginModal(false);
+        }}
+        className="text-sm mt-10 font-medium text-cyan-500 dark:text-gray-300 text-center"
+      >
+        Back Home
+      </button>
     </div>
   );
 }

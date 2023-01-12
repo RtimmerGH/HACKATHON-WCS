@@ -30,6 +30,9 @@ export default function Nav({ setLoginModal, loginModal }) {
           </div>
         </div>
       </nav>
+      <h1 className="text-3xl font-bold text-center my-7">
+        Electric vehicles renting
+      </h1>
     </div>
   );
 }
