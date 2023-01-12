@@ -58,7 +58,11 @@ export default function SearchForm({ setVehicles, setReservation }) {
     e.preventDefault();
     // get vehicles
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/vehicles`)
+      .get(
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/vehicles?startDate=${startDate}&endDate=${endDate}&agencyId=${agency}&typeId=${type}`
+      )
       .then((response) => {
         setVehicles(response.data);
         setReservation(searchRequest);
