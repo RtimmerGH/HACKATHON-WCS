@@ -47,10 +47,7 @@ export default function Profile() {
     },
   ];
 
-  const {
-    setUserTokenCookie,
-    userToken,
-  } = useContext(AuthContext);
+  const { setUserTokenCookie, userToken } = useContext(AuthContext);
 
   const handleDisconnect = () => {
     setUserTokenCookie(null);
