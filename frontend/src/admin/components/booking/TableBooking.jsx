@@ -9,6 +9,7 @@ import {
 import DeleteBookingConfirm from "./DeleteBookingConfirm";
 import useGetBooking from "../../hooks/booking/useGetBooking";
 import UpdateKmBooking from "./UpdateKmBooking";
+import UpdateBooking from "./UpdateBooking";
 
 function TableBooking({ searchbarFilter }) {
   const [confirmModal, setConfirmModal] = useState({
@@ -22,6 +23,14 @@ function TableBooking({ searchbarFilter }) {
     show: false,
     id: "",
     km: "",
+  });
+  const [openUpdateBookingSidebar, setOpenUpdateBookingSidebar] = useState({
+    id: "",
+    idVehicle: "",
+    startDate: "",
+    startPeriod: "",
+    endDate: "",
+    endPeriod: "",
   });
   const { isLoading, isError, data } = useGetBooking();
   if (isLoading) {
@@ -43,6 +52,12 @@ function TableBooking({ searchbarFilter }) {
         <UpdateKmBooking
           openUpdateSidebar={openUpdateSidebar}
           setOpenUpdateSidebar={setOpenUpdateSidebar}
+        />
+      )}
+      {openUpdateBookingSidebar.show && (
+        <UpdateBooking
+          openUpdateSidebar={openUpdateBookingSidebar}
+          setOpenUpdateSidebar={setOpenUpdateBookingSidebar}
         />
       )}
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -118,11 +133,14 @@ function TableBooking({ searchbarFilter }) {
                         <PencilSquareIcon
                           className="text-indigo-600 hover:text-indigo-900  w-6 h-6  cursor-pointer"
                           onClick={() =>
-                            setOpenUpdateSidebar({
+                            setOpenUpdateBookingSidebar({
                               show: true,
-                              id: model.id,
-                              name: model.name,
-                              idBrand: model.idBrand,
+                              id: booking.id,
+                              idVehicle: booking.idVehicle,
+                              startDate: booking.startDate,
+                              startPeriod: booking.startPeriod,
+                              endDate: booking.endDate,
+                              endPeriod: booking.endPeriod,
                             })
                           }
                         />
