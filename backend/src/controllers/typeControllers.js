@@ -1,8 +1,8 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.category
-    .findAllCategories()
+  models.type
+    .findAllTypes()
     .then(([rows]) => {
       res.send(rows);
     })
@@ -13,8 +13,8 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.category
-    .findCategory(req.params.id)
+  models.type
+    .findType(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
         res.sendStatus(404);
@@ -29,14 +29,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const category = req.body;
+  const type = req.body;
   // TODO validations (length, format...)
-  category.id = parseInt(req.params.id, 10);
+  type.id = parseInt(req.params.id, 10);
   if (req.body.admin < 2) {
     res.sendStatus(403);
   } else {
-    models.category
-      .update(category)
+    models.type
+      .update(type)
       .then(([result]) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);
@@ -56,10 +56,10 @@ const add = (req, res) => {
   if (req.body.admin < 2) {
     res.sendStatus(403);
   } else {
-    models.category
+    models.type
       .insert(req.body)
       .then(([result]) => {
-        res.location(`/categories/${result.insertId}`).sendStatus(201);
+        res.location(`/types/${result.insertId}`).sendStatus(201);
       })
       .catch((err) => {
         console.error(err);
@@ -72,7 +72,7 @@ const destroy = (req, res) => {
   if (req.body.admin < 2) {
     res.sendStatus(403);
   } else {
-    models.category
+    models.type
       .delete(parseInt(req.params.id, 10))
       .then(([result]) => {
         if (result.affectedRows === 0) {
