@@ -83,7 +83,6 @@ export default function SearchForm({ setVehicles, setReservation }) {
 
         <form className="formCenter" onSubmit={handleSubmit} method="GET">
           <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full">
-
             <select
               type="select"
               name="location"
