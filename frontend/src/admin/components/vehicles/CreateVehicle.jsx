@@ -9,6 +9,7 @@ import useGetCategories from "../../hooks/categories/useGetCategories";
 import useGetType from "../../hooks/type/useGetType";
 import useGetModels from "../../hooks/models/useGetModels";
 import useGetAgencies from "../../hooks/agencies/useGetAgencies";
+import convertDataInGoodFormat from "../utils/convertDataInGoodFormat";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -21,17 +22,17 @@ function CreateVehicle({
   const [enabled, setEnabled] = useState(true);
   const [vehicleInfo, setVehicleInfo] = useState({
     registration: "",
-    idCategory: "",
-    idType: "",
-    idModel: "",
-    idAgency: "",
+    idCategory: 1,
+    idType: 1,
+    idModel: 1,
+    idAgency: 1,
     km: "",
     fuel: "",
     numDoor: "",
     numPassenger: "",
     color: "",
     commissioningDate: "",
-    availability: "",
+    availability: 1,
     image: "",
   });
   const { data: dataCategory } = useGetCategories();
@@ -39,10 +40,25 @@ function CreateVehicle({
   const { data: dataModel } = useGetModels();
   const { data: dataAgency } = useGetAgencies();
   const { mutate: postVehicles } = usePostVehicles();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    postVehicles({ title: categoryName, idEspace: categoryEspaceId });
-    setDisplaySidebarCreateCategory(false);
+    postVehicles({
+      registration: vehicleInfo.registration,
+      idCategory: parseInt(vehicleInfo.idCategory, 10),
+      idType: parseInt(vehicleInfo.idType, 10) || "",
+      idModel: parseInt(vehicleInfo.idModel, 10),
+      idAgency: parseInt(vehicleInfo.idAgency, 10),
+      km: parseInt(vehicleInfo.km, 10),
+      fuel: vehicleInfo.fuel,
+      numDoor: parseInt(vehicleInfo.numDoor, 10),
+      numPassenger: parseInt(vehicleInfo.numPassenger, 10),
+      color: vehicleInfo.color,
+      commissioningDate: convertDataInGoodFormat(vehicleInfo.commissioningDate),
+      availability: enabled,
+      image: vehicleInfo.image,
+    });
+    setDisplaySidebarCreateVehicle(false);
   };
   return (
     <Transition.Root show={displaySidebarCreateVehicle} as={Fragment}>
@@ -179,62 +195,67 @@ function CreateVehicle({
                                   ))}
                               </select>
                             </div>
-                            <div className="w-full">
-                              <label
-                                htmlFor="type"
-                                className="block text-sm font-medium text-gray-700"
-                              >
-                                Type
-                              </label>
-                              <select
-                                id="type"
-                                name="type"
-                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-                                value={vehicleInfo.idType}
-                                onChange={(e) =>
-                                  setVehicleInfo((previousValue) => ({
-                                    ...previousValue,
-                                    idType: e.target.value,
-                                  }))
-                                }
-                              >
-                                {dataType &&
-                                  dataType.map((type) => (
-                                    <option value={type.id} key={type.name}>
-                                      {type.name}
-                                    </option>
-                                  ))}
-                              </select>
-                            </div>
+                            {parseInt(vehicleInfo.idCategory, 10) === 1 && (
+                              <div className="w-full">
+                                <label
+                                  htmlFor="type"
+                                  className="block text-sm font-medium text-gray-700"
+                                >
+                                  Type
+                                </label>
+                                <select
+                                  id="type"
+                                  name="type"
+                                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                                  value={vehicleInfo.idType}
+                                  onChange={(e) =>
+                                    setVehicleInfo((previousValue) => ({
+                                      ...previousValue,
+                                      idType: e.target.value,
+                                    }))
+                                  }
+                                >
+                                  {dataType &&
+                                    dataType.map((type) => (
+                                      <option value={type.id} key={type.name}>
+                                        {type.name}
+                                      </option>
+                                    ))}
+                                </select>
+                              </div>
+                            )}
                           </div>
                           <div className="flex gap-8">
-                            <div className="w-full">
-                              <label
-                                htmlFor="model"
-                                className="block text-sm font-medium text-gray-700"
-                              >
-                                Model
-                              </label>
-                              <select
-                                id="model"
-                                name="model"
-                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-                                value={vehicleInfo.idModel}
-                                onChange={(e) =>
-                                  setVehicleInfo((previousValue) => ({
-                                    ...previousValue,
-                                    idModel: e.target.value,
-                                  }))
-                                }
-                              >
-                                {dataModel &&
-                                  dataModel.map((model) => (
-                                    <option value={model.id} key={model.name}>
-                                      {model.name}
-                                    </option>
-                                  ))}
-                              </select>
-                            </div>
+                            {parseInt(vehicleInfo.idCategory, 10) === 1 && (
+                              <div className="w-full">
+                                <label
+                                  htmlFor="model"
+                                  className="block text-sm font-medium text-gray-700"
+                                >
+                                  Model
+                                </label>
+                                <select
+                                  id="model"
+                                  name="model"
+                                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                                  value={vehicleInfo.idModel}
+                                  onChange={(e) =>
+                                    setVehicleInfo((previousValue) => ({
+                                      ...previousValue,
+                                      idModel: e.target.value,
+                                    }))
+                                  }
+                                >
+                                  {dataModel &&
+                                    dataModel.map((model) => (
+                                      <option value={model.id} key={model.name}>
+                                        {model.name}
+                                      </option>
+                                    ))}
+                                </select>
+                              </div>
+                            )}
+
                             <div className="w-full">
                               <label
                                 htmlFor="agency"
@@ -256,7 +277,7 @@ function CreateVehicle({
                               >
                                 {dataAgency &&
                                   dataAgency.map((agency) => (
-                                    <option value={agency.id} key={agency.city}>
+                                    <option value={agency.id} key={agency.id}>
                                       {agency.city}
                                     </option>
                                   ))}
@@ -408,6 +429,30 @@ function CreateVehicle({
                                 />
                               </Switch>
                             </div>
+                            <div className="w-full">
+                              <label
+                                htmlFor="image"
+                                className="block text-sm font-medium text-gray-900"
+                              >
+                                Url image *
+                              </label>
+                              <div className="mt-1">
+                                <input
+                                  value={vehicleInfo.image}
+                                  onChange={(e) =>
+                                    setVehicleInfo((existingValues) => ({
+                                      ...existingValues,
+                                      image: e.target.value,
+                                    }))
+                                  }
+                                  type="text"
+                                  name="image"
+                                  id="image"
+                                  className="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                                  required="required"
+                                />
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -417,7 +462,7 @@ function CreateVehicle({
                     <button
                       type="button"
                       className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      onClick={() => setDisplaySidebarCreateCategory(false)}
+                      onClick={() => setDisplaySidebarCreateVehicle(false)}
                     >
                       Retour
                     </button>
@@ -425,7 +470,7 @@ function CreateVehicle({
                       type="submit"
                       className="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                      Ajouter la catégorie
+                      Ajouter le vehicule
                     </button>
                   </div>
                 </form>

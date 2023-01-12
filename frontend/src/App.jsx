@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import Home from "@pages/Home";
 import React, { useState, useContext, useEffect } from "react";
 import Cookies from "js-cookie";

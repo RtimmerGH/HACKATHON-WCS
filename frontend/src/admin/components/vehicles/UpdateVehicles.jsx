@@ -7,13 +7,14 @@ import useGetCategories from "../../hooks/categories/useGetCategories";
 import useGetType from "../../hooks/type/useGetType";
 import useGetModels from "../../hooks/models/useGetModels";
 import useGetAgencies from "../../hooks/agencies/useGetAgencies";
+import convertDataInGoodFormat from "../utils/convertDataInGoodFormat";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 function UpdateVehicles({ openUpdateSidebar, setOpenUpdateSidebar }) {
-  const [enabled, setEnabled] = useState(true);
+  const [enabled, setEnabled] = useState(openUpdateSidebar.availability);
   const [vehicleInfo, setVehicleInfo] = useState({
     id: openUpdateSidebar.id || "",
     registration: openUpdateSidebar.registration || "",
@@ -41,9 +42,19 @@ function UpdateVehicles({ openUpdateSidebar, setOpenUpdateSidebar }) {
     event.preventDefault();
     updateVehicles({
       id: vehicleInfo.id,
-      name: vehicleInfo.name,
-      brand: vehicleInfo.brand,
-      km: vehicleInfo.km || "",
+      registration: vehicleInfo.registration,
+      idCategory: parseInt(vehicleInfo.idCategory, 10),
+      idType: parseInt(vehicleInfo.idType, 10),
+      idModel: parseInt(vehicleInfo.idModel, 10),
+      idAgency: parseInt(vehicleInfo.idAgency, 10),
+      km: parseInt(vehicleInfo.km, 10),
+      fuel: vehicleInfo.fuel,
+      numDoor: parseInt(vehicleInfo.numDoor, 10),
+      numPassenger: parseInt(vehicleInfo.numPassenger, 10),
+      color: vehicleInfo.color,
+      commissioningDate: convertDataInGoodFormat(vehicleInfo.commissioningDate),
+      availability: enabled,
+      image: vehicleInfo.image,
     });
     setOpenUpdateSidebar({ ...openUpdateSidebar, show: false });
   };
@@ -184,62 +195,67 @@ function UpdateVehicles({ openUpdateSidebar, setOpenUpdateSidebar }) {
                                   ))}
                               </select>
                             </div>
-                            <div className="w-full">
-                              <label
-                                htmlFor="type"
-                                className="block text-sm font-medium text-gray-700"
-                              >
-                                Type
-                              </label>
-                              <select
-                                id="type"
-                                name="type"
-                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-                                value={vehicleInfo.idType}
-                                onChange={(e) =>
-                                  setVehicleInfo((previousValue) => ({
-                                    ...previousValue,
-                                    idType: e.target.value,
-                                  }))
-                                }
-                              >
-                                {dataType &&
-                                  dataType.map((type) => (
-                                    <option value={type.id} key={type.name}>
-                                      {type.name}
-                                    </option>
-                                  ))}
-                              </select>
-                            </div>
+                            {parseInt(vehicleInfo.idCategory, 10) === 1 && (
+                              <div className="w-full">
+                                <label
+                                  htmlFor="type"
+                                  className="block text-sm font-medium text-gray-700"
+                                >
+                                  Type
+                                </label>
+                                <select
+                                  id="type"
+                                  name="type"
+                                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                                  value={vehicleInfo.idType}
+                                  onChange={(e) =>
+                                    setVehicleInfo((previousValue) => ({
+                                      ...previousValue,
+                                      idType: e.target.value,
+                                    }))
+                                  }
+                                >
+                                  {dataType &&
+                                    dataType.map((type) => (
+                                      <option value={type.id} key={type.name}>
+                                        {type.name}
+                                      </option>
+                                    ))}
+                                </select>
+                              </div>
+                            )}
                           </div>
                           <div className="flex gap-8">
-                            <div className="w-full">
-                              <label
-                                htmlFor="model"
-                                className="block text-sm font-medium text-gray-700"
-                              >
-                                Model
-                              </label>
-                              <select
-                                id="model"
-                                name="model"
-                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-                                value={vehicleInfo.idModel}
-                                onChange={(e) =>
-                                  setVehicleInfo((previousValue) => ({
-                                    ...previousValue,
-                                    idModel: e.target.value,
-                                  }))
-                                }
-                              >
-                                {dataModel &&
-                                  dataModel.map((model) => (
-                                    <option value={model.id} key={model.name}>
-                                      {model.name}
-                                    </option>
-                                  ))}
-                              </select>
-                            </div>
+                            {parseInt(vehicleInfo.idCategory, 10) === 1 && (
+                              <div className="w-full">
+                                <label
+                                  htmlFor="model"
+                                  className="block text-sm font-medium text-gray-700"
+                                >
+                                  Model
+                                </label>
+                                <select
+                                  id="model"
+                                  name="model"
+                                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                                  value={vehicleInfo.idModel}
+                                  onChange={(e) =>
+                                    setVehicleInfo((previousValue) => ({
+                                      ...previousValue,
+                                      idModel: e.target.value,
+                                    }))
+                                  }
+                                >
+                                  {dataModel &&
+                                    dataModel.map((model) => (
+                                      <option value={model.id} key={model.name}>
+                                        {model.name}
+                                      </option>
+                                    ))}
+                                </select>
+                              </div>
+                            )}
+
                             <div className="w-full">
                               <label
                                 htmlFor="agency"
@@ -261,7 +277,7 @@ function UpdateVehicles({ openUpdateSidebar, setOpenUpdateSidebar }) {
                               >
                                 {dataAgency &&
                                   dataAgency.map((agency) => (
-                                    <option value={agency.id} key={agency.city}>
+                                    <option value={agency.id} key={agency.id}>
                                       {agency.city}
                                     </option>
                                   ))}
@@ -378,7 +394,9 @@ function UpdateVehicles({ openUpdateSidebar, setOpenUpdateSidebar }) {
                               </label>
                               <div className="mt-1">
                                 <input
-                                  value={vehicleInfo.commissioningDate}
+                                  value={convertDataInGoodFormat(
+                                    vehicleInfo.commissioningDate
+                                  )}
                                   onChange={(e) =>
                                     setVehicleInfo((existingValues) => ({
                                       ...existingValues,

@@ -119,7 +119,7 @@ function TableVehicles({ searchbarFilter }) {
                               registration: vehicle.registration,
                               idCategory: vehicle.idCategory,
                               idType: vehicle.idType,
-                              idModal: vehicle.idModal,
+                              idModel: vehicle.idModel,
                               idAgency: vehicle.idAgency,
                               km: vehicle.km,
                               fuel: vehicle.fuel,
