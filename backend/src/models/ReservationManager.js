@@ -25,9 +25,7 @@ class ReservationManager extends AbstractManager {
         reservation.idVehicle,
         reservation.idUser,
         reservation.startDate,
-        reservation.startPeriod,
         reservation.endDate,
-        reservation.endPeriod,
       ]
     );
   }
