@@ -35,7 +35,7 @@ export default function Nav({ setLoginModal, loginModal }) {
             <button
               data-collapse-toggle="mega-menu"
               type="button"
-              className="inline-flex items-center p-2 ml-1 text-sm text-white rounded-lg dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              className="inline-flex items-center p-2 ml-1 text-sm text-white rounded-lg dark:text-gray-400 dark:focus:ring-gray-600"
               aria-controls="mega-menu"
               aria-expanded="false"
               onClick={handleChange}
