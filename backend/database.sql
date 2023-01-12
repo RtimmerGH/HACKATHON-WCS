@@ -362,7 +362,7 @@ VALUES (
         'grey',
         '2022-04-10',
         1,
-        'https://p.turbosquid.com/ts-thumb/AL/Qbt2Cn/1d/fordetransitvanl2h22022_01/jpg/1617044562/1920x1080/fit_q99/2483e4a0cffa9a629ff894851c9161d74bb98967/fordetransitvanl2h22022_01.jpg'
+        'https://cycles.peugeot.fr/sites/cycles.peugeot.fr/files/2020/12/YPU700%20-%20eT01%20CrossOver%20Equipe%20D10%20Perf.jpg'
     ),(
         'LL-789-LL',
         5,
@@ -375,7 +375,7 @@ VALUES (
         'grey',
         '2022-04-10',
         1,
-        'https://cdn.motor1.com/images/mgl/pVlRP/s1/volkswagen-id.4-gtx-2021.jpg'
+        'https://cycles.peugeot.fr/sites/cycles.peugeot.fr/files/2020/12/YPU700%20-%20eT01%20CrossOver%20Equipe%20D10%20Perf.jpg'
     ),(
         'MM-123-MM',
         5,
@@ -388,7 +388,7 @@ VALUES (
         'White',
         '2022-08-01',
         1,
-        'https://cdn.motor1.com/images/mgl/pVlRP/s1/volkswagen-id.4-gtx-2021.jpg'
+        'https://cycles.peugeot.fr/sites/cycles.peugeot.fr/files/2020/12/YPU700%20-%20eT01%20CrossOver%20Equipe%20D10%20Perf.jpg'
     ), (
         'NN-456-NN',
         5,
@@ -401,7 +401,7 @@ VALUES (
         'grey',
         '2022-04-10',
         1,
-        'https://cdn.euroncap.com/media/67768/vw-id5.png'
+        'https://cycles.peugeot.fr/sites/cycles.peugeot.fr/files/2020/12/YPU700%20-%20eT01%20CrossOver%20Equipe%20D10%20Perf.jpg'
     ), (
         'OO-789-OO',
         5,
@@ -414,7 +414,7 @@ VALUES (
         'grey',
         '2022-04-10',
         1,
-        'https://p.turbosquid.com/ts-thumb/AL/Qbt2Cn/1d/fordetransitvanl2h22022_01/jpg/1617044562/1920x1080/fit_q99/2483e4a0cffa9a629ff894851c9161d74bb98967/fordetransitvanl2h22022_01.jpg'
+        'https://cycles.peugeot.fr/sites/cycles.peugeot.fr/files/2020/12/YPU700%20-%20eT01%20CrossOver%20Equipe%20D10%20Perf.jpg'
     );
 
 DROP TABLE IF EXISTS reservation;
@@ -430,3 +430,28 @@ CREATE TABLE
         CONSTRAINT `fk_reservation_user` Foreign Key (idUser) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
     );
 
+INSERT INTO
+    reservation (idVehicle, idUser, startDate,endDate)
+VALUES (
+        1,1,'2022-12-05','2022-12-06'        
+    ),(
+        2,1,'2022-12-07','2022-12-08'        
+    ),(
+        3,2,'2022-12-09','2022-12-10'        
+    ),(
+        4,2,'2022-12-11','2022-12-12'        
+    ),(
+        5,3,'2022-12-13','2022-12-13'        
+    ),(
+        6,3,'2023-01-02','2023-12-03'        
+    ),(
+        7,4,'2023-12-05','2023-12-06'        
+    ),(
+        8,4,'2023-12-08','2023-12-08'        
+    ),(
+        9,1,'2023-12-09','2023-12-10'        
+    ),(
+        10,3,'2023-12-14','2023-12-15'        
+    ),(
+        14,4,'2023-12-14','2023-12-15'        
+    );
