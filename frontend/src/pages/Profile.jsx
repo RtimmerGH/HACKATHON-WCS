@@ -1,11 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import RentalList from "../component/RentalList";
 import "./Profile.css";
+import ChangePassword from "../component/ChangePassword";
 
 export default function Profile() {
   const navigate = useNavigate();
+  const [changepasswordModal, setChangePasswordModal] = useState(false);
 
   const currentLocation = [
     {
@@ -67,10 +69,17 @@ export default function Profile() {
 
   return userToken ? (
     <div>
+      <ChangePassword
+        changepasswordModal={changepasswordModal}
+        setChangePasswordModal={setChangePasswordModal}
+      />
       <div className="MyInfos">
         <h1>{userFirstName}</h1>
         <h1>{userLastName}</h1>
         <h2>{userEmail}</h2>
+        <button type="button" onClick={() => setChangePasswordModal(true)}>
+          change your password
+        </button>
       </div>
       <button
         type="button"
