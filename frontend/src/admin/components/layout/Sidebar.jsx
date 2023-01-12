@@ -169,6 +169,7 @@ function AdminComponent() {
                     {({ active }) => (
                       <button
                         type="button"
+                        // eslint-disable-next-line no-undef
                         onClick={() => setOpenModalDisconnect(true)}
                         className={classNames(
                           "text-red-700",

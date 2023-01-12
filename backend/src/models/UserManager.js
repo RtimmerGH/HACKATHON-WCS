@@ -7,14 +7,14 @@ class UserManager extends AbstractManager {
 
   findUser(id) {
     return this.connection.query(
-      `select firstname, lastname, email, admin from  ${this.table} where id = ?`,
+      `select ${this.table}.id, ${this.table}.firstname, ${this.table}.lastname, ${this.table}.email, ${this.table}.admin, admin.name as role from  ${this.table} join admin on admin.id=${this.table}.admin where ${this.table}.id = ?`,
       [id]
     );
   }
 
   findAllUsers() {
     return this.connection.query(
-      `select id, firstname, lastname, email, admin from  ${this.table}`
+      `select ${this.table}.id, ${this.table}.firstname, ${this.table}.lastname, ${this.table}.email, ${this.table}.admin, admin.name as role from  ${this.table} join admin on admin.id=${this.table}.admin `
     );
   }
 
