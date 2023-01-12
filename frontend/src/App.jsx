@@ -60,7 +60,7 @@ function App() {
 
       <Routes>
         {/* ROUTE CLASSIQUE */}
-        <Route path="/" element={<Navigate replace to="/Profile" />} />
+        <Route path="/" element={<Navigate replace to="/home" />} />
         <Route path="/home" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
