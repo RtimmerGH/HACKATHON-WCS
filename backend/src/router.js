@@ -21,6 +21,8 @@ const brandControllers = require("./controllers/brandControllers");
 const modelControllers = require("./controllers/modelControllers");
 const categoryControllers = require("./controllers/categoryControllers");
 const typeControllers = require("./controllers/typeControllers");
+const vehicleControllers = require("./controllers/vehicleControllers");
+const adminControllers = require("./controllers/adminControllers");
 
 // public routes
 
@@ -40,6 +42,8 @@ router.get("/categories", categoryControllers.browse);
 router.get("/categories/:id", categoryControllers.read);
 router.get("/types", typeControllers.browse);
 router.get("/types/:id", typeControllers.read);
+router.get("/vehicles", vehicleControllers.browse);
+router.get("/vehicles/:id", vehicleControllers.read);
 
 // Not public routes
 router.use(verifyToken, verifyAdmin); // authentication wall : verifyToken is activated for each route after this line
@@ -74,5 +78,15 @@ router.delete("/categories/:id", categoryControllers.destroy);
 router.post("/types", typeControllers.add);
 router.put("/types/:id", typeControllers.edit);
 router.delete("/types/:id", typeControllers.destroy);
+
+router.post("/vehicles", vehicleControllers.add);
+router.put("/vehicles/:id", vehicleControllers.edit);
+router.delete("/vehicles/:id", vehicleControllers.destroy);
+
+router.get("/admins", adminControllers.browse);
+router.get("/admins/:id", adminControllers.read);
+router.post("/admins", adminControllers.add);
+router.put("/admins/:id", adminControllers.edit);
+router.delete("/admins/:id", adminControllers.destroy);
 
 module.exports = router;
