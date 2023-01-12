@@ -25,7 +25,7 @@ export default function Profile() {
 
   useEffect(() => {
     axios
-      .get(`${VITE_BACKEND_URL}/reservations?id=${userId}`, {
+      .get(`${VITE_BACKEND_URL}/reservations?user=${userId}`, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
