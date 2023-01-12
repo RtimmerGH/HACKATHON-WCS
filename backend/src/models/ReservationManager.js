@@ -7,27 +7,25 @@ class ReservationManager extends AbstractManager {
 
   findReservation(id) {
     return this.connection.query(
-      `select ${this.table}.id,${this.table}.idVehicle, ${this.table}.idUser, ${this.table}.startDate, ${this.table}.startPeriod, ${this.table}.endDate, ${this.table}.endPeriod, vehicle.registration as registration from ${this.table} join vehicle on vehicle.id=${this.table}.idVehicle where ${this.table}.id = ?`,
+      `select ${this.table}.id,${this.table}.idVehicle, ${this.table}.idUser, ${this.table}.startDate, ${this.table}.endDate, vehicle.registration as registration from ${this.table} join vehicle on vehicle.id=${this.table}.idVehicle where ${this.table}.id = ?`,
       [id]
     );
   }
 
   findAllReservations(where) {
     return this.connection.query(
-      `select ${this.table}.id,${this.table}.idVehicle, ${this.table}.idUser, ${this.table}.startDate, ${this.table}.startPeriod, ${this.table}.endDate, ${this.table}.endPeriod, vehicle.registration as registration from ${this.table} join vehicle on vehicle.id=${this.table}.idVehicle${where}`
+      `select ${this.table}.id,${this.table}.idVehicle, ${this.table}.idUser, ${this.table}.startDate, ${this.table}.endDate, vehicle.registration as registration from ${this.table} join vehicle on vehicle.id=${this.table}.idVehicle${where}`
     );
   }
 
   insert(reservation) {
     return this.connection.query(
-      `insert into ${this.table} (idVehicle, idUser, startDate, startPeriod,endDate, endPeriod) values (?,?,?,?,?,?)`,
+      `insert into ${this.table} (idVehicle, idUser, startDate, endDate) values (?,?,?,?)`,
       [
         reservation.idVehicle,
         reservation.idUser,
         reservation.startDate,
-        reservation.startPeriod,
         reservation.endDate,
-        reservation.endPeriod,
       ]
     );
   }
