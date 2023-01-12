@@ -1,15 +1,32 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import ConfirmModal from "./ConfirmModal";
 import Nav from "./Nav";
 import userImg from "../assets/user.png";
 import colorImg from "../assets/color.png";
 import bootImg from "../assets/boot.png";
+import { AuthContext } from "../context/AuthContext";
 
 export default function ResultModal({ setResultModal, car, reservation }) {
   const [confirmation, setConfirmation] = useState(false);
   const [agency, setAgency] = useState(false);
   const [model, setModel] = useState(false);
+  const { userToken, userId } = useContext(AuthContext);
+
+  const body = {
+    startDate: reservation.endDate,
+    endDate: reservation.endDate,
+    idVehicle: car.id,
+    idUser: userId,
+  };
+
+  const handleClick = () => {
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/reservations`, body, {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    });
+  };
 
   useEffect(() => {
     // get agency
@@ -96,7 +113,7 @@ export default function ResultModal({ setResultModal, car, reservation }) {
           />
           <div className="flex flex-col justify-end p-4 leading-normal">
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-cyan-500">
-              {model.name}
+              {car.brand} {model.name}
             </h5>
             <div className="flex flex-row justify-around m-5 text-2xl">
               <div className="flex align-end">
@@ -120,6 +137,7 @@ export default function ResultModal({ setResultModal, car, reservation }) {
           type="button"
           onClick={() => {
             setConfirmation(true);
+            handleClick();
           }}
           className="inline-flex px-3 py-2 text-m font-medium text-center text-white bg-gradient-to-r from-lime-400 to-cyan-500 rounded-lg m-5"
         >
@@ -129,6 +147,7 @@ export default function ResultModal({ setResultModal, car, reservation }) {
           type="button"
           onClick={() => {
             setResultModal(false);
+            handleClick();
           }}
           className="text-sm font-medium text-cyan-500 dark:text-gray-300 text-center"
         >
