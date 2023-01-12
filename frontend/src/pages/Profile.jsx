@@ -47,7 +47,8 @@ export default function Profile() {
     },
   ];
 
-  const { userFirstName, userLastName, userEmail, setUserTokenCookie } =
+  const { setUserTokenCookie } =
+    // userFirstName, userLastName, userEmail
     useContext(AuthContext);
 
   const handleDisconnect = () => {
@@ -57,26 +58,21 @@ export default function Profile() {
 
   return (
     <div>
-      <div className="flex-col justify-center text-center">
-        <h1>{userFirstName}</h1>
-        <h1>{userLastName}</h1>
-        <h2>{userEmail}</h2>
-        <button
-          type="button"
-          className="rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 w-5/6 text-2xl font-bold text-white py-2"
-        >
-          Edit profile
-        </button>
-        <button
-          onClick={handleDisconnect}
-          type="button"
-          className="rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 w-5/6 text-2xl font-bold text-white py-2 mt-2"
-        >
-          Se déconecter
-        </button>
-      </div>
-      <div className="flex-col text-center mt-2">
-        <h1 className="mt-6">Your current rent</h1>
+      <button
+        type="button"
+        className="flex justify-center m-auto  rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 w-5/6 text-2xl font-bold text-white p-2 mt-8"
+      >
+        Edit profile
+      </button>
+      <button
+        onClick={handleDisconnect}
+        type="button"
+        className="flex justify-center m-auto rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 w-5/6 text-2xl font-bold text-white py-2 mt-2"
+      >
+        Disconnect
+      </button>
+      <div className="flex-justify-between text-center mt-2">
+        <h1 className="m-6 uppercase font-bold">Your current rent</h1>
         {currentLocation.map((e) => (
           <RentalList
             key={e.key}
@@ -86,7 +82,7 @@ export default function Profile() {
             retourDate={e.retourDelivery}
           />
         ))}
-        <h1 className="mt-6">Rental ended</h1>
+        <h1 className="mt-6 uppercase font-bold">Rental ended</h1>
         {rentalEnded.map((e) => (
           <RentalList
             key={e.key}
