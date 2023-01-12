@@ -9,7 +9,7 @@ export default function ResultCard({ car }) {
   };
 
   return (
-    <div className="flex flex-col bg-zinc-300 text-gray-900 border rounded shadow-md md:flex-row md:max-w-xl m-6">
+    <div className="flex flex-col bg-zinc-300 text-gray-900 border rounded shadow-md md:flex-row md:min-w-1/3 m-6">
       <img
         className="object-cover w-full h-full rounded md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
         src={car.image}

@@ -21,9 +21,8 @@ import { AuthContext } from "./context/AuthContext";
 function App() {
   const [loginModal, setLoginModal] = useState(false);
   const [registerModal, setRegisterModal] = useState(false);
-
   const { VITE_BACKEND_URL } = import.meta.env;
-  const { setUserFirstName, setUserLastName, setUserEmail } =
+  const { setUserFirstName, setUserLastName, setUserEmail, setUserRole } =
     useContext(AuthContext);
 
   useEffect(() => {
@@ -40,6 +39,7 @@ function App() {
           setUserFirstName(response.data.firstname);
           setUserLastName(response.data.lastname);
           setUserEmail(response.data.email);
+          setUserRole(response.data.admin);
         });
     }
   }, []);
