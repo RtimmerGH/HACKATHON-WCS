@@ -17,7 +17,7 @@ function CreateAgencies({
   const { mutate: postAgencies } = usePostAgencies();
   const handleSubmit = (event) => {
     event.preventDefault();
-    postAgencies({ city: agencyCity, adress: agencyAdress });
+    postAgencies({ city: agencyCity, address: agencyAdress });
     setDisplaySidebarCreateAgencies(false);
   };
   return (

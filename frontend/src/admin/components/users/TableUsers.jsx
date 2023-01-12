@@ -21,9 +21,8 @@ function TableUsers({ searchbarFilter }) {
     lastname: "",
     firstname: "",
     email: "",
-    phone: "",
-    avatar: "",
-    grade: "",
+    admin: "",
+    role: "",
   });
   const { isLoading, isError, data } = useGetUsers();
   if (isLoading) {
@@ -99,7 +98,7 @@ function TableUsers({ searchbarFilter }) {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {user.grade}
+                        {user.role.toUpperCase()}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm flex gap-4 font-medium">
                         <PencilSquareIcon
@@ -111,7 +110,8 @@ function TableUsers({ searchbarFilter }) {
                               lastname: user.lastname,
                               firstname: user.firstname,
                               email: user.email,
-                              grade: user.grade,
+                              admin: user.admin,
+                              role: user.role,
                             })
                           }
                         />

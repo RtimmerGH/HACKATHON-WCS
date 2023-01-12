@@ -8,7 +8,7 @@ function UpdateAgencies({ openUpdateSidebar, setOpenUpdateSidebar }) {
   const [agencyInfo, setAgencyInfo] = useState({
     id: openUpdateSidebar.id || "",
     city: openUpdateSidebar.city || "",
-    adress: openUpdateSidebar.adress || "",
+    address: openUpdateSidebar.address || "",
   });
 
   const { mutate: updateAgencies } = useUpdateAgencies();
@@ -17,7 +17,7 @@ function UpdateAgencies({ openUpdateSidebar, setOpenUpdateSidebar }) {
     updateAgencies({
       id: agencyInfo.id,
       city: agencyInfo.city,
-      adress: agencyInfo.adress,
+      address: agencyInfo.address,
     });
     setOpenUpdateSidebar({ ...openUpdateSidebar, show: false });
   };
@@ -111,11 +111,11 @@ function UpdateAgencies({ openUpdateSidebar, setOpenUpdateSidebar }) {
                               </label>
                               <div className="mt-1">
                                 <input
-                                  value={agencyInfo.adress}
+                                  value={agencyInfo.address}
                                   onChange={(e) =>
                                     setAgencyInfo((existingValues) => ({
                                       ...existingValues,
-                                      adress: e.target.value,
+                                      address: e.target.value,
                                     }))
                                   }
                                   type="text"

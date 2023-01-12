@@ -12,7 +12,7 @@ import {
 import Sidebar from "./admin/components/layout/Sidebar";
 import HomeAdmin from "./admin/pages/HomeAdmin";
 import Login from "./component/Login";
-import Header from "./component/Header";
+import Nav from "./component/Nav";
 import Register from "./component/Register";
 import Users from "./admin/pages/Users";
 import Booking from "./admin/pages/Booking";
@@ -20,6 +20,8 @@ import Agencies from "./admin/pages/Agencies";
 import Vehicles from "./admin/pages/Vehicles";
 import Brands from "./admin/pages/Brands";
 import Models from "./admin/pages/Models";
+import "./App.css";
+import SearchResults from "./pages/SearchResults";
 
 function App() {
   const [loginModal, setLoginModal] = useState(false);
@@ -37,13 +39,14 @@ function App() {
         registerModal={registerModal}
         setRegisterModal={setRegisterModal}
       />
-      <Header setLoginModal={setLoginModal} loginModal={loginModal} />
+      <Nav setLoginModal={setLoginModal} loginModal={loginModal} />
 
       <Routes>
         {/* ROUTE CLASSIQUE */}
         <Route path="/" element={<Navigate replace to="/home" />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/results" element={<SearchResults />} />
         {/* ROUTE ADMIN */}
         <Route path="/admin" element={<Sidebar />}>
           <Route index path="home" element={<HomeAdmin />} />

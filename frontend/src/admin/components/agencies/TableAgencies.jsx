@@ -17,7 +17,7 @@ function TableAgencies({ searchbarFilter }) {
   const [openUpdateSidebar, setOpenUpdateSidebar] = useState({
     show: false,
     id: "",
-    adress: "",
+    address: "",
     city: "",
   });
   const { isLoading, isError, data } = useGetAgencies();
@@ -89,7 +89,7 @@ function TableAgencies({ searchbarFilter }) {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {agency.adress}
+                        {agency.address}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm flex gap-4 font-medium">
                         <PencilSquareIcon
@@ -99,7 +99,7 @@ function TableAgencies({ searchbarFilter }) {
                               show: true,
                               id: agency.id,
                               city: agency.city,
-                              adress: agency.adress,
+                              address: agency.address,
                             })
                           }
                         />
