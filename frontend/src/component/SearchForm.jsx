@@ -1,8 +1,12 @@
 import "../App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useForm } from "react-hook-form";
 
 export default function SearchForm() {
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => console.warn(data);
+
   const [agencies, setAgencies] = useState([]);
   const [types, setTypes] = useState([]);
   // const [agency, setAgency] = useState([]);
@@ -38,10 +42,10 @@ export default function SearchForm() {
       });
   }, []);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.warn("soumis !");
-  }
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   console.warn("soumis !");
+  // }
 
   return (
     <div className="lg:w-1/2 lg:border lg:pb-5 bg-[#CADEDF] md:rounded-lg md:m-5 lg:shadow-2xl">
@@ -52,26 +56,32 @@ export default function SearchForm() {
         <h4 className="text-lg text-gray-500 text-center mb-8">
           Same return station
         </h4>
-        <form className="formCenter" onSubmit={handleSubmit}>
+        <form className="formCenter" onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full">
             <select
               type="select"
               name="location"
               id="location"
               className="bg-white text-gray-900 text-xl rounded-lg p-3 w-full"
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...register("agency")}
             >
               <option defaultValue="">--Please choose an agency--</option>
               {agencies.map((agency) => {
                 return (
                   <option defaultValue={agency.id} key={agency.id}>
-                    {agency.address} - {agency.city}
+                    {agency.city} - {agency.address}
                   </option>
                 );
               })}
             </select>
           </div>
           <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full">
-            <select className="md:mx-10">
+            <select
+              className="md:mx-10"
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...register("startPeriod")}
+            >
               <option>Morning</option>
               <option>Afternoon</option>
             </select>
@@ -82,10 +92,16 @@ export default function SearchForm() {
               defaultValue={todayFormat}
               min={todayFormat}
               className="bg-white text-gray-900 text-xl p-3 md:mx-10"
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...register("startDate")}
             />
           </div>
           <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full flex-row justify-around">
-            <select className="md:mx-10">
+            <select
+              className="md:mx-10"
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...register("endPeriod")}
+            >
               <option>Morning</option>
               <option>Afternoon</option>
             </select>
@@ -96,6 +112,8 @@ export default function SearchForm() {
               defaultValue={todayFormat}
               min={todayFormat}
               className="bg-white text-gray-900 text-xl p-3 md:mx-10"
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...register("endDate")}
             />
           </div>
           <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full flex-row justify-around">
@@ -104,6 +122,8 @@ export default function SearchForm() {
               name="type"
               id="type"
               className="bg-white text-gray-900 text-xl p-3 w-full"
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...register("type")}
             >
               {types.map((type) => {
                 return (
@@ -115,7 +135,13 @@ export default function SearchForm() {
             </select>
           </div>
           <div className="mb-6 text-center flex p-3">
-            <input type="checkbox" id="lessThan50km" name="lessThan50km" />
+            <input
+              type="checkbox"
+              id="lessThan50km"
+              name="lessThan50km"
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...register("displayBikes")}
+            />
             <p className="text-xl">I do less than 50 km</p>
           </div>
           <button
