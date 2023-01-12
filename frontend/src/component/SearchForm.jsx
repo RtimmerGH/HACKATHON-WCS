@@ -1,10 +1,10 @@
-import "../App.css"
+import "../App.css";
 
 export default function SearchForm() {
   return (
     <div className="lg:w-1/2 lg:border lg:pb-5 bg-[#CADEDF] md:rounded-lg md:m-10 lg:shadow-2xl">
       <div className="divcenter">
-        <h1 className="text-3xl font-bold text-center my-7">
+        <h1 className="text-3xl font-bold text-center py-7">
           Electric vehicles renting
         </h1>
         <h4 className="text-lg text-gray-500 text-center mb-8">

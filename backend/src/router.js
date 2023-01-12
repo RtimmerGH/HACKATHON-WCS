@@ -16,7 +16,7 @@ const {
 // });
 const router = express.Router();
 const userControllers = require("./controllers/userControllers");
-// const agencyControllers = require("./controllers/agencyControllers");
+const agencyControllers = require("./controllers/agencyControllers");
 const brandControllers = require("./controllers/brandControllers");
 const modelControllers = require("./controllers/modelControllers");
 const categoryControllers = require("./controllers/categoryControllers");
