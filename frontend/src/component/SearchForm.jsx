@@ -76,14 +76,15 @@ export default function SearchForm({ setVehicles, setReservation }) {
   }
 
   return (
-    <div className="lg:w-1/2 lg:border lg:pb-5 bg-[#CADEDF] md:rounded-lg md:m-5 lg:shadow-2xl">
+    <div className="lg:w-1/2 lg:border lg:pb-5 bg-[#CADEDF] md:rounded-lg mx-auto my-3 lg:shadow-2xl">
       <div className="divcenter">
-        <h1 className="text-3xl font-bold text-center py-7">
+        <h1 className="text-3xl font-bold text-center py-3">
           Electric vehicles renting
         </h1>
         <h4 className="text-lg text-gray-500 text-center mb-8">
           Same return station
         </h4>
+
         <form className="formCenter" onSubmit={handleSubmit} method="GET">
           <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full">
             <select
@@ -159,7 +160,7 @@ export default function SearchForm({ setVehicles, setReservation }) {
           </div>
           <button
             type="submit"
-            className="rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 text-2xl font-bold text-white py-2 md:w-full w-1/2"
+            className=" flex justify-center rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 text-2xl font-bold text-white py-2 md:w-full w-1/2 my-6 mx-auto"
           >
             Search
           </button>

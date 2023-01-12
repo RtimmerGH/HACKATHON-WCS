@@ -9,6 +9,7 @@ function AuthContextProvider({ children }) {
   const [userLastName, setUserLastName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userRole, setUserRole] = useState("");
+  const [userId, setUserId] = useState("");
 
   const setUserTokenCookie = useCallback((token) => {
     if (token) {
@@ -24,6 +25,8 @@ function AuthContextProvider({ children }) {
 
   const value = useMemo(
     () => ({
+      userId,
+      setUserId,
       userFirstName,
       setUserFirstName,
       userLastName,
@@ -35,7 +38,7 @@ function AuthContextProvider({ children }) {
       userRole,
       setUserRole,
     }),
-    [userToken, userFirstName, userLastName, userEmail, userRole]
+    [userToken, userFirstName, userLastName, userEmail, userRole, userId]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

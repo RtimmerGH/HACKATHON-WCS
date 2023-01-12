@@ -28,8 +28,13 @@ function App() {
   const [reservation, setReservation] = useState();
 
   const { VITE_BACKEND_URL } = import.meta.env;
-  const { setUserFirstName, setUserLastName, setUserEmail, setUserRole } =
-    useContext(AuthContext);
+  const {
+    setUserFirstName,
+    setUserLastName,
+    setUserEmail,
+    setUserRole,
+    setUserId,
+  } = useContext(AuthContext);
 
   useEffect(() => {
     const token = Cookies.get("userToken");
@@ -46,6 +51,7 @@ function App() {
           setUserLastName(response.data.lastname);
           setUserEmail(response.data.email);
           setUserRole(response.data.admin);
+          setUserId(response.data.id);
         });
     }
   }, []);
