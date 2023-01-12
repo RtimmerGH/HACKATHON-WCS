@@ -362,7 +362,7 @@ VALUES (
         'grey',
         '2022-04-10',
         1,
-        'https://cycles.peugeot.fr/sites/cycles.peugeot.fr/files/2020/12/YPU700%20-%20eT01%20CrossOver%20Equipe%20D10%20Perf.jpg'
+        'https://p.turbosquid.com/ts-thumb/AL/Qbt2Cn/1d/fordetransitvanl2h22022_01/jpg/1617044562/1920x1080/fit_q99/2483e4a0cffa9a629ff894851c9161d74bb98967/fordetransitvanl2h22022_01.jpg'
     ),(
         'LL-789-LL',
         5,
