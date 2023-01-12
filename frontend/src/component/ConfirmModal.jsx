@@ -3,7 +3,7 @@ export default function ConfirmModal() {
     <div
       id="popup-modal"
       tabIndex="-1"
-      className="fixed top-0 left-0 right-0 z-50 px-4 md:pt-80 pt-100px overflow-x-hidden overflow-y-auto md:inset-0 h-full flex justify-center items-center"
+      className="backdrop-blur-sm fixed top-0 left-0 right-0 z-50 px-4 pt-80 md:pt-0 pt-100px overflow-x-hidden overflow-y-auto md:inset-0 h-full flex justify-center items-center"
     >
       <div className="relative w-full h-full max-w-md md:h-auto">
         <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">

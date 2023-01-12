@@ -2,7 +2,7 @@ import "../App.css";
 
 export default function SearchForm() {
   return (
-    <div className="lg:w-1/2 lg:border lg:pb-5 bg-[#CADEDF] md:rounded-lg md:m-10 lg:shadow-2xl">
+    <div className="lg:w-1/2 lg:border lg:pb-5 bg-[#CADEDF] md:rounded-lg md:m-5 lg:shadow-2xl">
       <div className="divcenter">
         <h1 className="text-3xl font-bold text-center py-7">
           Electric vehicles renting
