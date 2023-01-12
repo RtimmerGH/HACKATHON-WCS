@@ -120,6 +120,23 @@ const replaceReqParamIdByPayloadSub = (req, res, next) => {
     res.sendStatus(500);
   }
 };
+
+const checkIdUserInReservationBeforeDelete = (req, res, next) => {
+  models.reservation
+    .getReservationIdUser(req.params.id)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        req.body.idUserInRes = rows[0].idUser;
+        next();
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 module.exports = {
   hashPassword,
   verifyPassword,
@@ -127,4 +144,5 @@ module.exports = {
   verifyAdmin,
   replaceReqParamIdByPayloadSub,
   verifyPasswordBeforeChangingIt,
+  checkIdUserInReservationBeforeDelete,
 };
