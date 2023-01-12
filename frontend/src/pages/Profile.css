@@ -1,0 +1,22 @@
+.MyInfos {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 1rem;
+  padding: 5%;
+  border-bottom: solid #cadedf;
+  background-color: aliceblue;
+  border-radius: 1rem;
+  width: 40vh;
+  font-weight: bold;
+}
+
+.Logo {
+  width: 40%;
+  margin: auto;
+}
+
+.Names {
+  flex: inline;
+}
