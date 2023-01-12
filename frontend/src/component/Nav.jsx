@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
-import user from "../assets/user.svg";
+import user from "../assets/user.png";
 import { AuthContext } from "../context/AuthContext";
 
 export default function Nav({ setLoginModal, loginModal }) {
