@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import RentalList from "../component/RentalList";
@@ -15,7 +15,7 @@ export default function Profile() {
       retourDate: "16/03/2023",
     },
     {
-      id: 1,
+      id: 2,
       véhicule: "bike",
       delivery: "toulouse",
       deliveryDate: "16/03/2023",
@@ -32,14 +32,14 @@ export default function Profile() {
       retourDate: "16/12/2021",
     },
     {
-      id: 1,
+      id: 2,
       véhicule: "car",
       delivery: "toulouse",
       deliveryDate: "03/10/2022",
       retourDate: "10/10/2022",
     },
     {
-      id: 1,
+      id: 3,
       véhicule: "bike",
       delivery: "toulouse",
       deliveryDate: "06/09/2022",
@@ -47,16 +47,18 @@ export default function Profile() {
     },
   ];
 
-  const { setUserTokenCookie } =
-    // userFirstName, userLastName, userEmail
-    useContext(AuthContext);
+  const { setUserTokenCookie, userToken } = useContext(AuthContext);
 
   const handleDisconnect = () => {
     setUserTokenCookie(null);
     navigate("/home");
   };
 
-  return (
+  const navigateHome = () => {
+    navigate("/home");
+  };
+
+  return userToken ? (
     <div>
       <button
         type="button"
@@ -75,7 +77,7 @@ export default function Profile() {
         <h1 className="m-6 uppercase font-bold">Your current rent</h1>
         {currentLocation.map((e) => (
           <RentalList
-            key={e.key}
+            key={e.id}
             véhicule={e.véhicule}
             delivery={e.delivery}
             deliveryDate={e.deliveryDate}
@@ -85,7 +87,7 @@ export default function Profile() {
         <h1 className="mt-6 uppercase font-bold">Rental ended</h1>
         {rentalEnded.map((e) => (
           <RentalList
-            key={e.key}
+            key={e.id}
             véhicule={e.véhicule}
             delivery={e.delivery}
             deliveryDate={e.deliveryDate}
@@ -94,5 +96,9 @@ export default function Profile() {
         ))}
       </div>
     </div>
+  ) : (
+    useEffect(() => {
+      navigateHome();
+    }, [])
   );
 }
