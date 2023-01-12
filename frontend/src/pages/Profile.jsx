@@ -58,11 +58,19 @@ export default function Profile() {
         >
           Edit profile
         </button>
+        <button
+          type="button"
+          className="rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 w-5/6 text-2xl font-bold text-white py-2 mt-2"
+        >
+          Se déconecter
+        </button>
+        
       </div>
       <div className="flex-col text-center mt-2">
         <h1 className="mt-6">Your current rent</h1>
         {currentLocation.map((e) => (
           <RentalList
+            key = {e.key}
             véhicule={e.véhicule}
             delivery={e.delivery}
             deliveryDate={e.deliveryDate}
@@ -72,6 +80,7 @@ export default function Profile() {
         <h1 className="mt-6">Rental ended</h1>
         {rentalEnded.map((e) => (
           <RentalList
+            key = {e.key}
             véhicule={e.véhicule}
             delivery={e.delivery}
             deliveryDate={e.deliveryDate}
