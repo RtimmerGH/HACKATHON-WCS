@@ -22,13 +22,8 @@ function App() {
   const [loginModal, setLoginModal] = useState(false);
   const [registerModal, setRegisterModal] = useState(false);
   const { VITE_BACKEND_URL } = import.meta.env;
-  const {
-    setUserFirstName,
-    setUserLastName,
-    setUserEmail,
-    userRole,
-    setUserRole,
-  } = useContext(AuthContext);
+  const { setUserFirstName, setUserLastName, setUserEmail, setUserRole } =
+    useContext(AuthContext);
 
   useEffect(() => {
     const token = Cookies.get("userToken");
@@ -49,20 +44,6 @@ function App() {
     }
   }, []);
 
-  const protectedLevel3 = () => {
-    if (userRole) {
-      return true;
-    }
-    return false;
-  };
-
-  const protectedLevel1 = () => {
-    if (userRole === 3) {
-      return true;
-    }
-    return false;
-  };
-
   return (
     <Router>
       <Login
@@ -78,33 +59,14 @@ function App() {
       <Nav setLoginModal={setLoginModal} loginModal={loginModal} />
 
       <Routes>
+        {/* ROUTE CLASSIQUE */}
         <Route path="/" element={<Navigate replace to="/home" />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
-        {/* ROUTE User */}
-        <Route
-          path="/profile"
-          element={
-            protectedLevel3 ? <Profile /> : <Navigate replace to="/home" />
-          }
-        />
-        <Route
-          path="/results"
-          element={
-            protectedLevel3 ? (
-              <SearchResults />
-            ) : (
-              <Navigate replace to="/home" />
-            )
-          }
-        />
+        <Route path="/results" element={<SearchResults />} />
         {/* ROUTE ADMIN */}
-        <Route
-          path="/admin"
-          element={
-            protectedLevel1 ? <Sidebar /> : <Navigate replace to="/home" />
-          }
-        >
+        <Route path="/admin" element={<Sidebar />}>
           <Route index path="home" element={<HomeAdmin />} />
         </Route>
       </Routes>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import RentalList from "../component/RentalList";
@@ -47,15 +47,24 @@ export default function Profile() {
     },
   ];
 
-  const { userFirstName, userLastName, userEmail, setUserTokenCookie } =
-    useContext(AuthContext);
+  const {
+    userFirstName,
+    userLastName,
+    userEmail,
+    setUserTokenCookie,
+    userToken,
+  } = useContext(AuthContext);
 
   const handleDisconnect = () => {
     setUserTokenCookie(null);
     navigate("/home");
   };
 
-  return (
+  const navigateHome = () => {
+    navigate("/home");
+  };
+
+  return userToken ? (
     <div>
       <div className="flex-col justify-center text-center">
         <h1>{userFirstName}</h1>
@@ -98,5 +107,9 @@ export default function Profile() {
         ))}
       </div>
     </div>
+  ) : (
+    useEffect(() => {
+      navigateHome();
+    }, [])
   );
 }
