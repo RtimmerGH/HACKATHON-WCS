@@ -1,5 +1,6 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default-member */
 import Home from "@pages/Home";
 import React, { useState } from "react";
 import {
@@ -13,6 +14,12 @@ import HomeAdmin from "./admin/pages/HomeAdmin";
 import Login from "./component/Login";
 import Header from "./component/Header";
 import Register from "./component/Register";
+import Users from "./admin/pages/Users";
+import Booking from "./admin/pages/Booking";
+import Agencies from "./admin/pages/Agencies";
+import Vehicles from "./admin/pages/Vehicles";
+import Brands from "./admin/pages/Brands";
+import Models from "./admin/pages/Models";
 
 function App() {
   const [loginModal, setLoginModal] = useState(false);
@@ -40,6 +47,12 @@ function App() {
         {/* ROUTE ADMIN */}
         <Route path="/admin" element={<Sidebar />}>
           <Route index path="home" element={<HomeAdmin />} />
+          <Route index path="users" element={<Users />} />
+          <Route index path="booking" element={<Booking />} />
+          <Route index path="agencies" element={<Agencies />} />
+          <Route index path="vehicles" element={<Vehicles />} />
+          <Route index path="brands" element={<Brands />} />
+          <Route index path="models" element={<Models />} />
         </Route>
       </Routes>
     </Router>
