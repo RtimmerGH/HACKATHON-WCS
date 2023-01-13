@@ -24,10 +24,10 @@ export default function DetailReservation({
       onKeyDown={() => setOpenModaldet(false)}
       tabIndex={0}
       role="button"
-      className="h-screen w-screen top-0 fixed bg-slate-400 "
+      className="h-screen w-screen top-0 left-0 fixed bg-[#CADEDF] overflow-y-scroll"
     >
       <img src={vehicleInfos.data.image} alt="voiture" />
-      <h1> IMAT : {vehicleInfos.data.registration}</h1>
+      <h1 className="mt-10"> IMAT : {vehicleInfos.data.registration}</h1>
       <h1>Starting date : {reservationInfos.delivery}</h1>
       <h1>Ending date : {reservationInfos.deliveryEnd}</h1>
       <h1>km : {vehicleInfos.data.km}</h1>

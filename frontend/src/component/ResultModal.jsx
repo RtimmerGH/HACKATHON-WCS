@@ -70,9 +70,11 @@ export default function ResultModal({ setResultModal, car, reservation }) {
       align-between"
     >
       <Nav />
-      <div className="text-center md:w-1/2 md:m-auto">
-        <h1 className="text-3xl font-bold text-center my-7">Summary</h1>
-        <div className="flex-col justify-around bg-white text-cyan-500 border rounded shadow-md md:flex-row m-10">
+      <div className="text-center md:w-1/2 md:m-auto h-screen">
+        <h1 className="text-3xl font-bold text-center my-2 overflow-y-scroll">
+          Summary
+        </h1>
+        <div className="flex-col justify-around bg-white text-cyan-500 border rounded shadow-md md:flex-row m-5">
           <div className="pt-4 text-black font-semibold">
             {agency.address} - {agency.city}
           </div>
@@ -159,7 +161,7 @@ export default function ResultModal({ setResultModal, car, reservation }) {
             setResultModal(false);
             handleClick();
           }}
-          className="text-sm font-medium text-cyan-500 dark:text-gray-300 text-center"
+          className="text-sm font-medium text-cyan-500 dark:text-gray-300 text-center mb-10"
         >
           Back
         </button>

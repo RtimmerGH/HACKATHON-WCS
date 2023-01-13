@@ -39,7 +39,7 @@ export default function RentalList({
       tabIndex={0}
       className="rent-Content"
     >
-      <div className="rent-Content">
+      <div className="rent-Content flex-row flex-wrap">
         <h1> IMAT : {véhicule}</h1>
         <h1>Registration : {véhicule}</h1>
         <h1>Starting date : {deliv}</h1>
