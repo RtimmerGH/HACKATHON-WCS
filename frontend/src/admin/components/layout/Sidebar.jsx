@@ -108,7 +108,7 @@ function AdminComponent() {
               src={logo}
               alt="Workflow"
             />
-            <p className="text-lg font-medium">Easy Moove</p>
+            <p className="text-lg font-medium">Easy Move</p>
           </Link>
         </div>
         {/* Sidebar component, swap this element with another sidebar if you like */}
