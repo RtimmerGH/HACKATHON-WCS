@@ -6,6 +6,7 @@ import RentalList from "../component/RentalList";
 import "./Profile.css";
 import ChangePassword from "../component/ChangePassword";
 import Logo from "./img/compte.png";
+import DetailReservation from "../component/DetailReservation";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -13,6 +14,8 @@ export default function Profile() {
   const [changepasswordModal, setChangePasswordModal] = useState(false);
   const [reservation, setReservation] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [openModaldet, setOpenModaldet] = useState(false);
+  const [reservationInfos, setReservationInfos] = useState("");
 
   const {
     userFirstName,
@@ -34,7 +37,7 @@ export default function Profile() {
         setReservation(response.data);
         setIsLoading(false);
       });
-  }, []);
+  }, [userId]);
 
   const handleDisconnect = () => {
     setUserTokenCookie(null);
@@ -80,26 +83,28 @@ export default function Profile() {
           Your current rent
         </h1>
         <div className="flex" />
+        {openModaldet && (
+          <DetailReservation
+            reservationInfos={reservationInfos}
+            setOpenModaldet={setOpenModaldet}
+          />
+        )}
         {isLoading ? (
           <div>chargement</div>
         ) : (
           reservation.map((e) => (
             <RentalList
               key={e.id}
+              idVéhicule={e.id}
               véhicule={e.registration}
               delivery={e.startDate}
-              deliveryDate={e.registration}
               retourDate={e.startDate}
+              setOpenModaldet={setOpenModaldet}
+              setReservationInfos={setReservationInfos}
             />
           ))
         )}
       </div>
-      {/* <button
-        type="button"
-        className="flex justify-center m-auto  rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 w-5/6 text-2xl font-bold text-white p-2 mt-4"
-      >
-        Edit profile
-      </button> */}
     </div>
   ) : (
     useEffect(() => {
