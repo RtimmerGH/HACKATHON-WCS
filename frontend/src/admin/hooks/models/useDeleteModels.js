@@ -1,12 +1,13 @@
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
+import Cookies from "js-cookie";
 import queryKeys from "../../constants/queryKeys";
 
+const userToken = Cookies.get("userToken");
 const deleteModels = (id) =>
   axios.delete(`${import.meta.env.VITE_BACKEND_URL}/models/${id}`, {
     headers: {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjczNTE1NjIyLCJleHAiOjE2NzM2MDIwMjJ9.YfkaXmqk7myHCw9q-kOYfcOLZGtZ7_8aCshtM6Yg9m8",
+      Authorization: `Bearer ${userToken}`,
     },
   });
 

@@ -6,13 +6,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-color: rgb(249 250 251); */
-  background-color:#cadedf;
+  background-color: #cadedf;
 }
 
 @media screen and (min-width: 768px) {
   .bg-img {
-    padding-top:1rem;
-    padding-bottom:1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     background-image: url("./assets/bg-img.jpg");
   }
 }
