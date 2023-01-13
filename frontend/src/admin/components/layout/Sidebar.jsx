@@ -70,11 +70,7 @@ function AdminComponent() {
               </Transition.Child>
               <div className="flex-shrink-0 flex items-center px-4">
                 <Link to="/admin">
-                  <img
-                    className="h-8 w-auto"
-                    src="https://www.zupimages.net/up/22/51/0z21.png"
-                    alt="logo"
-                  />
+                  <p>Easy Move</p>
                 </Link>
               </div>
               <div className="mt-5 flex-1 h-0 overflow-y-auto">
