@@ -89,7 +89,6 @@ function App() {
             }
           />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           <Route
             path="/results"
@@ -98,26 +97,13 @@ function App() {
                 vehicles={vehicles}
                 reservation={reservation}
                 setReservation
+                loginModal={loginModal}
+                setLoginModal={setLoginModal}
               />
             }
           />
           <Route path="/userinfos" element={<ChangePassword />} />
         </Route>
-        =======
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/results"
-          element={
-            <SearchResults
-              vehicles={vehicles}
-              reservation={reservation}
-              setReservation
-              loginModal={loginModal}
-              setLoginModal={setLoginModal}
-            />
-          }
-        />
         {/* ROUTE ADMIN */}
         <Route path="/admin" element={<Sidebar />}>
           <Route path="" element={<HomeAdmin />} />
