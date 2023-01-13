@@ -49,12 +49,12 @@ export default function Profile() {
   };
 
   return userToken ? (
-    <div>
+    <div className="flex flex-col lg:flex-row gap-8 mx-10 mt-6 items-center lg:items-start">
       <ChangePassword
         changepasswordModal={changepasswordModal}
         setChangePasswordModal={setChangePasswordModal}
       />
-      <div className="MyInfos">
+      <div className="w-7/12 lg:w-4/12 bg-white rounded-md flex flex-col items-center h-fit py-8">
         <img src={Logo} className="Logo" alt="Logo" />
         <div className="Names">
           <h1>{userFirstName}</h1>
@@ -74,12 +74,12 @@ export default function Profile() {
             type="button"
             className="flex justify-center m-auto rounded-lg bg-gradient-to-r from-lime-400 to-cyan-500 w-5/6 text-l font-bold text-white py-2 mt-2"
           >
-            Disconnect
+            Logout
           </button>
         </div>
       </div>
-      <div className="flex-justify-between text-center mt-2">
-        <h1 className="m-6 uppercase font-bold border-b-3">
+      <div className="flex flex-col text-center w-11/12 lg:w-8/12 bg-white rounded-md py-4 mb-8">
+        <h1 className="mt-4 uppercase font-bold text-lg border-b-3">
           Your current rent
         </h1>
         <div className="flex" />
@@ -90,7 +90,7 @@ export default function Profile() {
           />
         )}
         {isLoading ? (
-          <div>chargement</div>
+          <div>loading</div>
         ) : (
           reservation.map((e) => (
             <RentalList

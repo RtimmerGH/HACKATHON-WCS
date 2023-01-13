@@ -64,7 +64,7 @@ export default function Login({
         justify-center
         align-between"
     >
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6 mx-4 lg:mx-48">
         <h5 className="flex justify-center text-xl font-medium text-gray-900 dark:text-white mx-auto">
           Sign in to our platform
         </h5>

@@ -71,24 +71,62 @@ export default function Register({ registerModal, setRegisterModal }) {
         justify-center
         align-between"
     >
-      <h5 className="text-xl font-medium text-gray-900 dark:text-white mb-6">
-        Create an account
-      </h5>
-      <form onSubmit={handleSubmit}>
-        <div className="grid md:grid-cols-2 md:gap-6">
+      <div className="mx-6 lg:mx-48">
+        <h5 className="text-xl font-medium text-gray-900 dark:text-white mb-6">
+          Create an account
+        </h5>
+        <form onSubmit={handleSubmit}>
+          <div className="grid md:grid-cols-2 md:gap-6">
+            <div className="relative z-0 mb-6 w-full group">
+              <label
+                htmlFor="floating_last_name"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
+              >
+                Nom
+              </label>
+              <input
+                type="text"
+                name="floating_last_name"
+                id="name"
+                defaultValue={lastname}
+                onChange={(e) => setLastName(e.target.value)}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder=" "
+                required
+              />
+            </div>
+            <div className="relative z-0 mb-6 w-full group">
+              <label
+                htmlFor="floating_first_name"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
+              >
+                Prénom
+              </label>
+              <input
+                type="text"
+                name="floating_first_name"
+                id="first_name"
+                defaultValue={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder=" "
+                required
+              />
+            </div>
+          </div>
           <div className="relative z-0 mb-6 w-full group">
             <label
-              htmlFor="floating_last_name"
+              htmlFor="floating_email"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
             >
-              Nom
+              Adresse e-mail
             </label>
             <input
-              type="text"
-              name="floating_last_name"
-              id="name"
-              defaultValue={lastname}
-              onChange={(e) => setLastName(e.target.value)}
+              type="email"
+              name="floating_email"
+              id="email"
+              defaultValue={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=" "
               required
@@ -96,89 +134,54 @@ export default function Register({ registerModal, setRegisterModal }) {
           </div>
           <div className="relative z-0 mb-6 w-full group">
             <label
-              htmlFor="floating_first_name"
+              htmlFor="floating_password"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
             >
-              Prénom
+              Mot de passe
             </label>
             <input
-              type="text"
-              name="floating_first_name"
-              id="first_name"
-              defaultValue={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              type="password"
+              name="floating_password"
+              id="password"
+              defaultValue={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=" "
               required
             />
           </div>
-        </div>
-        <div className="relative z-0 mb-6 w-full group">
-          <label
-            htmlFor="floating_email"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
-          >
-            Adresse e-mail
-          </label>
-          <input
-            type="email"
-            name="floating_email"
-            id="email"
-            defaultValue={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=" "
-            required
-          />
-        </div>
-        <div className="relative z-0 mb-6 w-full group">
-          <label
-            htmlFor="floating_password"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
-          >
-            Mot de passe
-          </label>
-          <input
-            type="password"
-            name="floating_password"
-            id="password"
-            defaultValue={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=" "
-            required
-          />
-        </div>
-        <div className="relative z-0 mb-6 w-full group">
-          <label
-            htmlFor="floating_repeat_password"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
-          >
-            Confirmer le mot de passe
-          </label>
-          <input
-            type="password"
-            name="repeat_password"
-            id="floating_repeat_password"
-            defaultValue={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=" "
-            required
-          />
-        </div>
-        <div className="grid md:grid-cols-2 md:gap-6" />
-        {btn}
-      </form>
-      <button
-        type="button"
-        onClick={() => {
-          setRegisterModal(false);
-        }}
-        className="text-sm mt-10 font-medium text-cyan-500 dark:text-gray-300 text-center"
-      >
-        Back Home
-      </button>
+          <div className="relative z-0 mb-6 w-full group">
+            <label
+              htmlFor="floating_repeat_password"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
+            >
+              Confirmer le mot de passe
+            </label>
+            <input
+              type="password"
+              name="repeat_password"
+              id="floating_repeat_password"
+              defaultValue={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder=" "
+              required
+            />
+          </div>
+          <div className="grid md:grid-cols-2 md:gap-6" />
+          {btn}
+        </form>
+
+        <button
+          type="button"
+          onClick={() => {
+            setRegisterModal(false);
+          }}
+          className="text-sm mt-10 font-medium text-cyan-500 dark:text-gray-300 text-center"
+        >
+          Back Home
+        </button>
+      </div>
     </div>
   );
 }

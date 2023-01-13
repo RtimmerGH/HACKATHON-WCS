@@ -39,9 +39,12 @@ export default function RentalList({
       tabIndex={0}
       className="rent-Content"
     >
-      <h1> IMAT : {véhicule}</h1>
-      <h1>Starting date : {deliv}</h1>
-      <h1>Ending date : {delivend}</h1>
+      <div className="rent-Content">
+        <h1> IMAT : {véhicule}</h1>
+        <h1>Registration : {véhicule}</h1>
+        <h1>Starting date : {deliv}</h1>
+        <h1>Ending date : {delivend}</h1>
+      </div>
     </div>
   );
 }

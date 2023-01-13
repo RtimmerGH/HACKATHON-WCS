@@ -15,8 +15,7 @@ export default function SearchForm({ setVehicles, setReservation }) {
   const [startDate, setStartDate] = useState(todayFormat);
   const [endDate, setEndDate] = useState(startDate);
   const [type, setType] = useState(1);
-  const [addBikes, setAddBikes] = useState(null);
-  const searchRequest = { agency, startDate, endDate, type, addBikes };
+  const searchRequest = { agency, startDate, endDate, type };
 
   useEffect(() => {
     // get agencies
@@ -152,15 +151,6 @@ export default function SearchForm({ setVehicles, setReservation }) {
                 );
               })}
             </select>
-          </div>
-          <div className="mb-6 text-center flex items-center gap-3 py-3">
-            <input
-              type="checkbox"
-              id="lessThan30km"
-              name="lessThan30km"
-              onChange={(e) => setAddBikes(e.target.value)}
-            />
-            <p className="text-xl">I do less than 30 km</p>
           </div>
           <button
             type="submit"
