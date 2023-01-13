@@ -55,7 +55,7 @@ export default function Login({
         fixed
         w-screen
         h-screen
-        z-10
+        z-40
         bg-[#CADEDF]
         flex-grow
         flex

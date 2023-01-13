@@ -61,7 +61,7 @@ export default function ResultCard({
             <p className="mx-3 font-bold text-gray-900">{car.numDoor}</p>
           </div>
         </div>
-
+        {}
         <button
           type="button"
           onClick={handleClick}
