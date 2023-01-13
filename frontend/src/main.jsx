@@ -3,7 +3,6 @@
 /* eslint-disable import/no-unresolved */
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { ReactQueryDevtools } from "react-query/devtools";
 import { QueryClient, QueryClientProvider } from "react-query";
 import "./index.css";
 import AuthContextProvider from "./context/AuthContext";
@@ -30,7 +29,6 @@ root.render(
       <AuthContextProvider>
         <App />
       </AuthContextProvider>
-      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </React.StrictMode>
 );
