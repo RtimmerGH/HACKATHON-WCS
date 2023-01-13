@@ -110,7 +110,7 @@ export default function SearchForm({ setVehicles, setReservation }) {
               })}
             </select>
           </div>
-          <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full">
+          <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg w-full">
             <input
               type="datetime-local"
               id="startDate"
@@ -118,10 +118,10 @@ export default function SearchForm({ setVehicles, setReservation }) {
               defaultValue={todayFormat}
               onChange={(e) => setStartDate(e.target.value)}
               min={todayFormat}
-              className="bg-white text-gray-900 text-xl p-3 md:mx-10"
+              className="bg-white text-gray-900 text-xl p-3 w-full"
             />
           </div>
-          <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full flex-row justify-around">
+          <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg w-full flex-row justify-around">
             <input
               type="datetime-local"
               id="endDate"
@@ -129,7 +129,7 @@ export default function SearchForm({ setVehicles, setReservation }) {
               defaultValue={startDate}
               min={startDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="bg-white text-gray-900 text-xl p-3 md:mx-10"
+              className="bg-white text-gray-900 text-xl p-3 w-full"
             />
           </div>
           <div className="mb-6 text-center bg-white border border-gray-300 rounded-lg md:w-full flex-row justify-around">
@@ -149,7 +149,7 @@ export default function SearchForm({ setVehicles, setReservation }) {
               })}
             </select>
           </div>
-          <div className="mb-6 text-center flex p-3">
+          <div className="mb-6 text-center flex items-center gap-3 py-3">
             <input
               type="checkbox"
               id="lessThan30km"
