@@ -35,7 +35,7 @@ export default function Nav({ setLoginModal, loginModal }) {
                 className="h-1à mr-3 sm:h-9"
                 alt="Easymove Logo"
               />
-              <span className="self-center text-4xl font-semibold whitespace-nowrap dark:text-white">
+              <span className="self-center text-4xl font-semibold whitespace-nowrap text-white">
                 Easy Move
               </span>
             </a>

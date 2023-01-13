@@ -1,7 +1,14 @@
 import React from "react";
 import "./RentalList.css";
 
-export default function RentalList({ véhicule, delivery, retourDate }) {
+export default function RentalList({
+  idVéhicule,
+  véhicule,
+  delivery,
+  retourDate,
+  setOpenModaldet,
+  setReservationInfos,
+}) {
   function regexDate(dateToConvert) {
     const date = dateToConvert;
     const regex = /^\d{4}-\d{2}-\d{2}/;
@@ -13,11 +20,31 @@ export default function RentalList({ véhicule, delivery, retourDate }) {
   const deliv = regexDate(delivery);
   const delivend = regexDate(retourDate);
 
+  function handleClick() {
+    setOpenModaldet(true);
+    const infos = {
+      idVehicule: idVéhicule,
+      delivery: deliv,
+      deliveryEnd: delivend,
+    };
+
+    setReservationInfos(infos);
+  }
+
   return (
-    <div className="rent-Content">
-      <h1>Registration : {véhicule}</h1>
-      <h1>Starting date : {deliv}</h1>
-      <h1>Ending date : {delivend}</h1>
+    <div
+      onClick={handleClick}
+      onKeyDown={handleClick}
+      role="button"
+      tabIndex={0}
+      className="rent-Content"
+    >
+      <div className="rent-Content flex-row flex-wrap">
+        <h1> IMAT : {véhicule}</h1>
+        <h1>Registration : {véhicule}</h1>
+        <h1>Starting date : {deliv}</h1>
+        <h1>Ending date : {delivend}</h1>
+      </div>
     </div>
   );
 }
