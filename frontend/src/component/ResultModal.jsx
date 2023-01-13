@@ -6,15 +6,8 @@ import userImg from "../assets/user.png";
 import colorImg from "../assets/color.png";
 import bootImg from "../assets/boot.png";
 import { AuthContext } from "../context/AuthContext";
-import Login from "./Login";
 
-export default function ResultModal({
-  setResultModal,
-  car,
-  reservation,
-  loginModal,
-  setLoginModal,
-}) {
+export default function ResultModal({ setResultModal, car, reservation }) {
   const [confirmation, setConfirmation] = useState(false);
   const [agency, setAgency] = useState(false);
   const [model, setModel] = useState(false);
@@ -28,11 +21,12 @@ export default function ResultModal({
   };
 
   const handleClick = () => {
-    axios.post(`${import.meta.env.VITE_BACKEND_URL}/reservations`, body, {
-      headers: {
-        Authorization: `Bearer ${userToken}`,
-      },
-    });
+    if (userId !== "")
+      axios.post(`${import.meta.env.VITE_BACKEND_URL}/reservations`, body, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
   };
 
   useEffect(() => {
@@ -152,27 +146,13 @@ export default function ResultModal({
             CONFIRM
           </button>
         ) : (
-          <button
-            type="button"
-            onClick={() => {
-              setLoginModal(true);
-            }}
+          <a
+            href="/"
             className="inline-flex px-3 py-2 text-m font-medium text-center text-white bg-gradient-to-r from-lime-400 to-cyan-500 rounded-lg m-5"
           >
-            CONNECT TO YOUR ACCOUNT
-          </button>
+            Log In
+          </a>
         )}
-        <button
-          type="button"
-          onClick={() => {
-            setResultModal(!loginModal);
-            setConfirmation(true);
-            handleClick();
-          }}
-          className="inline-flex px-3 py-2 text-m font-medium text-center text-white bg-gradient-to-r from-lime-400 to-cyan-500 rounded-lg m-5"
-        >
-          Confirm
-        </button>
         <button
           type="button"
           onClick={() => {
@@ -183,8 +163,7 @@ export default function ResultModal({
         >
           Back
         </button>
-        {confirmation && <ConfirmModal />}
-        {loginModal && <Login />}
+        {userToken && confirmation && <ConfirmModal />}
       </div>
     </div>
   );

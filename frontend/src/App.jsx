@@ -85,6 +85,8 @@ function App() {
                 setVehicles={setVehicles}
                 reservation={reservation}
                 setReservation={setReservation}
+                loginModal={loginModal}
+                setLoginModal={setLoginModal}
               />
             }
           />
