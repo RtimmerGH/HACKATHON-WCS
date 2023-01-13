@@ -93,6 +93,8 @@ function App() {
               vehicles={vehicles}
               reservation={reservation}
               setReservation
+              loginModal={loginModal}
+              setLoginModal={setLoginModal}
             />
           }
         />

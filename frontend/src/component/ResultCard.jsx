@@ -5,7 +5,12 @@ import userImg from "../assets/user.png";
 import colorImg from "../assets/color.png";
 import bootImg from "../assets/boot.png";
 
-export default function ResultCard({ car, reservation }) {
+export default function ResultCard({
+  car,
+  reservation,
+  loginModal,
+  setLoginModal,
+}) {
   const [resultModal, setResultModal] = useState(false);
   const [model, setModel] = useState(false);
 
@@ -69,6 +74,8 @@ export default function ResultCard({ car, reservation }) {
             reservation={reservation}
             setResultModal={setResultModal}
             car={car}
+            loginModal={loginModal}
+            setLoginModal={setLoginModal}
           />
         )}
       </div>

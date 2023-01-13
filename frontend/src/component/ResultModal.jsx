@@ -6,8 +6,15 @@ import userImg from "../assets/user.png";
 import colorImg from "../assets/color.png";
 import bootImg from "../assets/boot.png";
 import { AuthContext } from "../context/AuthContext";
+import Login from "./Login";
 
-export default function ResultModal({ setResultModal, car, reservation }) {
+export default function ResultModal({
+  setResultModal,
+  car,
+  reservation,
+  loginModal,
+  setLoginModal,
+}) {
   const [confirmation, setConfirmation] = useState(false);
   const [agency, setAgency] = useState(false);
   const [model, setModel] = useState(false);
@@ -133,20 +140,32 @@ export default function ResultModal({ setResultModal, car, reservation }) {
             </div>
           </div>
         </div>
+        {userToken ? (
+          <button
+            type="button"
+            onClick={() => {
+              setConfirmation(true);
+              handleClick();
+            }}
+            className="inline-flex px-3 py-2 text-m font-medium text-center text-white bg-gradient-to-r from-lime-400 to-cyan-500 rounded-lg m-5"
+          >
+            CONFIRM
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={() => {
+              setLoginModal(true);
+            }}
+            className="inline-flex px-3 py-2 text-m font-medium text-center text-white bg-gradient-to-r from-lime-400 to-cyan-500 rounded-lg m-5"
+          >
+            CONNECT TO YOUR ACCOUNT
+          </button>
+        )}
         <button
           type="button"
           onClick={() => {
-            setConfirmation(true);
-            handleClick();
-          }}
-          className="inline-flex px-3 py-2 text-m font-medium text-center text-white bg-gradient-to-r from-lime-400 to-cyan-500 rounded-lg m-5"
-        >
-          CONFIRM
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            setResultModal(false);
+            setResultModal(!loginModal);
             handleClick();
           }}
           className="text-sm font-medium text-cyan-500 dark:text-gray-300 text-center"
@@ -154,6 +173,7 @@ export default function ResultModal({ setResultModal, car, reservation }) {
           Back
         </button>
         {confirmation && <ConfirmModal />}
+        {loginModal && <Login />}
       </div>
     </div>
   );
