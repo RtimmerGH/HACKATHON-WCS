@@ -138,11 +138,15 @@ export default function SearchForm({ setVehicles, setReservation }) {
               name="type"
               id="type"
               className="bg-white text-gray-900 text-xl p-3 w-full"
-              onChange={(e) => setType(e.target.selectedIndex)}
+              onChange={(e) => setType(e.target.selectedIndex + 1)}
             >
               {types.map((thetype) => {
                 return (
-                  <option defaultValue={thetype.id} key={thetype.id}>
+                  <option
+                    defaultValue={thetype.id}
+                    key={thetype.id}
+                    id={thetype.id}
+                  >
                     {thetype.name}
                   </option>
                 );
