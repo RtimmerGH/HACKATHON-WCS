@@ -38,11 +38,11 @@ export default function Profile() {
 
   const handleDisconnect = () => {
     setUserTokenCookie(null);
-    navigate("/home");
+    navigate("/");
   };
 
   const navigateHome = () => {
-    navigate("/home");
+    navigate("/");
   };
 
   return userToken ? (

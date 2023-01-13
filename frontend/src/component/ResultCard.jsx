@@ -38,7 +38,7 @@ export default function ResultCard({
       className="flex flex-col bg-slate-100 text-gray-900 border rounded shadow-md md:flex-row md:min-w-1/3 m-6"
     >
       <img
-        className="object-cover w-full h-full rounded md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+        className="object-fill w-full h-full rounded md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
         src={car.image}
         alt={car.idModel}
         key={car.id}
@@ -65,9 +65,9 @@ export default function ResultCard({
         <button
           type="button"
           onClick={handleClick}
-          className="inline-flex px-3 py-2 text-m font-medium text-center text-white bg-gradient-to-r from-lime-400 to-cyan-500 rounded-lg"
+          className="inline-flex px-3 py-2 text-m font-medium text-center text-white bg-gradient-to-r from-lime-400 to-cyan-500 rounded-lg mx-auto"
         >
-          RESERVE
+          Reserve
         </button>
         {resultModal && (
           <ResultModal

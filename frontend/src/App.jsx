@@ -1,18 +1,20 @@
+/* eslint-disable import/no-unresolved */
 import Home from "@pages/Home";
 import React, { useState, useContext, useEffect } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./admin/components/layout/Sidebar";
 import HomeAdmin from "./admin/pages/HomeAdmin";
 import Login from "./component/Login";
 import Nav from "./component/Nav";
 import Register from "./component/Register";
+import Users from "./admin/pages/Users";
+import Booking from "./admin/pages/Booking";
+import Agencies from "./admin/pages/Agencies";
+import Vehicles from "./admin/pages/Vehicles";
+import Brands from "./admin/pages/Brands";
+import Models from "./admin/pages/Models";
 import "./App.css";
 import SearchResults from "./pages/SearchResults";
 import Profile from "./pages/Profile";
@@ -66,24 +68,42 @@ function App() {
         registerModal={registerModal}
         setRegisterModal={setRegisterModal}
       />
-      <Nav setLoginModal={setLoginModal} loginModal={loginModal} />
 
       <Routes>
         {/* ROUTE CLASSIQUE */}
-        <Route path="/" element={<Navigate replace to="/home" />} />
         <Route
-          path="/home"
+          path="/"
           element={
-            <Home
-              vehicles={vehicles}
-              setVehicles={setVehicles}
-              reservation={reservation}
-              setReservation={setReservation}
-            />
+            <Nav setLoginModal={setLoginModal} loginModal={loginModal} />
           }
-        />
-        <Route path="/userinfos" element={<ChangePassword />} />
-
+        >
+          <Route
+            path=""
+            element={
+              <Home
+                vehicles={vehicles}
+                setVehicles={setVehicles}
+                reservation={reservation}
+                setReservation={setReservation}
+              />
+            }
+          />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/results"
+            element={
+              <SearchResults
+                vehicles={vehicles}
+                reservation={reservation}
+                setReservation
+              />
+            }
+          />
+          <Route path="/userinfos" element={<ChangePassword />} />
+        </Route>
+        =======
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route
@@ -100,7 +120,13 @@ function App() {
         />
         {/* ROUTE ADMIN */}
         <Route path="/admin" element={<Sidebar />}>
-          <Route index path="home" element={<HomeAdmin />} />
+          <Route path="" element={<HomeAdmin />} />
+          <Route path="users" element={<Users />} />
+          <Route path="booking" element={<Booking />} />
+          <Route path="agencies" element={<Agencies />} />
+          <Route path="vehicles" element={<Vehicles />} />
+          <Route path="brands" element={<Brands />} />
+          <Route path="models" element={<Models />} />
         </Route>
       </Routes>
     </Router>

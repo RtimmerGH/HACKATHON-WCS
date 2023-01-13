@@ -113,7 +113,7 @@ export default function ResultModal({
           className="flex flex-col bg-white text-cyan-500 border rounded shadow-md md:flex-row md:min-w-1/3 mx-6"
         >
           <img
-            className="object-cover w-full h-full rounded md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+            className="object-fill w-full h-full rounded md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
             src={car.image}
             alt={model.name}
             key={car.id}
@@ -166,6 +166,17 @@ export default function ResultModal({
           type="button"
           onClick={() => {
             setResultModal(!loginModal);
+            setConfirmation(true);
+            handleClick();
+          }}
+          className="inline-flex px-3 py-2 text-m font-medium text-center text-white bg-gradient-to-r from-lime-400 to-cyan-500 rounded-lg m-5"
+        >
+          Confirm
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            setResultModal(false);
             handleClick();
           }}
           className="text-sm font-medium text-cyan-500 dark:text-gray-300 text-center"
