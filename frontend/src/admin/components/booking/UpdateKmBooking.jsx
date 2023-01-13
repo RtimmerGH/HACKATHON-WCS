@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 import { Fragment, useEffect, useState } from "react";

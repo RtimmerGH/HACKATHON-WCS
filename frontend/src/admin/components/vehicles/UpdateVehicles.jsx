@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable react/prop-types */
 import { Fragment, useState } from "react";
 import { Switch, Dialog, Transition } from "@headlessui/react";

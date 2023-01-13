@@ -68,22 +68,25 @@ function HeaderStats() {
                       </thead>
                       <tbody className="divide-y divide-gray-200 bg-white">
                         {!isLoading &&
-                          data.map((person) => (
-                            <tr key={person.id}>
-                              <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                {person.id}
-                              </td>
-                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                {person.registration}
-                              </td>
-                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                {dateToBackend(person.startDate)}
-                              </td>
-                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                {dateToBackend(person.endDate)}
-                              </td>
-                            </tr>
-                          ))}
+                          data
+                            .filter((x, index) => index >= data.length - 5)
+                            .map((person) => (
+                              <tr key={person.id}>
+                                <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                  {person.id}
+                                </td>
+                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                  {person.registration}
+                                </td>
+                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                  {dateToBackend(person.startDate)}
+                                </td>
+                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                  {dateToBackend(person.endDate)}
+                                </td>
+                              </tr>
+                            ))
+                            .reverse()}
                       </tbody>
                     </table>
                   </div>
