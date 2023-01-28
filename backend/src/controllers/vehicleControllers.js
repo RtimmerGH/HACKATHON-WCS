@@ -1,8 +1,12 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.item
-    .findAll()
+  let where = "";
+  if (req.query.startDate != null) {
+    where = ` where vehicle.id not in (select vehicle.id from vehicle inner join reservation on vehicle.id = reservation.idVehicle where '${req.query.startDate}' between reservation.startDate and reservation.endDate or '${req.query.endDate}' between reservation.startDate and reservation.endDate or reservation.startDate > '${req.query.startDate}' and reservation.endDate < '${req.query.endDate}') and agency.id = ${req.query.agencyId} and type.id = ${req.query.typeId};`;
+  }
+  models.vehicle
+    .findAllVehicles(where)
     .then(([rows]) => {
       res.send(rows);
     })
@@ -13,8 +17,8 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.item
-    .find(req.params.id)
+  models.vehicle
+    .findVehicle(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
         res.sendStatus(404);
@@ -29,14 +33,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const item = req.body;
+  const vehicle = req.body;
 
   // TODO validations (length, format...)
 
-  item.id = parseInt(req.params.id, 10);
+  vehicle.id = parseInt(req.params.id, 10);
 
-  models.item
-    .update(item)
+  models.vehicle
+    .update(vehicle)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -51,14 +55,14 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const item = req.body;
+  const vehicle = req.body;
 
   // TODO validations (length, format...)
 
-  models.item
-    .insert(item)
+  models.vehicle
+    .insert(vehicle)
     .then(([result]) => {
-      res.location(`/items/${result.insertId}`).sendStatus(201);
+      res.location(`/vehicles/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -67,7 +71,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.item
+  models.vehicle
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {

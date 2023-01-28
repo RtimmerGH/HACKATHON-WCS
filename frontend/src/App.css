@@ -5,6 +5,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-color: rgb(249 250 251); */
+  background-color: #cadedf;
+}
+
+@media screen and (min-width: 768px) {
+  .bg-img {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-image: url("./assets/bg-img.jpg");
+    height: 100vh;
+  }
 }
 
 code {
@@ -46,6 +57,7 @@ code {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -53,4 +65,21 @@ code {
 
 button {
   font-size: calc(10px + 2vmin);
+}
+
+.formCenter {
+  width: 80vw;
+  margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .divcenter {
+    margin: auto;
+    width: 500px;
+  }
+
+  .formCenter {
+    width: 100%;
+    margin: auto;
+  }
 }

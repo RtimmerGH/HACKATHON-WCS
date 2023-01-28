@@ -1,0 +1,36 @@
+const AbstractManager = require("./AbstractManager");
+
+class ModelManager extends AbstractManager {
+  constructor() {
+    super({ table: "model" });
+  }
+
+  findModel(id) {
+    return this.connection.query(
+      `select ${this.table}.id, ${this.table}.name, ${this.table}.idBrand, brand.name as brand from  ${this.table} join brand on brand.id=${this.table}.idBrand  where ${this.table}.id = ?`,
+      [id]
+    );
+  }
+
+  findAllModels() {
+    return this.connection.query(
+      `select ${this.table}.id, model.name, ${this.table}.idBrand, brand.name as brand from  ${this.table} join brand on brand.id=${this.table}.idbrand`
+    );
+  }
+
+  insert(model) {
+    return this.connection.query(
+      `insert into ${this.table} (name,idBrand) values (?,?)`,
+      [model.name, model.idBrand]
+    );
+  }
+
+  update(model) {
+    return this.connection.query(
+      `update ${this.table} set name = ?,idBrand = ? where id = ?`,
+      [model.name, model.idBrand, model.id]
+    );
+  }
+}
+
+module.exports = ModelManager;

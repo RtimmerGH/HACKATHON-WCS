@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "TOMMY-Regular";
+  src: local("TOMMY-Regular"), url("./fonts/TOMMY-Regular.ttf");
+}
+@font-face {
+  font-family: "TOMMY-Medium";
+  src: local("TOMMY-Medium"), url("./fonts/TOMMY-Medium.ttf");
+}
+* {
+  font-family: "TOMMY-Regular";
+}
+
+button:hover {
+  opacity: 85%;
+  color: rgb(177, 250, 250);
+}

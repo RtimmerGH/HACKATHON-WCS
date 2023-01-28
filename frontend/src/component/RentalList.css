@@ -1,0 +1,15 @@
+.rent-Content {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 2%;
+  font-family: "TOMMY-Regular", sans-serif;
+  border-bottom: solid rgba(255, 255, 255, 0.501);
+  border-top: solid rgba(255, 255, 255, 0.501);
+  border-radius: 0.7vh;
+  margin-top: 5%;
+  text-transform: uppercase;
+  color: rgb(84, 84, 84);
+  background-color: #cadedf;
+}
