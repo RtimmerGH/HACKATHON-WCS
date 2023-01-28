@@ -1,3 +1,25 @@
+HACKATHON2 - Wild Code School
+
+This repo contains the project my team and I developped during the Wild Code School Hackathon2 in January 2023.
+
+Other members of the team were:
+-Marie-Hermine Schneider (https://github.com/aimach)
+-Joris Grilleres (https://github.com/jorisgrls)
+-Rémy Bernardin (https://github.com/Remy-B-prog)
+-Jonathan Bonhoure (https://github.com/SkullZRulZ)
+
+The partner of the Hackathon was Amazon Web Services (AWS)
+
+The topic was:
+You will have to develop a fleet management application with three levels of users (the user who can rent/book a vehicle, the community/company that offers vehicles for rent/reservation and the application administrator).
+
+The user who makes a reservation request must have access to the vehicle information (mileage, technical data, availability dates...).
+
+The community/company manages the update of its fleet with the possibility of adding new vehicles or removing some. It must also manage the maintenance part and therefore be able to make a vehicle temporarily unavailable.
+
+
+
+===============================================================
 ## Concept
 
 This template is meant to serve as a foundation for every P2/P3 following the React-Express-MySQL stack, as learned in Wild Code School.
